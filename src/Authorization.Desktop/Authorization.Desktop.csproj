@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\3094352-removebg-preview %283%29.png" />
+    <None Remove="Assets\Images\5357377_Internet-go-removebg-preview.png" />
+    <None Remove="Assets\Images\Screenshot 2023-08-15 214117.png" />
+    <None Remove="Assets\Images\Screenshot 2023-08-15 215526.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\3094352-removebg-preview (3).png" />
+    <Resource Include="Assets\Images\5357377_Internet-go-removebg-preview.png" />
+    <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
+    <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\Shops\" />
+    <Folder Include="Dtos\Users\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Dapper" Version="2.1.11" />
+    <PackageReference Include="MySql.Data" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

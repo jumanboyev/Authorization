@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Authorization.Desktop.Components.ShopComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Authorization.Desktop.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="340" d:DesignWidth="250">
+    <Grid Height="320" Width="230"
+          Margin="15 20 0 0">
+        <Border x:Name="B"
+                Style="{DynamicResource BorderProduct}"
+                Cursor="Hand"
+                CornerRadius="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*"/>
+                    <RowDefinition Height="40*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0"
+                        BorderThickness="2 2 2 0"
+                        BorderBrush="{DynamicResource PrimaryBorderColor}"
+                        CornerRadius="8 8 0 0"
+                        Background="Transparent">
+                    <Border  CornerRadius="6"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource SecondaryBorderColor}">
+                        <Border.Background>
+                            <ImageBrush 
+                                x:Name="ShopImage" 
+                                Stretch="UniformToFill"
+                                ImageSource="/Assets/Images/5357377_Internet-go-removebg-preview.png"/>
+                        </Border.Background>
+
+                    </Border>
+                </Border>
+                <Border Grid.Row="1"
+                                    CornerRadius="0 0 7 7"
+                                    BorderThickness="2 1 2 2"
+                                    BorderBrush="{DynamicResource PrimaryBorderColor}"
+                                    Background="Transparent">
+                    <StackPanel>
+
+                        <Border Height="35" HorizontalAlignment="Left"
+                                            Margin="10 5 0 0">
+                            <TextBlock x:Name="lbName" Text="Havas "
+                                                   TextWrapping="Wrap"
+                                                   VerticalAlignment="top"
+                                                   HorizontalAlignment="Center"
+                                                   FontSize="16"
+                                                   Foreground="{DynamicResource TextSecundaryColor}"/>
+                        </Border>
+                        <Border Height="35" HorizontalAlignment="Left"
+                                            Margin="10 5 0 0">
+                            <TextBlock x:Name="lbDescription" Text="Havas "
+                                                   TextWrapping="Wrap"
+                                                   VerticalAlignment="top"
+                                                   HorizontalAlignment="Center"
+                                                   FontSize="16"
+                                                   Foreground="{DynamicResource TextSecundaryColor}"/>
+                        </Border>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="btnUpdate"
+                                        Click="btnUpdate_Click"
+                                        Style="{DynamicResource ProductUpdateButton}"
+                                        Content="Update"/>
+                            <Button x:Name="btnDelete"
+                                        Click="btnDelete_Click"
+                                        Style="{DynamicResource ProductDeleteButton}"
+                                        Content="Delete"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+
+</UserControl>

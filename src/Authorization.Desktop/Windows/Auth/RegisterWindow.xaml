@@ -1,0 +1,330 @@
+﻿<Window x:Class="Authorization.Desktop.Windows.Auth.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Authorization.Desktop.Windows.Auth"
+        mc:Ignorable="d"
+        Title="RegisterWindow" Height="700" Width="600"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Grid >
+        <Border Grid.Column="0"
+                CornerRadius="10"
+                Background="{DynamicResource SecondaryBackground}">
+            
+            <StackPanel>
+                <StackPanel  HorizontalAlignment="Right">
+                    <Button x:Name="btn_Closes"
+                                Click="btn_Close_Click"
+                                Style="{DynamicResource CloseButtun}"/>
+                </StackPanel>
+                <Border Margin="80 0 80 80">
+                    <StackPanel Margin="20 30 20 20" >
+                        <Label Content="Ro'yhatdan o'tish"
+                               HorizontalAlignment="Center"
+                               FontSize="30"
+                               FontWeight="Bold"
+                               Margin="0 0 0 0"
+                               FontFamily="send-series"
+                               Foreground="{DynamicResource FifthTextColor}"/>
+
+                        <Grid Margin="10 0 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label 
+                                Grid.Column="0"
+                               Height="40" Width="350"
+                               Content="Ism"
+                               Margin="0 20 0 0"                       
+                               FontSize="18"
+                               FontFamily="send-series"
+                               Foreground="{DynamicResource FifthTextColor}"/>
+                            <Label Grid.Column="1"
+                                   x:Name="sure_lv_rgs"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="20"
+                                   Margin="0 10 40 0">
+
+                            </Label>
+                        </Grid>
+
+
+                        <Border Height="55" Width="400"
+                                CornerRadius="28"
+                                x:Name="sure_br"
+                                Background="{DynamicResource FifthBackground}"
+                                BorderThickness="1"
+                                BorderBrush="#8F8F8F">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Grid.Column="0"
+                                      Data="{DynamicResource User}"
+                                      Stretch="Uniform"
+                                      Fill="{DynamicResource FourthBackground}"
+                                      Margin="16"/>
+
+                                <TextBox x:Name="txtRegUsername" Grid.Column="1"
+                                         Margin="8"
+                                         VerticalAlignment="Center"
+                                         FontSize="18"
+                                         MaxLength="25"
+                                         FontFamily="Arial"
+                                         BorderThickness="0"
+                                         Background="{DynamicResource FifthBackground}"/>
+                            </Grid>
+
+                        </Border>
+
+                        <Grid Margin="0 0 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0"
+                                Height="40" Width="350"
+                               Content="Parol"
+                               Margin="10 10 0 0"                       
+                               FontSize="18"
+                               FontFamily="send-series"
+                               Foreground="{DynamicResource FifthTextColor}"/>
+                            <Label Grid.Column="1"
+                                   x:Name="phone_lv_rgs"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="20"
+                                   Margin="0 10 0 0">
+
+                            </Label>
+                        </Grid>
+
+
+                        <Border Height="55" Width="400"
+                                x:Name="paswr_br"
+                                CornerRadius="28"
+                                Background="{DynamicResource FifthBackground}"                                
+                                BorderThickness="1"
+                                BorderBrush="#8F8F8F">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="55"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0"
+                                    x:Name="loc_br">
+                                    <Path Grid.Column="0"
+                                      x:Name="loc_icon"
+                                      Visibility="Visible"
+                                      Data="{DynamicResource password}"
+                                      Stretch="Uniform"
+                                      Fill="{DynamicResource FourthBackground}"
+                                      Margin="16"/>
+                                </Border>
+                                <TextBox x:Name="txbParol" Grid.Column="1"
+                                             Margin="8"
+                                             MaxLength="20"                                         
+                                             Visibility="Visible"
+                                             BorderThickness="0"
+                                             VerticalAlignment="Center"
+                                             FontSize="18"
+                                             Foreground="{DynamicResource FourthTextColor}"                                         
+                                             FontFamily="Arial"
+                                             Background="{DynamicResource FifthBackground}"/>
+
+                                <PasswordBox x:Name="txtRegPassword" Grid.Column="1"
+                                         Margin="8"
+                                         VerticalAlignment="Center"
+                                         FontSize="18"
+                                         MaxLength="25"
+                                         FontFamily="Arial"
+                                         BorderThickness="0"
+                                         Background="{DynamicResource FifthBackground}"/>
+                                <Border x:Name="noteye" Grid.Column="2"
+                                        Margin="0 5 10 5"
+                                        MouseDown="Border_MouseDown"
+                                        Background="Transparent"
+                                        Visibility="Hidden">
+                                    <Path 
+                                      Data="{DynamicResource eyenot}"
+                                      Stretch="Uniform"
+                                      Fill="{DynamicResource FourthBackground}"
+                                      Margin="10"/>
+                                </Border>
+                                <Border x:Name="eye" Grid.Column="2"
+                                        Margin="0 5 10 5"
+                                        MouseDown="Border_MouseDown"
+                                        Background="Transparent">
+                                    <Path 
+                                      Data="{DynamicResource eye}"
+                                      Stretch="Uniform"
+                                      Fill="{DynamicResource FourthBackground}"
+                                      Margin="10"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+
+                        <Grid Margin="0 0 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0"
+                                Height="40" Width="350"
+                               Content="Parolni takrorlang"
+                               Margin="10 10 0 0"                       
+                               FontSize="18"
+                               FontFamily="send-series"
+                               Foreground="{DynamicResource FifthTextColor}"/>
+                            <Label Grid.Column="1"
+                                   x:Name="password_lv_rgs"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="20"
+                                   Margin="0 10 0 0">
+
+                            </Label>
+                        </Grid>
+
+
+                        <Border Height="55" Width="400"
+                                x:Name="paswrcon_br"
+                                CornerRadius="28"
+                                Background="{DynamicResource FifthBackground}"                                
+                                BorderThickness="1"
+                                BorderBrush="#8F8F8F">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="55"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0"
+                                    x:Name="loccon_br">
+                                    <Path Grid.Column="0"
+                                      x:Name="loccon_icon"
+                                      Visibility="Visible"
+                                      Data="{DynamicResource password}"
+                                      Stretch="Uniform"
+                                      Fill="{DynamicResource FourthBackground}"
+                                      Margin="16"/>
+                                </Border>
+                                <TextBox x:Name="txbParolcon" Grid.Column="1"
+                                             Margin="8"
+                                             MaxLength="20"                                         
+                                             Visibility="Visible"
+                                             BorderThickness="0"
+                                             VerticalAlignment="Center"
+                                             FontSize="18"
+                                             Foreground="{DynamicResource FourthTextColor}"                                         
+                                             FontFamily="Arial"
+                                             Background="{DynamicResource FifthBackground}"/>
+
+                                <PasswordBox x:Name="txtRegPasswordcon" Grid.Column="1"
+                                         Margin="8"
+                                         VerticalAlignment="Center"
+                                         FontSize="18"
+                                         MaxLength="25"
+                                         FontFamily="Arial"
+                                         BorderThickness="0"
+                                         Background="{DynamicResource FifthBackground}"/>
+                                <Border x:Name="noteyecon" Grid.Column="2"
+                                        Margin="0 5 10 5"
+                                        MouseDown="eyecon_MouseDown"
+                                        Background="Transparent"
+                                        Visibility="Hidden">
+                                    <Path 
+                                      Data="{DynamicResource eyenot}"
+                                      Stretch="Uniform"
+                                      Fill="{DynamicResource FourthBackground}"
+                                      Margin="10"/>
+                                </Border>
+                                <Border x:Name="eyecon" Grid.Column="2"
+                                        Margin="0 5 10 5"
+                                        MouseDown="eyecon_MouseDown"
+                                        Background="Transparent">
+                                    <Path 
+                                      Data="{DynamicResource eye}"
+                                      Stretch="Uniform"
+                                      Fill="{DynamicResource FourthBackground}"
+                                      Margin="10"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <Grid Height="10"
+                              Visibility="Hidden"
+                              Width="350">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Column="0" 
+                                    Margin="2" 
+                                    Background="{DynamicResource Nopassword}"/>
+                            <Border Grid.Column="1" 
+                                    Margin="2"
+                                    Background="{DynamicResource slowpassword}"/>
+                            <Border Grid.Column="2" 
+                                    Margin="2"
+                                    Background="{DynamicResource Midpassword}"/>
+                            <Border Grid.Column="3" 
+                                    Margin="2"
+                                    Background="{DynamicResource Strongpassword}"/>
+                        </Grid>
+
+                        <TextBlock Height="40" Width="400"
+                                   Text="Parolda katta va kichik harflar,raqamlar va belgilardan foydalaning."
+                                   Margin="20 0 0 0"    
+                                   TextWrapping="Wrap"
+                                   FontSize="12"
+                                   FontFamily="send-series"
+                                   Foreground="{DynamicResource FourthTextColor}"/>
+
+                        <Border>
+                            <Button x:Name="btnRegister"
+                                    Click="btnRegister_Click"                                    
+                                    Height="60"
+                                    Width="400"
+                                    Margin="0 10 0 0"
+                                    Content="Ro'yhatdan o'tish"
+                                    Style="{DynamicResource SignSuccessButton}">
+                            </Button>
+                        </Border>
+                        <Button x:Name="btnShaxsiykabinet"
+                                        Click="btnShaxsiykabinet_Click"
+                                        Style="{DynamicResource SignSuccessButtonReg}"
+                                        Content="Shaxsiy Kabinet"
+                                        Margin="0 20 0 0"
+                                    Width="400"
+                                />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+
+</Window>

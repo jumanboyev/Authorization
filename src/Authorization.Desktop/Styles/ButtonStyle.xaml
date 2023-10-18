@@ -297,20 +297,11 @@
                     <Border x:Name="AllBack" CornerRadius="15" Width="230">
                         <Grid Margin="10 0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="35"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border x:Name="Indicator"
-                                    Grid.Column="0"
-                                    Padding="0"                                            
-                                    Visibility="Collapsed"
-                                    HorizontalAlignment="Center"
-                                    Background="#fb7657"
-                                    Height="10"                                    
-                                    Width="10"
-                                    CornerRadius="5"/>
-
+                            
                             <Path x:Name="icon"
                                   Grid.Column="1"
                                   Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}"
@@ -320,6 +311,7 @@
                                   VerticalAlignment="Center"
                                   Fill="#fb7657"                                  
                                   Stretch="Uniform"/>
+
                             <TextBlock Grid.Column="2"                                       
                                        x:Name="textBlock"
                                        Foreground="#fb7657"
@@ -346,7 +338,6 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="AllBack" Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
                             <Setter TargetName="AllBack" Property="CornerRadius" Value="15"/>
-                            <Setter TargetName="Indicator" Property="Visibility" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

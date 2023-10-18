@@ -92,7 +92,7 @@
                                          Background="{DynamicResource SecondaryBackground}"
                                          BorderThickness="0"
                                          VerticalAlignment="Center"
-                                         MaxLength="30"
+                                         MaxLength="50"
                                          Foreground="{DynamicResource FifthTextColor}"/>
                             </Border>
 

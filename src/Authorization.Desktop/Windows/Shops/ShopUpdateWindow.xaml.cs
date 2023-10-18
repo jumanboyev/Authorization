@@ -71,6 +71,7 @@ namespace Authorization.Desktop.Windows.Shops
             else
             {
                 MessageBox.Show("Do'kon nomi uzunligi kamida 3 ta bo'lishi kerak");
+                return;
             }
             if (txtDescription.Text.Length >=8)
             {
@@ -80,6 +81,7 @@ namespace Authorization.Desktop.Windows.Shops
             else
             {
                 MessageBox.Show("Do'kon tasnifi uzunligi kamida 8 ta bo'lishi kerak");
+                return;
             }
             if (shop.Image != null)
             {
@@ -89,6 +91,7 @@ namespace Authorization.Desktop.Windows.Shops
             else
             {
                 MessageBox.Show("Rasmni tayta tekshiring!");
+                return;
             }
             shop.Created_at = TimeHelper.GetDateTime();
             shop.Updated_at = TimeHelper.GetDateTime();
@@ -107,6 +110,22 @@ namespace Authorization.Desktop.Windows.Shops
                 }
             }
             
+        }
+
+        private void txtbName_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z0-9]"))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

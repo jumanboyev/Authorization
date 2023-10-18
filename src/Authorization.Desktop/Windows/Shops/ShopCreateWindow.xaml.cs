@@ -34,6 +34,7 @@ namespace Authorization.Desktop.Windows.Shops
 
         private void btnPicture_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
+            
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
             if (openFileDialog.ShowDialog() == true)
@@ -52,52 +53,79 @@ namespace Authorization.Desktop.Windows.Shops
 
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            int count = 0;                        
-            Shop shop = new Shop();
-            if(txtbName.Text.Length > 0)
+            if (txtbName.Text.Length > 0 && txtDescription.Text.Length > 0 && ImgShop.ImageSource != null)
             {
-                shop.Name = txtbName.Text;
-                count++;
-            }
-            else
-            {
-                MessageBox.Show("Do'kon nomi uzunligi kamida 3 ta bo'lishi kerak");
-            }
-            if (txtDescription.Text.Length > 0) 
-            {
-                shop.Description = txtDescription.Text;
-                count++;
-            }
-            else
-            {
-                MessageBox.Show("Do'kon tasnifi uzunligi kamida 8 ta bo'lishi kerak");
-            }
-            if (shop.Image != null)
-            {
-                shop.Image = ImgShop.ImageSource.ToString();
-                count++;
-            }
-            else
-            {
-                MessageBox.Show("Rasmni tayta tekshiring!");
-            }
-            shop.Created_at = TimeHelper.GetDateTime();
-            shop.Updated_at = TimeHelper.GetDateTime(); 
-
-            if(count == 3)
-            {
-                var result = await  _repository.CreateAsync(shop);
-                if(result > 0)
+                int count = 0;
+                Shop shop = new Shop();
+                if (txtbName.Text.Length >= 3)
                 {
-                    MessageBox.Show("Muvaffaqiyatli yaratildi");
-                    this.Close();
+                    shop.Name = txtbName.Text;
+                    count++;
                 }
                 else
                 {
-                    MessageBox.Show("Xatolik");
+                    MessageBox.Show("Do'kon nomi uzunligi kamida 3 ta bo'lishi kerak");
+                    return;
+                }
+                if (txtDescription.Text.Length >= 5)
+                {
+                    shop.Description = txtDescription.Text;
+                    count++;
+                }
+                else
+                {
+                    MessageBox.Show("Do'kon tasnifi uzunligi kamida 5 ta bo'lishi kerak");
+                    return;
+                }
+                if (ImgShop.ImageSource != null)
+                {
+                    shop.Image = ImgShop.ImageSource.ToString();
+                    count++;
+                }
+                else
+                {
+                    MessageBox.Show("Rasmni tayta tekshiring!");
+                    return;
+                }
+                shop.Created_at = TimeHelper.GetDateTime();
+                shop.Updated_at = TimeHelper.GetDateTime();
+
+                if (count == 3)
+                {
+                    var result = await _repository.CreateAsync(shop);
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Muvaffaqiyatli yaratildi");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xatolik");
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Maydonlar bo'sh bo'lishi mumkin emas!");
+            }
             
+        }
+
+        private void txtbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z0-9]"))
+            {
+                e.Handled = true;
+            }            
+        }
+
+        private void txtbName_PreviewKeyDown(object sender, KeyEventArgs e)
+        {            
+
+            if (e.Key == Key.Space)
+            {
+               e.Handled = true;
+            }            
         }
     }
 }

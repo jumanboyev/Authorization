@@ -41,7 +41,7 @@
                                     Background="Transparent">
                     <StackPanel>
 
-                        <Border Height="35" HorizontalAlignment="Left"
+                        <Border Height="25" HorizontalAlignment="Left"
                                             Margin="10 5 0 0">
                             <TextBlock x:Name="lbName" Text="Havas "
                                                    TextWrapping="Wrap"
@@ -50,8 +50,8 @@
                                                    FontSize="16"
                                                    Foreground="{DynamicResource TextSecundaryColor}"/>
                         </Border>
-                        <Border Height="35" HorizontalAlignment="Left"
-                                            Margin="10 5 0 0">
+                        <Border Height="40" HorizontalAlignment="Left"
+                                            Margin="10 5 0 10">
                             <TextBlock x:Name="lbDescription" Text="Havas "
                                                    TextWrapping="Wrap"
                                                    VerticalAlignment="top"

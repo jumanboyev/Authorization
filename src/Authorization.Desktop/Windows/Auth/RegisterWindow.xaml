@@ -78,11 +78,14 @@
 
                                 <TextBox x:Name="txtRegUsername" Grid.Column="1"
                                          Margin="8"
+                                         PreviewTextInput="txtRegPassword_PreviewTextInput"                                         
+                                         PreviewKeyDown="txbParol_PreviewKeyDown"                                                                                      
                                          VerticalAlignment="Center"
                                          FontSize="18"
-                                         MaxLength="25"
+                                         MaxLength="255"
                                          FontFamily="Arial"
                                          BorderThickness="0"
+                                         Foreground="{DynamicResource FourthTextColor}"                                         
                                          Background="{DynamicResource FifthBackground}"/>
                             </Grid>
 
@@ -138,7 +141,9 @@
                                 </Border>
                                 <TextBox x:Name="txbParol" Grid.Column="1"
                                              Margin="8"
-                                             MaxLength="20"                                         
+                                             PreviewKeyDown="txbParol_PreviewKeyDown" 
+                                         PreviewTextInput="txtRegPassword_PreviewTextInput"                                         
+                                             MaxLength="255"                                         
                                              Visibility="Visible"
                                              BorderThickness="0"
                                              VerticalAlignment="Center"
@@ -149,9 +154,11 @@
 
                                 <PasswordBox x:Name="txtRegPassword" Grid.Column="1"
                                          Margin="8"
+                                         PreviewTextInput="txtRegPassword_PreviewTextInput"
+                                         PreviewKeyDown="txbParol_PreviewKeyDown"                                                                                          
                                          VerticalAlignment="Center"
                                          FontSize="18"
-                                         MaxLength="25"
+                                         MaxLength="255"
                                          FontFamily="Arial"
                                          BorderThickness="0"
                                          Background="{DynamicResource FifthBackground}"/>
@@ -230,7 +237,9 @@
                                 </Border>
                                 <TextBox x:Name="txbParolcon" Grid.Column="1"
                                              Margin="8"
-                                             MaxLength="20"                                         
+                                         PreviewTextInput="txtRegPassword_PreviewTextInput"                                         
+                                             PreviewKeyDown="txbParol_PreviewKeyDown"                                                                                      
+                                             MaxLength="255"                                         
                                              Visibility="Visible"
                                              BorderThickness="0"
                                              VerticalAlignment="Center"
@@ -241,9 +250,11 @@
 
                                 <PasswordBox x:Name="txtRegPasswordcon" Grid.Column="1"
                                          Margin="8"
+                                         PreviewTextInput="txtRegPassword_PreviewTextInput"                                             
+                                             PreviewKeyDown="txbParol_PreviewKeyDown"                                                                                          
                                          VerticalAlignment="Center"
                                          FontSize="18"
-                                         MaxLength="25"
+                                         MaxLength="255"
                                          FontFamily="Arial"
                                          BorderThickness="0"
                                          Background="{DynamicResource FifthBackground}"/>
@@ -301,6 +312,7 @@
                                    TextWrapping="Wrap"
                                    FontSize="12"
                                    FontFamily="send-series"
+                                   Visibility="Hidden"
                                    Foreground="{DynamicResource FourthTextColor}"/>
 
                         <Border>
@@ -308,7 +320,7 @@
                                     Click="btnRegister_Click"                                    
                                     Height="60"
                                     Width="400"
-                                    Margin="0 10 0 0"
+                                    Margin="0 0 0 0"
                                     Content="Ro'yhatdan o'tish"
                                     Style="{DynamicResource SignSuccessButton}">
                             </Button>

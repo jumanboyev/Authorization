@@ -23,7 +23,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Shops"
+                    <Label Content="Do'konlar"
                                HorizontalContentAlignment="Center"
                                FontSize="25" FontWeight="SemiBold"
                                Foreground="{DynamicResource FourthIconColor}"/>
@@ -35,25 +35,14 @@
                             HorizontalAlignment="Right"
                             Height="55"
                             Margin="0 0 30 0"
-                            Content="Create"/>
+                            Content="Yaratish"/>
                 </Border>
 
             </Grid>
         </Border>
         <ScrollViewer  Grid.Row="1">
             <WrapPanel x:Name="MainWP">
-                <!--<fa:ImageAwesome
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Margin="400 180 0 0"
-                            x:Name="loader"
-                            Icon="Spinner"
-                            Visibility="Visible"
-                            Spin="True"
-                            Height="120"
-                            Width="120"
-                            Foreground="{DynamicResource ThirdBackgroundColor}"   
-                        />-->
+                
             </WrapPanel>
         </ScrollViewer>
 

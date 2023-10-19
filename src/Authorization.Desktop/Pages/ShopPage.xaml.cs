@@ -31,6 +31,8 @@ namespace Authorization.Desktop.Pages
             InitializeComponent();
         }
 
+        Button btn = new Button();
+       
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             ShopCreateWindow window = new ShopCreateWindow();

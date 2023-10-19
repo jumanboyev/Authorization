@@ -32,20 +32,6 @@ namespace Authorization.Desktop.Windows.Shops
             InitializeComponent();
         }
 
-        private void btnPicture_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-            
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                string imgPath = openFileDialog.FileName;
-                ImgShop.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                ImgIcon.Visibility = Visibility.Hidden;
-            }
-            ImgIcon.Visibility = Visibility.Hidden;
-        }
-
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -53,7 +39,7 @@ namespace Authorization.Desktop.Windows.Shops
 
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            if (txtbName.Text.Length > 0 && txtDescription.Text.Length > 0 && ImgShop.ImageSource != null)
+            if (txtbName.Text.Length > 0 )
             {
                 int count = 0;
                 Shop shop = new Shop();
@@ -67,30 +53,10 @@ namespace Authorization.Desktop.Windows.Shops
                     MessageBox.Show("Do'kon nomi uzunligi kamida 3 ta bo'lishi kerak");
                     return;
                 }
-                if (txtDescription.Text.Length >= 5)
-                {
-                    shop.Description = txtDescription.Text;
-                    count++;
-                }
-                else
-                {
-                    MessageBox.Show("Do'kon tasnifi uzunligi kamida 5 ta bo'lishi kerak");
-                    return;
-                }
-                if (ImgShop.ImageSource != null)
-                {
-                    shop.Image = ImgShop.ImageSource.ToString();
-                    count++;
-                }
-                else
-                {
-                    MessageBox.Show("Rasmni tayta tekshiring!");
-                    return;
-                }
                 shop.Created_at = TimeHelper.GetDateTime();
                 shop.Updated_at = TimeHelper.GetDateTime();
 
-                if (count == 3)
+                if (count == 1)
                 {
                     var result = await _repository.CreateAsync(shop);
                     if (result > 0)
@@ -106,7 +72,7 @@ namespace Authorization.Desktop.Windows.Shops
             }
             else
             {
-                MessageBox.Show("Maydonlar bo'sh bo'lishi mumkin emas!");
+                MessageBox.Show("Maydon bo'sh bo'lishi mumkin emas!");
             }
             
         }
@@ -126,6 +92,11 @@ namespace Authorization.Desktop.Windows.Shops
             {
                e.Handled = true;
             }            
+        }
+
+        private void btnCreate_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

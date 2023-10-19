@@ -38,8 +38,6 @@ namespace Authorization.Desktop.Components
         {
             this.viewodel = viewModel;
             lbName.Text = viewModel.Name;   
-            lbDescription.Text = viewModel.Description;
-            ShopImage.ImageSource = new BitmapImage(new System.Uri(viewModel.Image, UriKind.Relative));
         }
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)

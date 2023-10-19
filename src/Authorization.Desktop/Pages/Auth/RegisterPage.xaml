@@ -1,27 +1,18 @@
-﻿<Window x:Class="Authorization.Desktop.Windows.Auth.RegisterWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Authorization.Desktop.Windows.Auth"
-        mc:Ignorable="d"
-        Title="RegisterWindow" Height="700" Width="600"
-        ResizeMode="NoResize"
-        WindowStyle="None"
-        WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True"
-        Background="Transparent">
+﻿<Page x:Class="Authorization.Desktop.Pages.Auth.RegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Authorization.Desktop.Pages.Auth"
+      mc:Ignorable="d" 
+      d:DesignHeight="660" d:DesignWidth="600"
+      Title="RegisterPage">
+
     <Grid >
         <Border Grid.Column="0"
-                CornerRadius="10"
-                Background="{DynamicResource SecondaryBackground}">
-            
+                CornerRadius="0 0 10 10">
+
             <StackPanel>
-                <StackPanel  HorizontalAlignment="Right">
-                    <Button x:Name="btn_Closes"
-                                Click="btn_Close_Click"
-                                Style="{DynamicResource CloseButtun}"/>
-                </StackPanel>
                 <Border Margin="80 0 80 80">
                     <StackPanel Margin="20 30 20 20" >
                         <Label Content="Ro'yhatdan o'tish"
@@ -339,4 +330,4 @@
 
     </Grid>
 
-</Window>
+</Page>

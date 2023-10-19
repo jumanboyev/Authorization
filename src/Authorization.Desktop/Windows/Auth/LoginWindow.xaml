@@ -10,232 +10,41 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Background="Transparent"
         Loaded="Window_Loaded">
+  
+    <Window.Clip>
+        <RectangleGeometry Rect="0 0 600 700" RadiusX="10" RadiusY="10"/>
+    </Window.Clip>
+   
+    
+    <Border CornerRadius="10">
+        
     <Grid>
-
-        <Border CornerRadius="10"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0"
+                BorderThickness="0"
+                BorderBrush="Transparent"
+                CornerRadius="10 10 0 0"
                 Background="{DynamicResource SecondaryBackground}">
-            <StackPanel>
-                <Border Margin="565 0 0 0">
-                    <Button x:Name="btn_Close"
-                            Click="btn_Close_Click"
-                            Style="{DynamicResource CloseButtun}"
-                            VerticalAlignment="Stretch"/>
-                </Border>
-                <Border Margin="80 80 80 80">
-                    <StackPanel Margin="20" >
-                        <Label Content="Shaxsiy kabinetga kirish"
-                       HorizontalAlignment="Center"
-                       FontSize="30"
-                       FontWeight="Bold"
-                       Margin="0 0 0 20"
-                       FontFamily="send-series"
-                       Foreground="{DynamicResource FifthTextColor}"/>
-                        <Grid Margin="18 0 0 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="125"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" 
-                                Height="40" Width="350"
-                               Content="Ism"
-                               Margin="0 10 0 0"                       
-                               FontSize="18"
-                               x:Name="lb_phone_lgn"
-                               FontFamily="send-series"
-                               Foreground="{DynamicResource FifthTextColor}"/>
-
-                            <Label Grid.Column="1"
-                                   x:Name="ism_lv_lgn"
-                                   Foreground="Red"
-                                   Visibility="Hidden"
-                                   Content="*"
-                                   FontSize="20"
-                                   Margin="-5 10 220 0">
-
-                            </Label>
-                        </Grid>
-
-                        <Border Height="55" Width="400"
-                                CornerRadius="28"
-                                x:Name="Border_skns"
-                                Background="{DynamicResource FifthBackground}"
-                                BorderThickness="1"
-                                BorderBrush="#8F8F8F">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="55"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Grid.Column="0"
-                                      Data="{DynamicResource User}"
-                                      Stretch="Uniform"
-                                      Fill="{DynamicResource FourthBackground}"
-                                      Margin="16"/>
-                                <TextBox Grid.Column="2"
-                                         x:Name="txtUsername"
-                                         PreviewTextInput="txbParol_PreviewTextInput"
-                                         PreviewKeyDown="txbParol_PreviewKeyDown"                                                                                      
-                                         Margin="4"
-                                         MaxLength="50"
-                                         VerticalAlignment="Center"
-                                         Foreground="{DynamicResource FourthTextColor}"
-                                         FontSize="18"
-                                         FontFamily="Arial"
-                                         BorderThickness="0"
-                                         Background="{DynamicResource FifthBackground}"
-                                         />
-                            </Grid>
-                        </Border>
-
-                        <Grid Margin="18 0 0 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" 
-                                Height="40" Width="350"
-                               Content="Parol"
-                               Margin="0 10 0 0"                       
-                               FontSize="18"
-                               x:Name="lb_parol_lgn"
-                               FontFamily="send-series"
-                               Foreground="{DynamicResource FifthTextColor}"/>
-
-                            <Label Grid.Column="1"
-                                   x:Name="parol_lv_lgn"
-                                   Foreground="Red"
-                                   Visibility="Hidden"
-                                   Content="*"
-                                   FontSize="20"
-                                   Margin="-5 10 220 0">
-
-                            </Label>
-                        </Grid>
-
-
-                        <Border x:Name="Border_pasword"
-                                Height="55" Width="400"
-                                CornerRadius="28"
-                                Background="{DynamicResource FifthBackground}"                                
-                                BorderThickness="1"
-                                BorderBrush="{DynamicResource SelectedBorderColor}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="55"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="55"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Grid.Column="0"
-                                      Data="{DynamicResource password}"
-                                      Stretch="Uniform"
-                                      Fill="{DynamicResource FourthBackground}"
-                                      Margin="16"/>
-
-                                <TextBox x:Name="txbParol" Grid.Column="1"
-                                             Margin="8"
-                                             PreviewTextInput="txbParol_PreviewTextInput"
-                                             PreviewKeyDown="txbParol_PreviewKeyDown"
-                                             Visibility="Visible"
-                                             BorderThickness="0"
-                                             VerticalAlignment="Center"
-                                             MaxLength="255"
-                                             FontSize="18"
-                                             Foreground="{DynamicResource FourthTextColor}"                                         
-                                             FontFamily="Arial"
-                                             Background="{DynamicResource FifthBackground}"/>
-                                <PasswordBox x:Name="txtPassword" Grid.Column="1"
-                                             Margin="8"
-                                             PreviewTextInput="txbParol_PreviewTextInput"
-                                             PreviewKeyDown="txbParol_PreviewKeyDown"                                             
-                                             Visibility="Visible"
-                                             VerticalAlignment="Center"
-                                             FontSize="18"
-                                             Foreground="{DynamicResource FourthTextColor}"                                         
-                                             FontFamily="Arial"
-                                             BorderThickness="0"
-                                             MaxLength="255"
-                                             Background="{DynamicResource FifthBackground}"/>
-                                <Border x:Name="noteye" Grid.Column="2"
-                                        Margin="0 5 10 5"
-                                        MouseDown="Border_MouseDown"
-                                        Background="Transparent"
-                                        Visibility="Hidden">
-                                    <Path 
-                                      Data="{DynamicResource eyenot}"
-                                      Stretch="Uniform"
-                                      Fill="{DynamicResource FourthBackground}"
-                                      Margin="10"/>
-                                </Border>
-                                <Border x:Name="eye" Grid.Column="2"
-                                        Margin="0 5 10 5"
-                                        MouseDown="Border_MouseDown"
-                                        Background="Transparent">
-                                    <Path 
-                                      Data="{DynamicResource eye}"
-                                      Stretch="Uniform"
-                                      Fill="{DynamicResource FourthBackground}"
-                                      Margin="10"/>
-                                </Border>
-
-                            </Grid>
-                        </Border>
-
-                        <Border>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="2*"/>
-                                </Grid.RowDefinitions>
-                                <StackPanel Grid.Row="0" 
-                                            Orientation="Horizontal">
-                                    <CheckBox x:Name="chremember"
-                                              Content="Parolni saqlash"
-                                              VerticalAlignment="Top"
-                                              Margin="18 12 0 0"
-                                              Foreground="{DynamicResource FifthTextColor}">
-                                        <CheckBox.Style>
-                                            <Style TargetType="CheckBox">
-                                                <Setter Property="Width" Value="100" />
-                                                <Setter Property="Height" Value="20" />
-                                            </Style>
-                                        </CheckBox.Style>
-                                        <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="1.3" ScaleY="1.3" />
-                                        </CheckBox.LayoutTransform>
-                                    </CheckBox>
-
-                                </StackPanel>
-
-                                <Button Grid.Row="1"
-                                    x:Name="btnLogin"
-                                    Click="btnLogin_Click"
-                                    Height="60"
-                                    Width="400"
-                                    Margin="0 10 0 0"
-                                    Content="Kirish"
-                                    Style="{DynamicResource SignSuccessButton}">
-                                </Button>
-                                
-                            </Grid>
-
-                        </Border>
-                        <Border Margin="0 20 0 0"
-                                 >
-                            <Button x:Name="btnRoyxatdanOtish"
-                                    Click="btnRoyxatdanOtish_Click"
-                                    Style="{DynamicResource SignSuccessButtonReg}"
-                                    Content="Ro'yhatdan O'tish"
-                                    Height="60"
-                                    Background="Blue"/>
-                        </Border>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
+            <Button x:Name="btn_Close"
+                    HorizontalAlignment="Right"                    
+                    Click="btn_Close_Click"
+                    Style="{DynamicResource CloseButtun}"
+                    VerticalAlignment="Stretch"/>
         </Border>
-
+        <Border Grid.Row="1"
+                BorderThickness="0"
+                CornerRadius="0 0 10 10"
+                Background="{DynamicResource SecondaryBackground}">
+            
+            <Frame x:Name="PageNavigator"
+                   NavigationUIVisibility="Hidden">
+            
+            </Frame>
+        </Border>
     </Grid>
-
+    </Border>
 </Window>

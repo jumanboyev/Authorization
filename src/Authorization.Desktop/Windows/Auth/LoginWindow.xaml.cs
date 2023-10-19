@@ -1,4 +1,5 @@
 ﻿using Authorization.Desktop.Entities.Users;
+using Authorization.Desktop.Pages.Auth;
 using Authorization.Desktop.Repositories.Users;
 using Authorization.Desktop.Security;
 using System;
@@ -30,150 +31,18 @@ namespace Authorization.Desktop.Windows.Auth
 
         public LoginWindow()
         {
-            InitializeComponent();
-            this._repository = new UserRepository();
-            if (Properties.Settings.Default.RememberMe)
-            {
-                txtPassword.Password = Properties.Settings.Default.Password;
-                txtUsername.Text = Properties.Settings.Default.Username;
-                chremember.IsChecked = true;
-            }
-            else
-            {
-                chremember.IsChecked = false;
-            }
+            InitializeComponent();            
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoginPage loginPage = new LoginPage();
+            PageNavigator.Content = loginPage;
         }
 
         private void btn_Close_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-        private void txbParol_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space)
-            {
-                e.Handled = true;
-            }
-        }
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (txtPassword.Visibility == Visibility.Visible)
-            {
-                noteye.Visibility = Visibility.Visible;
-                eye.Visibility = Visibility.Hidden;
-                txtPassword.Visibility = Visibility.Hidden;
-                txbParol.Visibility = Visibility.Visible;
-                txbParol.Text = txtPassword.Password;
-            }
-            else
-            {
-                noteye.Visibility = Visibility.Hidden;
-                eye.Visibility = Visibility.Visible;
-
-                txtPassword.Visibility = Visibility.Visible;
-                txbParol.Visibility = Visibility.Hidden;
-                txtPassword.Password = txbParol.Text;
-            }
-        }
-
-        public bool ContainsNonLatinCharacters(string input)
-        {
-            string latinAlphaNumericPattern = @"^[a-zA-Z0-9]+$";
-            // Check if the input contains any Latin alphabets
-            return Regex.IsMatch(input, latinAlphaNumericPattern);
-        }
-        public bool ContainsNonPasswordCharacters(string input)
-        {
-            string latinAlphaNumericPattern = @"^[0-9]+$";
-
-            // Check if the input contains any Latin alphabets
-            return Regex.IsMatch(input, latinAlphaNumericPattern);
-        }
-        private async void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            if (txtPassword.Visibility == Visibility.Visible) passwordShow = txtPassword.Password;
-            else passwordShow = txbParol.Text;
-
-            if (txtUsername.Text.Length > 0 && passwordShow.Length > 0)
-            {
-                int count = 0;
-                if (ContainsNonLatinCharacters(txtUsername.Text) == true && ContainsNonLatinCharacters(passwordShow) == true) count++;
-                else { MessageBox.Show("Faqat lotin alifbosidan foydalaning"); return; }
-
-                if (txtUsername.Text.Length >= 8) count++;
-                else { MessageBox.Show("Ismda faqat harf,raqam qatnashsin va uzunligi kamida 8 ta bo'lsin"); return; }
-
-                if (passwordShow.Length >= 8) count++;
-                else { MessageBox.Show("Parolda faqat harf,raqam qatnashsin va uzunligi kamida 8 ta bo'lsin"); return; }
-
-                var dbResult = await _repository.GetByIdUserName(txtUsername.Text);
-                if (dbResult.Count == 1)
-                {
-                    string passwordHash = dbResult[0].Password;
-                    string salt = dbResult[0].Salt;
-                    string password = passwordShow;
-                    var passwordcheck = PasswordHasher.Verify(password, passwordHash, salt);
-                    if (passwordcheck is true) count++;
-                    else MessageBox.Show("Parol noto'g'ri");
-                }
-                else
-                {
-                    MessageBox.Show("Bunday foydalanuvchi mavjud emas!");
-                }
-
-                if (count == 4)
-                {
-                    if (chremember.IsChecked == true)
-                    {
-                        Properties.Settings.Default.RememberMe = true;
-                        Properties.Settings.Default.Password = passwordShow;
-                        Properties.Settings.Default.Username = txtUsername.Text;
-                        Properties.Settings.Default.Save();
-                    }
-                    else
-                    {
-                        Properties.Settings.Default.RememberMe = false;
-                        Properties.Settings.Default.Save();
-                    }
-                    MainWindow window = new MainWindow();
-                    this.Close();
-                    window.ShowDialog();
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("Maydonlar bo'sh bo'lishi mumkin emas!");
-            }
-        }
-
-        public void setData(string userName, string userPassword)
-        {
-            regUsername = userName;
-            regPassword = userPassword;
-        }
-        private void txbParol_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z0-9]"))
-            {
-                e.Handled = true;
-            }
-        }
-        private void btnRoyxatdanOtish_Click(object sender, RoutedEventArgs e)
-        {
-            RegisterWindow window = new RegisterWindow();
-            this.Close();
-            window.ShowDialog();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (regUsername != null && regPassword != null)
-            {
-                txtUsername.Text = regUsername;
-                txtPassword.Password = regPassword;
-            }
-        }
-
+        }        
     }
 }

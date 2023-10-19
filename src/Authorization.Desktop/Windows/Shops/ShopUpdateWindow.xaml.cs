@@ -73,14 +73,14 @@ namespace Authorization.Desktop.Windows.Shops
                 MessageBox.Show("Do'kon nomi uzunligi kamida 3 ta bo'lishi kerak");
                 return;
             }
-            if (txtDescription.Text.Length >=8)
+            if (txtDescription.Text.Length >=5)
             {
                 shop.Description = txtDescription.Text;
                 count++;
             }
             else
             {
-                MessageBox.Show("Do'kon tasnifi uzunligi kamida 8 ta bo'lishi kerak");
+                MessageBox.Show("Do'kon tasnifi uzunligi kamida 5 ta bo'lishi kerak");
                 return;
             }
             if (shop.Image != null)

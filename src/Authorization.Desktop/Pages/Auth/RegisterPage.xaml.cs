@@ -3,31 +3,29 @@ using Authorization.Desktop.Helpers;
 using Authorization.Desktop.Interfaces.Users;
 using Authorization.Desktop.Repositories.Users;
 using Authorization.Desktop.Security;
-using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
-using System.Windows.Documents.DocumentStructures;
+using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Authorization.Desktop.Windows.Auth
+namespace Authorization.Desktop.Pages.Auth
 {
     /// <summary>
-    /// Interaction logic for RegisterWindow.xaml
+    /// Interaction logic for RegisterPage.xaml
     /// </summary>
-    public partial class RegisterWindow : Window
+    public partial class RegisterPage : Page
     {
         private readonly IUserRepository _repository;
         public string UserPassword { get; set; }
         private string UserPasswordCon { get; set; }
+        public object PaginationService { get; private set; }
 
-        public RegisterWindow()
+        public RegisterPage()
         {
             InitializeComponent();
             this._repository = new UserRepository();
-        }
 
+        }
         private void btn_Close_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -35,9 +33,7 @@ namespace Authorization.Desktop.Windows.Auth
 
         private void btnShaxsiykabinet_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow window = new LoginWindow();
-            this.Close();
-            window.ShowDialog();
+            NavigationService?.Navigate(new LoginPage());
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -110,7 +106,6 @@ namespace Authorization.Desktop.Windows.Auth
 
             return false;
         }
-        
         private void txtRegPassword_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z0-9]"))
@@ -120,7 +115,7 @@ namespace Authorization.Desktop.Windows.Auth
         }
         private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            if (txtRegPassword.Visibility == Visibility.Visible ) UserPassword = txtRegPassword.Password;
+            if (txtRegPassword.Visibility == Visibility.Visible) UserPassword = txtRegPassword.Password;
             else UserPassword = txbParol.Text;
 
             if (txtRegPasswordcon.Visibility == Visibility.Visible) UserPasswordCon = txtRegPasswordcon.Password;
@@ -130,13 +125,17 @@ namespace Authorization.Desktop.Windows.Auth
             {
                 int count = 0;
                 if (ContainsNonLatinCharacters(txtRegUsername.Text) == true && ContainsNonLatinCharacters(UserPassword) == true && ContainsNonLatinCharacters(UserPasswordCon) == true) count++;
-                else { MessageBox.Show("Faqat lotin alifbosidan foydalaning"); 
+                else
+                {
+                    MessageBox.Show("Faqat lotin alifbosidan foydalaning");
                     return;
                 }
 
                 var checkUsername = await _repository.GetByIdUserName(txtRegUsername.Text);
                 if (checkUsername.Count == 0) count++;
-                else { MessageBox.Show("Bunday foydalanuvchi mavjud");
+                else
+                {
+                    MessageBox.Show("Bunday foydalanuvchi mavjud");
                     return;
                 }
 
@@ -147,7 +146,7 @@ namespace Authorization.Desktop.Windows.Auth
                 else { MessageBox.Show("Parolda kamida 1 ta raqam va 1 ta katta harf bo'lishi kerak "); return; }
 
                 if (UserPassword.Length >= 8) count++;
-                else{ MessageBox.Show("Parolda faqat harf,raqam qatnashsin va uzunligi kamida 8 ta bo'lsin"); return; }
+                else { MessageBox.Show("Parolda faqat harf,raqam qatnashsin va uzunligi kamida 8 ta bo'lsin"); return; }
 
                 if (UserPassword == UserPasswordCon) count++;
                 else { MessageBox.Show("Parol va takroriy parol bir xil bo'lishi kerak"); return; }
@@ -174,14 +173,12 @@ namespace Authorization.Desktop.Windows.Auth
                             Properties.Settings.Default.Username = txtRegUsername.Text;
                             Properties.Settings.Default.Save();
 
-                            LoginWindow window = new LoginWindow();
-                            this.Close();
-                            window.Show();
+                            NavigationService?.Navigate(new LoginPage());
                         }
                         else
                         {
                             MessageBox.Show("Xatoli");
-                            
+
                         }
                     }
                     catch
@@ -203,6 +200,5 @@ namespace Authorization.Desktop.Windows.Auth
                 e.Handled = true;
             }
         }
-
     }
 }

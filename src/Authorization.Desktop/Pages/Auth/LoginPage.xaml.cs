@@ -158,11 +158,6 @@ namespace Authorization.Desktop.Pages.Auth
                 e.Handled = true;
             }
         }
-        private void btnRoyxatdanOtish_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService?.Navigate(new RegisterPage());
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (regUsername != null && regPassword != null)
@@ -170,6 +165,13 @@ namespace Authorization.Desktop.Pages.Auth
                 txtUsername.Text = regUsername;
                 txtPassword.Password = regPassword;
             }
+        }
+
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new RegisterPage());
+
         }
     }
 }

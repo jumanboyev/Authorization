@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Authorization.Desktop.Components"
              mc:Ignorable="d" >
-    <Grid Height="100" Width="150"
+    <Grid Height="120" Width="200"
           Margin="10 10 0 0">
         
         <Border x:Name="B"
@@ -13,7 +13,7 @@
                 Cursor="Hand"
                 CornerRadius="10"
                 BorderThickness="2"
-                BorderBrush="{DynamicResource SelectedBorderColor}">
+                BorderBrush="{DynamicResource PrimaryBorderColor}">
             <StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Height="30"
@@ -31,11 +31,11 @@
                 </StackPanel>
             <TextBlock x:Name="lbName"
                        Text="Market"
-                       Margin="5 10 5 5"
+                       Margin="5 15 5 5"
                        FontSize="16"
                        TextWrapping="Wrap"
                        FontWeight="SemiBold"
-                       Foreground="{DynamicResource PrimarytextColor}"
+                       Foreground="{DynamicResource FifthTextColor}"
                        VerticalAlignment="Center"                
                        HorizontalAlignment="Center"/>
             </StackPanel>

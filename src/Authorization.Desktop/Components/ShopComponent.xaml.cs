@@ -56,8 +56,6 @@ namespace Authorization.Desktop.Components
             Shop shop = new Shop();
             shop.Id = viewodel.Id;
             shop.Name = viewodel.Name;
-            shop.Description = viewodel.Description;
-            shop.Image = viewodel.Image;
             ShopUpdateWindow shopUpdateWindow = new ShopUpdateWindow();
             shopUpdateWindow.SetData(shop);
             shopUpdateWindow.ShowDialog();

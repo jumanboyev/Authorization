@@ -52,8 +52,8 @@
                             Click="btnCreate_Click"
                             Style="{DynamicResource ProductCreateButton}" 
                             HorizontalAlignment="Right"
-                            Height="55"
-                            Width="80"
+                            Height="120"
+                            Width="200"
                             Margin="10"/>
             </WrapPanel>
         </ScrollViewer>

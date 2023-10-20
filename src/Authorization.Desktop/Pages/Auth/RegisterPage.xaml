@@ -15,7 +15,7 @@
             <StackPanel>
                 <Border Margin="80 0 80 80">
                     <StackPanel Margin="20 30 20 20" >
-                        <Label Content="Ro'yhatdan o'tish"
+                        <Label Content="Зарегистрироваться"
                                HorizontalAlignment="Center"
                                FontSize="30"
                                FontWeight="Bold"
@@ -25,14 +25,14 @@
 
                         <Grid Margin="10 0 0 0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="250"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
                             <Label 
                                 Grid.Column="0"
                                Height="40" Width="350"
-                               Content="Ism"
+                               Content="Имя пользователя"
                                Margin="0 20 0 0"                       
                                FontSize="18"
                                FontFamily="send-series"
@@ -90,7 +90,7 @@
 
                             <Label Grid.Column="0"
                                 Height="40" Width="350"
-                               Content="Parol"
+                               Content="Пароль"
                                Margin="10 10 0 0"                       
                                FontSize="18"
                                FontFamily="send-series"
@@ -180,13 +180,13 @@
 
                         <Grid Margin="0 0 0 0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0"
                                 Height="40" Width="350"
-                               Content="Parolni takrorlang"
+                               Content="Подтвердите пароль"
                                Margin="10 10 0 0"                       
                                FontSize="18"
                                FontFamily="send-series"
@@ -273,56 +273,33 @@
                             </Grid>
                         </Border>
 
-                        <Grid Height="10"
-                              Visibility="Hidden"
-                              Width="350">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Border Grid.Column="0" 
-                                    Margin="2" 
-                                    Background="{DynamicResource Nopassword}"/>
-                            <Border Grid.Column="1" 
-                                    Margin="2"
-                                    Background="{DynamicResource slowpassword}"/>
-                            <Border Grid.Column="2" 
-                                    Margin="2"
-                                    Background="{DynamicResource Midpassword}"/>
-                            <Border Grid.Column="3" 
-                                    Margin="2"
-                                    Background="{DynamicResource Strongpassword}"/>
-                        </Grid>
-
-                        <TextBlock Height="40" Width="400"
-                                   Text="Parolda katta va kichik harflar,raqamlar va belgilardan foydalaning."
-                                   Margin="20 0 0 0"    
-                                   TextWrapping="Wrap"
-                                   FontSize="12"
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <Label Cursor="Hand"
+                                   Content="Если у вас уже есть аккаунт "
+                                   Margin="0 20 10 0"                       
+                                   FontSize="16"
                                    FontFamily="send-series"
-                                   Visibility="Hidden"
-                                   Foreground="{DynamicResource FourthTextColor}"/>
-
+                                   Foreground="{DynamicResource FifthTextColor}"/>
+                            <Label x:Name="lblogin"
+                                   Cursor="Hand"
+                                   Margin="0 20 10 0"                       
+                                   FontSize="16"
+                                   FontFamily="send-series">
+                            <Hyperlink Click="Hyperlink_Click">Войти</Hyperlink>
+                        </Label>
+                        </StackPanel>
                         <Border>
                             <Button x:Name="btnRegister"
                                     Click="btnRegister_Click"                                    
                                     Height="60"
                                     Width="400"
                                     Margin="0 0 0 0"
-                                    Content="Ro'yhatdan o'tish"
+                                    Content="Регистрация"
                                     Style="{DynamicResource SignSuccessButton}">
                             </Button>
                         </Border>
-                        <Button x:Name="btnShaxsiykabinet"
-                                        Click="btnShaxsiykabinet_Click"
-                                        Style="{DynamicResource SignSuccessButtonReg}"
-                                        Content="Shaxsiy Kabinet"
-                                        Margin="0 20 0 0"
-                                    Width="400"
-                                />
+                        
                     </StackPanel>
                 </Border>
             </StackPanel>

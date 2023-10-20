@@ -31,10 +31,6 @@ namespace Authorization.Desktop.Pages.Auth
             Application.Current.Shutdown();
         }
 
-        private void btnShaxsiykabinet_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService?.Navigate(new LoginPage());
-        }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -199,6 +195,11 @@ namespace Authorization.Desktop.Pages.Auth
             {
                 e.Handled = true;
             }
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new LoginPage());
         }
     }
 }

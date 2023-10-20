@@ -24,22 +24,26 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Border x:Name="burgerMenu"
-                            Grid.Column="0" 
+                            Grid.Column="0"                             
                             Background="{DynamicResource PrimaryBackground}"
                             CornerRadius="8 0 0 8">
-                        <Grid>
+                        <Grid x:Name="BurgerM" Width="70">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="70"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             
                         <Grid Grid.Row="0">
-                            <ToggleButton Cursor="Hand" x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="10,15,0,15" Height="40" Width="40">
+                            <ToggleButton Cursor="Hand" x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="15,15,0,15" Height="40" Width="40">
                                 <ToggleButton.Triggers>
                                     <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                                         <BeginStoryboard>
                                             <Storyboard x:Name="HideStackPanel">
-                                                <DoubleAnimation  Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="210" To="60" Duration="0:0:0.5">
+                                                    <DoubleAnimation Storyboard.TargetName="BurgerM" 
+                                                                     Storyboard.TargetProperty="Width" 
+                                                                     BeginTime="0:0:0" 
+                                                                     From="240" To="70" 
+                                                                     Duration="0:0:1">
                                                 </DoubleAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
@@ -47,7 +51,11 @@
                                     <EventTrigger RoutedEvent="ToggleButton.Checked">
                                         <BeginStoryboard>
                                             <Storyboard x:Name="ShowStackPanel">
-                                                <DoubleAnimation  Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="60" To="210" Duration="0:0:0.5">
+                                                    <DoubleAnimation Storyboard.TargetName="BurgerM" 
+                                                                     Storyboard.TargetProperty="Width" 
+                                                                     BeginTime="0:0:0" 
+                                                                     From="60" To="240" 
+                                                                     Duration="0:0:1">
                                                 </DoubleAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
@@ -62,13 +70,12 @@
                                 <RowDefinition Height="35"/>
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0"
-                                            VerticalAlignment="Top"
-                                            Margin=" 0 0 0 40">
+                                        VerticalAlignment="Top">
                                         <RadioButton x:Name="rbShop"
                                                      Tag="{DynamicResource shop }"
                                                      Content="Do'konlar"
                                                      HorizontalAlignment="Left"
-                                                     Margin="10 0 0 0"
+                                                     Margin="5 0 0 0"
                                                      Style="{DynamicResource MenuButton}"
                                                      Click="rbShop_Click"
                                          />

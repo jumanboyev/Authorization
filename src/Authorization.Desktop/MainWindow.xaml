@@ -1,4 +1,5 @@
 ﻿<Window x:Class="Authorization.Desktop.MainWindow"
+        xmlns:ctls ="clr-namespace:Authorization.Desktop.Controls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -19,40 +20,87 @@
             CornerRadius="8">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Border Grid.Column="1" 
+                    <Border x:Name="burgerMenu"
+                            Grid.Column="0" 
                             Background="{DynamicResource PrimaryBackground}"
                             CornerRadius="8 0 0 8">
-                        <Grid Margin="0 20 0 0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-
-                                    <RowDefinition Height="35"/>
-                                </Grid.RowDefinitions>
-                                <StackPanel Grid.Row="0"
-                                            VerticalAlignment="Center"
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                        <Grid Grid.Row="0">
+                            <ToggleButton Cursor="Hand" x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="10,15,0,15" Height="40" Width="40">
+                                <ToggleButton.Triggers>
+                                    <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                        <BeginStoryboard>
+                                            <Storyboard x:Name="HideStackPanel">
+                                                <DoubleAnimation  Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="210" To="60" Duration="0:0:0.5">
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                        <BeginStoryboard>
+                                            <Storyboard x:Name="ShowStackPanel">
+                                                <DoubleAnimation  Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="60" To="210" Duration="0:0:0.5">
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </ToggleButton.Triggers>
+                            </ToggleButton>
+                            
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="0 10 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0"
+                                            VerticalAlignment="Top"
                                             Margin=" 0 0 0 40">
-                                    <RadioButton x:Name="rbShop"
-                                                 Tag="{DynamicResource shop }"
-                                                 Content="Do'konlar"
-                                                 Style="{DynamicResource MenuButton}"
-                                                 Click="rbShop_Click"
+                                        <RadioButton x:Name="rbShop"
+                                                     Tag="{DynamicResource shop }"
+                                                     Content="Do'konlar"
+                                                     HorizontalAlignment="Left"
+                                                     Margin="10 0 0 0"
+                                                     Style="{DynamicResource MenuButton}"
+                                                     Click="rbShop_Click"
                                          />
-                                </StackPanel>
-                            </Grid>
+                                    </StackPanel>
+                            <Button  Grid.Row="1" 
+                                     x:Name="btnBackto"
+                                     Style="{DynamicResource SignSuccessButton}"
+                                     Tag="{DynamicResource burgerMenu}"
+                                     Width="220"
+                                     Cursor="Hand"
+                                     Click="btnBackto_Click"
+                                     Margin="0 5"                                    
+                                     Content="Back To "
+                                     Visibility="Collapsed">
+                                    </Button>
+                        </Grid>
+                            
+                            <!-- Start: Popup User Control -->
+                            <Popup x:Name="Popup"  AllowsTransparency="True"  HorizontalOffset="0" VerticalOffset="10">
+                                <ctls:UserPopup x:Name="Header" Foreground="{DynamicResource SecondaryTextColor}"/>
+                            </Popup>
+                            <!-- End: Popup User Control -->
                         </Grid>
                     </Border>
-                    <Grid Grid.Column="2">
+                    <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <!-- Start: Button Close | Restore | Minimize -->
-                        <Border Background="{DynamicResource SelectedBackground}"
+                        <Border Grid.Row="0"
+                                Background="{DynamicResource SelectedBackground}"
                                 CornerRadius="0 8 0 0">
                             <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.RowSpan="2">
                                 <Button x:Name="btnClose" 
@@ -81,7 +129,8 @@
                             </StackPanel>
                         </Border>
                         <!-- End: Button Close | Restore | Minimize -->
-                        <Border Grid.Row="1">
+                        <Border x:Name="bMenu"
+                                Grid.Row="1">
                             <Frame Name="PageNavigator"
                                Margin="15 15 0 5"
                                NavigationUIVisibility="Hidden"/>

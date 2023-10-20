@@ -329,6 +329,45 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="iToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Viewbox Height="30" Width="30" Margin="0 6 0 0" Stretch="UniformToFill">
+                            <Canvas Height="512" Width="512">
+                                <Path Data="m32 0h448c17.671875 0 32 14.328125 32 32s-14.328125 32-32 32h-448c-17.671875 0-32-14.328125-32-32s14.328125-32 32-32zm0 0" Fill="#fb7657" Margin="0 0 0 0"/>
+                                <Path Data="m32 128h448c17.671875 0 32 14.328125 32 32s-14.328125 32-32 32h-448c-17.671875 0-32-14.328125-32-32s14.328125-32 32-32zm0 0" Fill="#fb7657" Margin="0 20 0 0"/>
+                                <Path Data="m32 256h448c17.671875 0 32 14.328125 32 32s-14.328125 32-32 32h-448c-17.671875 0-32-14.328125-32-32s14.328125-32 32-32zm0 0" Fill="#fb7657" Margin="0 40 0 0"/>
+                            </Canvas>
+                        </Viewbox>
+                    </Border>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="Transparent"/>
+                            <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="#FFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="Transparent"/>
+                            <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                       Value="#FFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
     <Style x:Key="MenuButton"
            TargetType="{x:Type RadioButton}">

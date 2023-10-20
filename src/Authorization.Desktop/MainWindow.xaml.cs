@@ -61,5 +61,13 @@ namespace Authorization.Desktop
         {
 
         }
+
+        private void btnBackto_Click(object sender, RoutedEventArgs e)
+        {
+            ShopPage shop = new ShopPage();
+            PageNavigator.Content = shop;
+            btnBackto.Visibility = Visibility.Collapsed;    
+            rbShop.Visibility = Visibility.Visible;
+        }
     }
 }

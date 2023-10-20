@@ -29,9 +29,8 @@ namespace Authorization.Desktop.Pages
         {
             this._repository = new ShopRepository();
             InitializeComponent();
-        }
-
-        Button btn = new Button();
+        }        
+        
        
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
@@ -48,6 +47,20 @@ namespace Authorization.Desktop.Pages
         public async Task RefreshAsync()
         {
             MainWP.Children.Clear();
+            Button btn = new Button()
+            {
+                Name = "btnCreate",
+                Visibility = Visibility.Visible,
+                Content = "+",
+                Height = 120,
+                Width = 200,
+                Style = (Style)FindResource("ProductCreateButton"),
+                Margin = new Thickness(10, 10, 0, 0)
+
+            };
+            MainWP.Children.Add(btn);
+            btn.Click += btnCreate_Click;
+
             var shops = await _repository.GetAllAsync();
             foreach (var shop in shops)
             {

@@ -55,7 +55,7 @@ public class ShopRepository : BaseRepository, IShopRepository
         try
         {
             await _connection.OpenAsync();
-            string query = "Select * from shops order by id;";
+            string query = "Select * from shops order by id desc;";
             var result = (await _connection.QueryAsync<ShopViewModel>(query)).ToList();
             return result;
         }

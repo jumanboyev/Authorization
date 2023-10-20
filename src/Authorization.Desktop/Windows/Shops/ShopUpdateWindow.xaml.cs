@@ -37,25 +37,10 @@ namespace Authorization.Desktop.Windows.Shops
         {
             this.Id = shop.Id;
             txtbName.Text = shop.Name;
-            txtDescription.Text = shop.Description;
-            ImgShop.ImageSource = new BitmapImage(new System.Uri(shop.Image, UriKind.Relative));
         }
         private void btnUpdateWindowClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                string imgPath = openFileDialog.FileName;
-                ImgShop.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                ImgIcon.Visibility = Visibility.Hidden;
-            }
-            ImgIcon.Visibility = Visibility.Hidden;
         }
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -73,30 +58,10 @@ namespace Authorization.Desktop.Windows.Shops
                 MessageBox.Show("Do'kon nomi uzunligi kamida 3 ta bo'lishi kerak");
                 return;
             }
-            if (txtDescription.Text.Length >=5)
-            {
-                shop.Description = txtDescription.Text;
-                count++;
-            }
-            else
-            {
-                MessageBox.Show("Do'kon tasnifi uzunligi kamida 5 ta bo'lishi kerak");
-                return;
-            }
-            if (shop.Image != null)
-            {
-                shop.Image = ImgShop.ImageSource.ToString();
-                count++;
-            }
-            else
-            {
-                MessageBox.Show("Rasmni tayta tekshiring!");
-                return;
-            }
             shop.Created_at = TimeHelper.GetDateTime();
             shop.Updated_at = TimeHelper.GetDateTime();
 
-            if (count == 3)
+            if (count == 1)
             {
                 var result = await _repository.UpdateAsync(Id,shop);
                 if (result > 0)
@@ -126,6 +91,16 @@ namespace Authorization.Desktop.Windows.Shops
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnUpdateWindowClose_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

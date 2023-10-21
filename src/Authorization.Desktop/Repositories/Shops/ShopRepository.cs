@@ -15,9 +15,9 @@ public class ShopRepository : BaseRepository, IShopRepository
         try
         {
             await _connection.OpenAsync();
-            string query = "INSERT INTO shops (name, description, image, created_at, updated_at) " +
-                            "VALUES (@Name, @Description, @Image, @Created_at, @Updated_at);";
-
+                string query = "INSERT INTO shops (name, created_at, updated_at) " +
+                                "VALUES (@Name, @Created_at, @Updated_at);";
+                    
             var result = await _connection.ExecuteAsync(query,entity);
             return result;
         }
@@ -74,12 +74,30 @@ public class ShopRepository : BaseRepository, IShopRepository
         throw new System.NotImplementedException();
     }
 
+    public async Task<bool> GetByIdShopNameAsync(string shopName)
+    {
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"Select * from shops where name = @Name";
+            var result = await _connection.QuerySingleAsync<bool>(query,new {name = shopName});
+            return result;
+        }
+        catch 
+        {
+            return false;
+        }finally 
+        { 
+            await _connection.CloseAsync();
+        }
+    }
+
     public async Task<int> UpdateAsync(long id, Shop entity)
     {
         try
         {
             await _connection.OpenAsync();
-            string quary = $"Update  shops set name=@Name, image=@Image, description=@Description, created_at=@Created_at, updated_at=@Updated_at where id={id};";
+            string quary = $"Update  shops set name=@Name,created_at=@Created_at, updated_at=@Updated_at where id={id};";
             var result = await _connection.ExecuteAsync(quary, entity);
             return result;
         }

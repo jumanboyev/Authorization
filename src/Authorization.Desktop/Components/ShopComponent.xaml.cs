@@ -1,4 +1,5 @@
 ﻿using Authorization.Desktop.Entities.Shops;
+using Authorization.Desktop.Pages.Categories;
 using Authorization.Desktop.Repositories.Shops;
 using Authorization.Desktop.ViewModels.Shops;
 using Authorization.Desktop.Windows.Shops;
@@ -55,11 +56,52 @@ namespace Authorization.Desktop.Components
         {
             Shop shop = new Shop();
             shop.Id = viewodel.Id;
+            shop.CategoryId = viewodel.CategoryId;
             shop.Name = viewodel.Name;
             ShopUpdateWindow shopUpdateWindow = new ShopUpdateWindow();
             shopUpdateWindow.SetData(shop);
             shopUpdateWindow.ShowDialog();
             await Refresh();
+        }
+
+        private void B_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Window.GetWindow(this) is MainWindow mainWindow)
+            {
+                RadioButton? radioButton = mainWindow.FindName("rbMenuButtonMyShops") as RadioButton;
+                if (radioButton != null)
+                {
+                    radioButton.Visibility = Visibility.Collapsed;
+                    Button? button = mainWindow.FindName("brProducts") as Button;
+                    if (button != null) button.Visibility = Visibility.Visible;
+                    Button? buttonBackTo = mainWindow.FindName("btnBackto") as Button;
+                    if (buttonBackTo != null)
+                    {
+                        buttonBackTo.Visibility = Visibility.Visible;
+
+                        //buttonBackTo.Content = "Мои магазины";
+                    }
+
+
+                }
+            }
+            // Get the parent Frame control
+            Frame frame = FindParent<Frame>(this);
+
+            // Navigate to the new page
+            CategoryPage categoriesPage = new CategoryPage();
+            //categoriesPage.setData(viewodel.Id, viewodel.Name);
+            frame.Navigate(categoriesPage);
+        }
+        private T? FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+            if (parent == null)
+                return null;
+
+            T? typedParent = parent as T;
+            return typedParent ?? FindParent<T>(parent);
         }
     }
 }

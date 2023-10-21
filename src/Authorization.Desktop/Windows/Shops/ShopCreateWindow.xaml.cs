@@ -53,10 +53,18 @@ namespace Authorization.Desktop.Windows.Shops
                     MessageBox.Show("Do'kon nomi uzunligi kamida 3 ta bo'lishi kerak");
                     return;
                 }
+                var isShop = await _repository.GetByIdShopNameAsync(shop.Name);
+                if (isShop)
+                {
+                    MessageBox.Show("Bunday do'kon allaqachon yaratilgan");                    
+                    return;
+                }
+                else count++;
+
                 shop.Created_at = TimeHelper.GetDateTime();
                 shop.Updated_at = TimeHelper.GetDateTime();
 
-                if (count == 1)
+                if (count == 2)
                 {
                     var result = await _repository.CreateAsync(shop);
                     if (result > 0)

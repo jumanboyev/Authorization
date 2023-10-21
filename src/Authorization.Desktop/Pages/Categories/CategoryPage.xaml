@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Authorization.Desktop.Pages.Categories"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CategoryPage">
+      Title="CategoryPage"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>

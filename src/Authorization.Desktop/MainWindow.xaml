@@ -71,15 +71,23 @@
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0"
                                         VerticalAlignment="Top">
-                                        <RadioButton x:Name="rbShop"
-                                                     Tag="{DynamicResource shop }"
-                                                     Content="Do'konlar"
+                                    <RadioButton x:Name="rbShop"
+                                                 Tag="{DynamicResource shop }"
+                                                 Content="Do'konlar"
+                                                 HorizontalAlignment="Left"
+                                                 Margin="5 0 0 0"
+                                                 Style="{DynamicResource MenuButton}"
+                                                 Click="rbShop_Click"
+                                     />
+                                    <RadioButton x:Name="rbProduct"
+                                                     Tag="{DynamicResource product }"
+                                                     Content="Tavarlar"
                                                      HorizontalAlignment="Left"
                                                      Margin="5 0 0 0"
                                                      Style="{DynamicResource MenuButton}"
-                                                     Click="rbShop_Click"
+                                                     Click="rbProduct_Click"
                                          />
-                                    </StackPanel>
+                                </StackPanel>
                             <Button  Grid.Row="1" 
                                      x:Name="btnBackto"
                                      Style="{DynamicResource SignSuccessButton}"

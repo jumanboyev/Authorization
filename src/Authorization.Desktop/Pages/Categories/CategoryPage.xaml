@@ -1,0 +1,45 @@
+﻿<Page x:Class="Authorization.Desktop.Pages.Categories.CategoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Authorization.Desktop.Pages.Categories"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CategoryPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label Content="Category"
+                   FontSize="24"
+                   Foreground="{DynamicResource FifthTextColor}"
+                   HorizontalAlignment="Center"
+                   Margin="0 10 0 0"
+                   FontFamily="send-series"/>
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                       HorizontalAlignment="Center">
+                <Label Content="do'kon : "
+                       FontSize="24"
+                       Margin="0 0 0 0"
+                       Foreground="{DynamicResource FifthTextColor}"
+                       FontFamily="send-series"/>
+                <Label x:Name="lbCategory"
+                        Content="Category"
+                       FontSize="24"
+                       Foreground="{DynamicResource FifthTextColor}"                       
+                       Margin="0 0 0 0"
+                       FontFamily="send-series"/>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <WrapPanel x:Name="MainWP">
+
+            </WrapPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

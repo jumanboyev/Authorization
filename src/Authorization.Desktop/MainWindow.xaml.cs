@@ -68,6 +68,7 @@ namespace Authorization.Desktop
             ShopPage shop = new ShopPage();
             PageNavigator.Content = shop;
             btnBackto.Visibility = Visibility.Collapsed;    
+            rbProduct.Visibility = Visibility.Collapsed;
             rbShop.Visibility = Visibility.Visible;
         }
 

@@ -10,9 +10,6 @@
       Loaded="Page_Loaded">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
         <ScrollViewer >
             <WrapPanel x:Name="MainWP">
                     

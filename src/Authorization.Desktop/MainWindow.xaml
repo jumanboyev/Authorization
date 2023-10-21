@@ -86,7 +86,7 @@
                                                      Margin="5 0 0 0"
                                                      Style="{DynamicResource MenuButton}"
                                                      Click="rbProduct_Click"
-                                         />
+                                                     Visibility="Collapsed"/>
                                 </StackPanel>
                             <Button  Grid.Row="1" 
                                      x:Name="btnBackto"

@@ -74,8 +74,8 @@ namespace Authorization.Desktop
 
         private void rbProduct_Click(object sender, RoutedEventArgs e)
         {
-            CategoryPage categoryPage = new CategoryPage();
-            PageNavigator.Content = categoryPage;
+            CategoryPage category = new CategoryPage();
+            PageNavigator.Content = category;
         }
     }
 }

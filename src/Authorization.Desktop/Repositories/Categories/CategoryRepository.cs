@@ -1,5 +1,6 @@
 ﻿using Authorization.Desktop.Entities.Categories;
 using Authorization.Desktop.Interfaces.Categories;
+using Authorization.Desktop.Pages;
 using Authorization.Desktop.ViewModels.Categories;
 using Dapper;
 using System.Collections.Generic;
@@ -107,12 +108,30 @@ public class CategoryRepository : BaseRepository, ICategoryRepository
         }
     }
 
+    public async Task<bool> GetByIdCategoryNameAsync(string categoryName)
+    {
+        try{
+            await _connection.OpenAsync();
+            string query = $"Select * from categories where name = @Name";
+            var result = await _connection.QuerySingleAsync<bool>(query, new { name = categoryName });
+            return result;
+        }
+        catch 
+        {
+            return false;
+        }
+        finally 
+        {
+            await _connection.CloseAsync();
+        }
+    }
+
     public async Task<int> UpdateAsync(long id, Category entity)
     {
         try
         {
             await _connection.OpenAsync();
-            string query = $"Update categories set name=@Name,created_at=@Created_at, updated_at=@Updated_at where id={id};";
+            string query = $"Update categories set name=@Name, updated_at=@Updated_at where id={id};";
             var result = await _connection.ExecuteAsync(query,entity);
             return result;
         }

@@ -58,10 +58,17 @@ namespace Authorization.Desktop.Windows.Categories
                 return;
             }
 
-            category.Created_at = TimeHelper.GetDateTime();
+            var isCategory = await _repository.GetByIdCategoryNameAsync(category.Name);
+            if (isCategory)
+            {
+                MessageBox.Show("Bunday Category allaqachon yaratilgan");
+                return;
+            }
+            else count++;
+
             category.Updated_at = TimeHelper.GetDateTime();
             
-            if(count == 1)
+            if(count == 2)
             {
                 var result = await _repository.UpdateAsync(Id,category);
                 if (result > 0)

@@ -43,6 +43,7 @@ namespace Authorization.Desktop.Windows.Categories
             {
                 int count = 0;
                 Category category = new Category();
+
                 if (txtbName.Text.Length >= 3)
                 {
                     category.Name = txtbName.Text;
@@ -53,11 +54,20 @@ namespace Authorization.Desktop.Windows.Categories
                     MessageBox.Show("Category nomi uzunligi kamida 3 ta bo'lishi kerak");
                     return;
                 }
+
+                var isCategory = await _repository.GetByIdCategoryNameAsync(category.Name);
+                if(isCategory) 
+                {
+                    MessageBox.Show("Bunday Category allaqachon yaratilgan");
+                    return;
+                }
+                else count++;
+
                 category.ShopId = this.shopId;
                 category.Created_at = TimeHelper.GetDateTime();
                 category.Updated_at = TimeHelper.GetDateTime();
 
-                if (count == 1)
+                if (count == 2)
                 {
                     var result = await _repository.CreateAsync(category);
                     if (result > 0)

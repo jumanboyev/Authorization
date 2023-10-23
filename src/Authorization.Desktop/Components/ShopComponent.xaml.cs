@@ -68,19 +68,17 @@ namespace Authorization.Desktop.Components
         {
             if (Window.GetWindow(this) is MainWindow mainWindow)
             {
-                RadioButton? radioButton = mainWindow.FindName("rbMenuButtonMyShops") as RadioButton;
+                RadioButton? radioButton = mainWindow.FindName("rbShop") as RadioButton;
                 if (radioButton != null)
                 {
-                    radioButton.Visibility = Visibility.Collapsed;
-                    RadioButton? button = mainWindow.FindName("brProducts") as RadioButton;
+                    radioButton.Visibility = Visibility.Visible;
+                    RadioButton? button = mainWindow.FindName("rbProduct") as RadioButton;
                     if (button != null) button.Visibility = Visibility.Visible;
-                    RadioButton? buttonBackTo = mainWindow.FindName("btnBackto") as RadioButton;
-                    if (buttonBackTo != null)
-                    {
-                        buttonBackTo.Visibility = Visibility.Visible;
+                    RadioButton? buttonBack = mainWindow.FindName("btnBackto") as RadioButton;
 
-                        //buttonBackTo.Content = "Мои магазины";
-                    }
+                    if (buttonBack != null)                    
+                        buttonBack.Visibility = Visibility.Visible;
+
 
 
                 }

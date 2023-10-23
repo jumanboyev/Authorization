@@ -97,7 +97,7 @@ public class ShopRepository : BaseRepository, IShopRepository
         try
         {
             await _connection.OpenAsync();
-            string quary = $"Update  shops set name=@Name,created_at=@Created_at, updated_at=@Updated_at where id={id};";
+            string quary = $"Update  shops set name=@Name, updated_at=@Updated_at where id={id};";
             var result = await _connection.ExecuteAsync(quary, entity);
             return result;
         }

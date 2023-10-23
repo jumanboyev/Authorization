@@ -9,4 +9,5 @@ namespace Authorization.Desktop.Interfaces.Categories;
 public interface ICategoryRepository:IRepository<Category,CategoryViewModel>
 {
     public Task<IList<CategoryViewModel>> GetAllByIdAsync(long shopId);
+    public Task<bool> GetByIdCategoryNameAsync(string  categoryName);
 }

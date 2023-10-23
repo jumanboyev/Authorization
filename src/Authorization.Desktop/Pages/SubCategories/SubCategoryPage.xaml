@@ -1,0 +1,49 @@
+﻿<Page x:Class="Authorization.Desktop.Pages.SubCategories.SubCategoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Authorization.Desktop.Pages.SubCategories"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SubCategoryPage"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label Content="SubCategory"
+                   FontSize="24"
+                   Foreground="{DynamicResource FifthTextColor}"
+                   HorizontalAlignment="Center"
+                   Margin="0 10 0 0"
+                   FontFamily="send-series"/>
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                       HorizontalAlignment="Center">
+                <Label Content="Category : "
+                       FontSize="24"
+                       Margin="0 0 0 0"
+                       Foreground="{DynamicResource FifthTextColor}"
+                       FontFamily="send-series"/>
+                <Label x:Name="lbCategory"
+                        Content="SubCategory"
+                       FontSize="24"
+                       Foreground="{DynamicResource FifthTextColor}"                       
+                       Margin="0 0 0 0"
+                       FontFamily="send-series"/>
+            </StackPanel>
+        </StackPanel>
+        <Border  Grid.Row="1">
+            <ScrollViewer>
+                <WrapPanel x:Name="WpSubCategory">
+
+                </WrapPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+
+</Page>

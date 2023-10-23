@@ -12,10 +12,8 @@
     <Grid>
         <ScrollViewer >
             <WrapPanel x:Name="MainWP">
-                    
+
             </WrapPanel>
         </ScrollViewer>
-
     </Grid>
-
 </Page>

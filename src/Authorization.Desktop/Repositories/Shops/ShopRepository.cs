@@ -15,8 +15,8 @@ public class ShopRepository : BaseRepository, IShopRepository
         try
         {
             await _connection.OpenAsync();
-                string query = "INSERT INTO shops (name, created_at, updated_at) " +
-                                "VALUES (@Name, @Created_at, @Updated_at);";
+                string query = "INSERT INTO shops (name,user_id, created_at, updated_at) " +
+                                "VALUES (@Name,@UserId, @Created_at, @Updated_at);";
                     
             var result = await _connection.ExecuteAsync(query,entity);
             return result;

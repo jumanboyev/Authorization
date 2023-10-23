@@ -37,10 +37,12 @@
                        FontFamily="send-series"/>
             </StackPanel>
         </StackPanel>
-        <ScrollViewer Grid.Row="1">
-            <WrapPanel x:Name="MainWP">
+        <Border  Grid.Row="1">
+            <ScrollViewer>
+                <WrapPanel x:Name="WpCategory">
 
-            </WrapPanel>
-        </ScrollViewer>
+                </WrapPanel>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </Page>

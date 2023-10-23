@@ -1,6 +1,8 @@
-﻿using Authorization.Desktop.Repositories.Categories;
+﻿using Authorization.Desktop.Entities.Categories;
+using Authorization.Desktop.Interfaces;
+using Authorization.Desktop.Repositories.Categories;
 using Authorization.Desktop.ViewModels.Categories;
-using Authorization.Desktop.ViewModels.Shops;
+using Authorization.Desktop.Windows.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,27 +23,24 @@ namespace Authorization.Desktop.Components
     /// <summary>
     /// Interaction logic for CategoryComponent.xaml
     /// </summary>
-    public partial class CategoryComponent : Page
+    public partial class CategoryComponent : UserControl
     {
-        private long shopId {  get; set; }
-        private string shopName {  get; set; }= string.Empty;
+        private long shopId { get; set; }
+        private string shopName { get; set; } = string.Empty;
 
         private CategoryViewModel viewmodel;
         private CategoryRepository _repository;
-        public Func<Task> Refresh {  get; set; }
-
+        public Func<Task> Refresh { get; set; }
         public CategoryComponent()
         {
             InitializeComponent();
             this.viewmodel = new CategoryViewModel();
             this._repository = new CategoryRepository();
         }
-
-        public void SetData(long shopId, string shopName)
+        public void SetData(CategoryViewModel categoryViewModel)
         {
-            this.shopId = shopId;
-            this.shopName = shopName;
-            lbName.Text = shopName;
+            viewmodel = categoryViewModel;
+            lbName.Text = categoryViewModel.Name;
         }
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -53,10 +52,16 @@ namespace Authorization.Desktop.Components
             }
         }
 
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            Category category = new Category();
+            category.Id = viewmodel.Id;
+            category.ShopId = viewmodel.ShopId;
+            category.Name = viewmodel.Name;
+            UpdateCategoryWindow window = new UpdateCategoryWindow();
+            window.SetaData(category);
+            window.ShowDialog();
+            await Refresh();            
         }
-
     }
 }

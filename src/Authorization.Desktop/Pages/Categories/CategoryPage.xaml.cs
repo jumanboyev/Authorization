@@ -1,6 +1,7 @@
 ﻿using Authorization.Desktop.Components;
 using Authorization.Desktop.Interfaces;
 using Authorization.Desktop.Repositories.Categories;
+using Authorization.Desktop.Windows.Categories;
 using Authorization.Desktop.Windows.Shops;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Authorization.Desktop.Pages.Categories
 {
@@ -24,6 +26,10 @@ namespace Authorization.Desktop.Pages.Categories
     /// </summary>
     public partial class CategoryPage : Page
     {
+        public long shopId { get; set; }
+
+        private string shopName { get; set; } = string.Empty;
+
         private CategoryRepository _repository;
 
         public CategoryPage()
@@ -32,41 +38,46 @@ namespace Authorization.Desktop.Pages.Categories
             this._repository = new CategoryRepository();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        public void SetData(long shopId, string ShopName)
         {
-
+            this.shopId = shopId;
+            this.shopName = ShopName;
+            lbCategory.Content = ShopName;
+        }
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            await RefreshAsync();
         }
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            ShopCreateWindow window = new ShopCreateWindow();
+            CreateCategoryWindow window = new CreateCategoryWindow();
+            window.getShopId(shopId);
             window.ShowDialog();
             await RefreshAsync();
         }
         public async Task RefreshAsync()
         {
-            MainWP.Children.Clear();
+            WpCategory.Children.Clear();
             Button btn = new Button()
             {
                 Name = "btnCreate",
                 Visibility = Visibility.Visible,
-                Content = "+",
                 Height = 120,
                 Width = 200,
                 Style = (Style)FindResource("ProductCreateButton"),
                 Margin = new Thickness(10, 10, 0, 0)
-
             };
-            MainWP.Children.Add(btn);
+            WpCategory.Children.Add(btn);
             btn.Click += btnCreate_Click;
 
-            var categories = await _repository.GetAllAsync();
+            var categories = await _repository.GetAllByIdAsync(shopId);
             foreach (var category in categories)
             {
                 CategoryComponent component = new CategoryComponent();
-               // component.SetData(shop);
-                MainWP.Children.Add(component);
+                component.SetData(category);
+                WpCategory.Children.Add(component);
                 component.Refresh = RefreshAsync;
-            }
+            }   
         }
 
     }

@@ -25,6 +25,7 @@ namespace Authorization.Desktop.Components
     /// </summary>
     public partial class ShopComponent : UserControl
     {
+        public long ShopId { get; set; }
         private ShopViewModel viewodel;
         private ShopRepository _repository;
         public Func<Task> Refresh { get; set; }
@@ -36,7 +37,7 @@ namespace Authorization.Desktop.Components
         }
 
         public void SetData(ShopViewModel viewModel)
-        {
+        {            
             this.viewodel = viewModel;
             lbName.Text = viewModel.Name;   
         }
@@ -54,9 +55,8 @@ namespace Authorization.Desktop.Components
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Shop shop = new Shop();
+            Shop shop = new Shop();            
             shop.Id = viewodel.Id;
-            shop.CategoryId = viewodel.CategoryId;
             shop.Name = viewodel.Name;
             ShopUpdateWindow shopUpdateWindow = new ShopUpdateWindow();
             shopUpdateWindow.SetData(shop);
@@ -72,9 +72,9 @@ namespace Authorization.Desktop.Components
                 if (radioButton != null)
                 {
                     radioButton.Visibility = Visibility.Collapsed;
-                    Button? button = mainWindow.FindName("brProducts") as Button;
+                    RadioButton? button = mainWindow.FindName("brProducts") as RadioButton;
                     if (button != null) button.Visibility = Visibility.Visible;
-                    Button? buttonBackTo = mainWindow.FindName("btnBackto") as Button;
+                    RadioButton? buttonBackTo = mainWindow.FindName("btnBackto") as RadioButton;
                     if (buttonBackTo != null)
                     {
                         buttonBackTo.Visibility = Visibility.Visible;
@@ -90,7 +90,7 @@ namespace Authorization.Desktop.Components
 
             // Navigate to the new page
             CategoryPage categoriesPage = new CategoryPage();
-            //categoriesPage.setData(viewodel.Id, viewodel.Name);
+            categoriesPage.SetData(viewodel.Id, viewodel.Name);
             frame.Navigate(categoriesPage);
         }
         private T? FindParent<T>(DependencyObject child) where T : DependencyObject

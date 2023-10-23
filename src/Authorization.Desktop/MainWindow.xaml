@@ -147,8 +147,9 @@
                         <Border x:Name="bMenu"
                                 Grid.Row="1">
                             <Frame Name="PageNavigator"
-                               Margin="15 15 0 5"
-                               NavigationUIVisibility="Hidden"/>
+                                   Margin="15 15 0 5"
+                                   NavigationUIVisibility="Hidden"/>
+                            
                         </Border>
                     </Grid>
                 </Grid>

@@ -75,33 +75,7 @@ namespace Authorization.Desktop.Windows.Shops
                 }
             }
             
-        }
-
-        private void txtbName_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z0-9]"))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void btnUpdateWindowClose_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnUpdate_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }        
     }
 }
 

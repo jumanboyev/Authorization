@@ -10,6 +10,7 @@
           Margin="10 10 0 0">
 
         <Border x:Name="B"
+                MouseDown="B_MouseDown"
                 Style="{DynamicResource BorderProduct}"
                 Cursor="Hand"
                 CornerRadius="10"

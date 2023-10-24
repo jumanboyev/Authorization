@@ -12,28 +12,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <Label Content="SubCategory"
-                   FontSize="24"
+                   FontSize="20"
                    Foreground="{DynamicResource FifthTextColor}"
                    HorizontalAlignment="Center"
-                   Margin="0 10 0 0"
+                   Margin="0 5 0 0"
                    FontFamily="send-series"/>
             <StackPanel Grid.Row="0"
                         Orientation="Horizontal"
                        HorizontalAlignment="Center">
-                <Label Content="Category : "
-                       FontSize="24"
-                       Margin="0 0 0 0"
+                <Label Content="SubCategory :"
+                       FontSize="20"
                        Foreground="{DynamicResource FifthTextColor}"
                        FontFamily="send-series"/>
                 <Label x:Name="lbCategory"
                         Content="SubCategory"
-                       FontSize="24"
+                       FontSize="20"
                        Foreground="{DynamicResource FifthTextColor}"                       
-                       Margin="0 0 0 0"
                        FontFamily="send-series"/>
             </StackPanel>
         </StackPanel>

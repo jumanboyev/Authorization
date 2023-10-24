@@ -1,6 +1,7 @@
 ﻿using Authorization.Desktop.Entities.Shops;
 using Authorization.Desktop.Pages;
 using Authorization.Desktop.Pages.Categories;
+using Authorization.Desktop.Pages.SubCategories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,7 @@ namespace Authorization.Desktop
             PageNavigator.Content = shop;
             btnBackto.Visibility = Visibility.Collapsed;    
             rbProduct.Visibility = Visibility.Collapsed;
+            rbSubCategory.Visibility = Visibility.Collapsed;
             rbShop.Visibility = Visibility.Visible;
         }
 
@@ -76,6 +78,12 @@ namespace Authorization.Desktop
         {
             CategoryPage category = new CategoryPage();
             PageNavigator.Content = category;
+        }
+
+        private void rbSubCategory_Click(object sender, RoutedEventArgs e)
+        {
+            SubCategoryPage subCategory = new SubCategoryPage();
+            PageNavigator.Content = subCategory;
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Authorization.Desktop.Windows.SubCategories
                 return;
             }
 
-            var isCategory = await _repository.GetByIdSubCategoryName(subCategory.Name);
+            var isCategory = await _repository.GetByIdSubCategoryName(subCategory.CategoryId, subCategory.Name);
             if (isCategory)
             {
                 MessageBox.Show("Bunday Category allaqachon yaratilgan");

@@ -97,12 +97,12 @@ public class SubCategoryRepository : BaseRepository, ISubCategoryRepository
         throw new System.NotImplementedException();
     }
 
-    public async Task<bool> GetByIdSubCategoryName(string subCategoryName)
+    public async Task<bool> GetByIdSubCategoryName(long categoryId, string subCategoryName)
     {
         try
         {
             await _connection.OpenAsync();
-            string query = $"Select * from subCategories where name = @Name";
+            string query = $"Select * from subCategories where category_id={categoryId} and name = @Name";
             var result = await _connection.QuerySingleAsync<bool>(query, new { name = subCategoryName });
             return result;
         }

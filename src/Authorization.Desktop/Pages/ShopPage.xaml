@@ -10,7 +10,19 @@
       Loaded="Page_Loaded">
 
     <Grid>
-        <ScrollViewer >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+        <Border>
+            <Label Content="Shops "
+                   VerticalAlignment="Center"
+                   FontSize="20"
+                   Margin="10 0 0 0"
+                   Foreground="{DynamicResource FifthTextColor}"
+                   FontFamily="send-series"/>
+        </Border>
+        <ScrollViewer Grid.Row="1">
             <WrapPanel x:Name="MainWP">
 
             </WrapPanel>

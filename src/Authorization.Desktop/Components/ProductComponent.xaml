@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Authorization.Desktop.Components.ProductComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Authorization.Desktop.Components"
+             mc:Ignorable="d" >
+    <Grid Height="220" Width="290"
+          Margin="10 10 0 0">
+    
+        <Border x:Name="B"
+                MouseDown="B_MouseDown"
+                Style="{DynamicResource BorderProduct}"
+                Cursor="Hand"
+                CornerRadius="10"
+                BorderThickness="2"
+                BorderBrush="{DynamicResource PrimaryBorderColor}">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Height="30"
+                            HorizontalAlignment="Right"
+                            Margin="0 0 3 0"
+                            >
+                    <Button x:Name="btnUpdate"
+                            Click="btnUpdate_Click"
+                            Style="{DynamicResource ProductUpdateButton}"
+                            Content=""/>
+                    <Button x:Name="btnDelete"
+                            Click="btnDelete_Click"
+                            Style="{DynamicResource ProductDeleteButton}"
+                            Content=""/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Name :"
+                            Margin="10 5 5 5"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource FifthTextColor}"
+                            VerticalAlignment="Center"                
+                            HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="lbName"
+                               Width="205"
+                               Text="Categorysasdasdasdasdasdasdasd"
+                               Margin="5 5 5 5"
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource FifthTextColor}"
+                               VerticalAlignment="Center"                
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Bar Code :"
+                            Margin="10 5 5 5"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource FifthTextColor}"
+                            VerticalAlignment="Center"                
+                            HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="lbBarCode"
+                               Text="Categorysasdasdasd"
+                               Margin="5 5 5 5"
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource FifthTextColor}"
+                               VerticalAlignment="Center"                
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+    </Grid>
+
+</UserControl>

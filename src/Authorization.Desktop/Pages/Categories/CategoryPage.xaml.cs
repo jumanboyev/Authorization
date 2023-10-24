@@ -70,7 +70,7 @@ namespace Authorization.Desktop.Pages.Categories
             WpCategory.Children.Add(btn);
             btn.Click += btnCreate_Click;
 
-            var categories = await _repository.GetAllByIdAsync(shopId);
+            var categories = await _repository.GetAllAsync();
             foreach (var category in categories)
             {
                 CategoryComponent component = new CategoryComponent();

@@ -28,7 +28,6 @@ namespace Authorization.Desktop.Pages.SubCategories
     public partial class SubCategoryPage : Page
     {
         public long CategoryId { get; set; }
-
         private string CategoryName { get; set; } = string.Empty;
 
         private SubCategoryRepository _repository;
@@ -38,7 +37,12 @@ namespace Authorization.Desktop.Pages.SubCategories
             InitializeComponent();
             this._repository = new SubCategoryRepository();
         }
-
+        public void SetData(long categoryId, string CategoryName)
+        {
+            this.CategoryId = categoryId;
+            this.CategoryName = CategoryName;
+            lbCategory.Content = CategoryName;
+        }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             await RefreshAsync();
@@ -46,7 +50,7 @@ namespace Authorization.Desktop.Pages.SubCategories
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             SubCategoryCreateWindow window = new SubCategoryCreateWindow();
-            window.getShopId(CategoryId);
+            window.getCategoryId(CategoryId);
             window.ShowDialog();
             await RefreshAsync();
         }
@@ -65,13 +69,13 @@ namespace Authorization.Desktop.Pages.SubCategories
             WpSubCategory.Children.Add(btn);
             btn.Click += btnCreate_Click;
 
-            var categories = await _repository.GetAllByIdAsync(CategoryId);
-            foreach (var category in categories)
+            var subSategories = await _repository.GetAllByIdAsync(CategoryId);
+            foreach (var subBategory in subSategories)
             {
                 SubCategoryComponents component = new SubCategoryComponents();
-                component.SetData(category);
+                component.SetData(subBategory);
                 WpSubCategory.Children.Add(component);
-                component.Refresh = RefreshAsync;
+               component.Refresh = RefreshAsync;
             }
         }
     }

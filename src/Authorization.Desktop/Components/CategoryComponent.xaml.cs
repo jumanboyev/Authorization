@@ -1,5 +1,7 @@
 ﻿using Authorization.Desktop.Entities.Categories;
 using Authorization.Desktop.Interfaces;
+using Authorization.Desktop.Pages.Categories;
+using Authorization.Desktop.Pages.SubCategories;
 using Authorization.Desktop.Repositories.Categories;
 using Authorization.Desktop.ViewModels.Categories;
 using Authorization.Desktop.Windows.Categories;
@@ -62,6 +64,44 @@ namespace Authorization.Desktop.Components
             window.SetaData(category);
             window.ShowDialog();
             await Refresh();            
+        }
+
+        private void B_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Window.GetWindow(this) is MainWindow mainWindow)
+            {
+                RadioButton? radioButton = mainWindow.FindName("rbShop") as RadioButton;
+                if (radioButton != null)
+                {
+                    radioButton.Visibility = Visibility.Collapsed;
+                    RadioButton? button = mainWindow.FindName("rbProduct") as RadioButton;
+                    if (button != null) button.Visibility = Visibility.Collapsed;
+                    RadioButton? buttonCategory = mainWindow.FindName("rbSubCategory") as RadioButton;
+                    if (button != null) buttonCategory.Visibility = Visibility.Visible;
+                    RadioButton? buttonBack = mainWindow.FindName("btnBackto") as RadioButton;
+
+                    if (buttonBack != null)
+                        buttonBack.Visibility = Visibility.Visible;
+
+                }
+            }
+            // Get the parent Frame control
+            Frame frame = FindParent<Frame>(this);
+
+            // Navigate to the new page
+            SubCategoryPage subCategoriesPage = new SubCategoryPage();
+            subCategoriesPage.SetData(viewmodel.Id, viewmodel.Name);
+            frame.Navigate(subCategoriesPage);
+        }
+        private T? FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+            if (parent == null)
+                return null;
+
+            T? typedParent = parent as T;
+            return typedParent ?? FindParent<T>(parent);
         }
     }
 }

@@ -73,7 +73,7 @@
                                         VerticalAlignment="Top">
                                     <RadioButton x:Name="rbShop"
                                                  Tag="{DynamicResource shop }"
-                                                 Content="Do'konlar"
+                                                 Content="Shops"
                                                  HorizontalAlignment="Left"
                                                  Margin="5 0 0 0"
                                                  Style="{DynamicResource MenuButton}"
@@ -81,23 +81,31 @@
                                      />
                                     <RadioButton x:Name="rbProduct"
                                                      Tag="{DynamicResource product }"
-                                                     Content="Tavarlar"
+                                                     Content="Categories"
                                                      HorizontalAlignment="Left"
                                                      Margin="5 0 0 0"
                                                      Style="{DynamicResource MenuButton}"
                                                      Click="rbProduct_Click"
                                                      Visibility="Collapsed"/>
+                                    <RadioButton x:Name="rbSubCategory"
+                                                     Tag="{DynamicResource subCategories}"
+                                                     Content="SubCategories"
+                                                     HorizontalAlignment="Left"
+                                                     Margin="5 0 0 0"
+                                                     Style="{DynamicResource MenuButton}"
+                                                     Click="rbSubCategory_Click"
+                                                     Visibility="Collapsed"/>
                             </StackPanel>
                             <RadioButton Grid.Row="1" 
                                          x:Name="btnBackto"
                                          Style="{DynamicResource MenuButton}"
-                                         Tag="{DynamicResource call}"
+                                         Tag="{DynamicResource back}"
                                          Cursor="Hand"
                                          Click="btnBackto_Click"
                                          Margin="5 0 0 0"      
                                          HorizontalAlignment="Left"
                                          Content="Ortga "
-                                         Visibility="Collapsed">    
+                                         Visibility="Visible">    
                              </RadioButton>
                         </Grid>
                             

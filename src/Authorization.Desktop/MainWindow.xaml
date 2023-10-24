@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Authorization.Desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1070"
+        Title="MainWindow" Height="750" Width="1024"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent" 
@@ -79,13 +79,13 @@
                                                  Style="{DynamicResource MenuButton}"
                                                  Click="rbShop_Click"
                                      />
-                                    <RadioButton x:Name="rbProduct"
-                                                     Tag="{DynamicResource product }"
+                                    <RadioButton x:Name="rbCategory"
+                                                     Tag="{DynamicResource category }"
                                                      Content="Categories"
                                                      HorizontalAlignment="Left"
                                                      Margin="5 0 0 0"
                                                      Style="{DynamicResource MenuButton}"
-                                                     Click="rbProduct_Click"
+                                                     Click="rbCategory_Click"
                                                      Visibility="Collapsed"/>
                                     <RadioButton x:Name="rbSubCategory"
                                                      Tag="{DynamicResource subCategories}"
@@ -95,6 +95,14 @@
                                                      Style="{DynamicResource MenuButton}"
                                                      Click="rbSubCategory_Click"
                                                      Visibility="Collapsed"/>
+                                    <RadioButton x:Name="rbProduct"
+                                                 Tag="{DynamicResource product}"
+                                                 Content="Products"
+                                                 HorizontalAlignment="Left"
+                                                 Margin="5 0 0 0"
+                                                 Style="{DynamicResource MenuButton}"
+                                                 Click="rbProduct_Click"
+                                                 Visibility="Collapsed"/>
                             </StackPanel>
                             <RadioButton Grid.Row="1" 
                                          x:Name="btnBackto"

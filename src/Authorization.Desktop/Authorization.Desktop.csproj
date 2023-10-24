@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dtos\**" />
+    <EmbeddedResource Remove="Dtos\**" />
+    <None Remove="Dtos\**" />
+    <Page Remove="Dtos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Images\3094352-removebg-preview %283%29.png" />
     <None Remove="Assets\Images\5357377_Internet-go-removebg-preview.png" />
     <None Remove="Assets\Images\Screenshot 2023-08-15 214117.png" />
@@ -19,11 +26,6 @@
     <Resource Include="Assets\Images\5357377_Internet-go-removebg-preview.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Dtos\Shops\" />
-    <Folder Include="Dtos\Users\" />
   </ItemGroup>
 
   <ItemGroup>

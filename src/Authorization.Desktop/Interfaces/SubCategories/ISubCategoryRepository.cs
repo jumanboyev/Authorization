@@ -9,5 +9,5 @@ public interface ISubCategoryRepository:IRepository<SubCategory,SubCategoryViewM
 {
     public Task<IList<SubCategoryViewModel>> GetAllByIdAsync(long CategoryId);
 
-    public Task<bool> GetByIdSubCategoryName(string subCategoryName);
+    public Task<bool> GetByIdSubCategoryName(long categoryId, string subCategoryName);
 }

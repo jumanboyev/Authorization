@@ -1,5 +1,6 @@
 ﻿using Authorization.Desktop.Entities.Subcategories;
 using Authorization.Desktop.Pages.Categories;
+using Authorization.Desktop.Pages.Products;
 using Authorization.Desktop.Repositories.SubCategories;
 using Authorization.Desktop.ViewModels.Categories;
 using Authorization.Desktop.ViewModels.SubCategories;
@@ -69,30 +70,34 @@ namespace Authorization.Desktop.Components
 
         private void B_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //if (Window.GetWindow(this) is MainWindow mainWindow)
-            //{
-            //    RadioButton? radioButton = mainWindow.FindName("rbShop") as RadioButton;
-            //    if (radioButton != null)
-            //    {
-            //        radioButton.Visibility = Visibility.Collapsed;
-            //        RadioButton? button = mainWindow.FindName("rbProduct") as RadioButton;
-            //        if (button != null) button.Visibility = Visibility.Collapsed;
-            //        RadioButton? buttonCategory = mainWindow.FindName("rbProduct") as RadioButton;
-            //        if (button != null) buttonCategory.Visibility = Visibility.Visible;
-            //        RadioButton? buttonBack = mainWindow.FindName("btnBackto") as RadioButton;
+            if (Window.GetWindow(this) is MainWindow mainWindow)
+            {
+                RadioButton? radioButton = mainWindow.FindName("rbShop") as RadioButton;
+                if (radioButton != null)
+                {
+                    radioButton.Visibility = Visibility.Collapsed;
+                    RadioButton? button = mainWindow.FindName("rbCategory") as RadioButton;
+                    if (button != null) button.Visibility = Visibility.Collapsed;
 
-            //        if (buttonBack != null)
-            //            buttonBack.Visibility = Visibility.Visible;
+                    RadioButton? buttonSubCategory = mainWindow.FindName("rbSubCategory") as RadioButton;
+                    if (button != null) buttonSubCategory!.Visibility = Visibility.Collapsed;
 
-            //    }
-            //}
-            //// Get the parent Frame control
-            //Frame frame = FindParent<Frame>(this);
+                    RadioButton? buttonProduct = mainWindow.FindName("rbProduct") as RadioButton;
+                    if (button != null) buttonProduct!.Visibility = Visibility.Visible;
 
-            //// Navigate to the new page
-            //CategoryPage categoriesPage = new CategoryPage();
-            //categoriesPage.SetData(viewModel.Id, viewModel.Name);
-            //frame.Navigate(categoriesPage);
+                    RadioButton? buttonBack = mainWindow.FindName("btnBackto") as RadioButton;
+                    if (buttonBack != null)
+                        buttonBack.Visibility = Visibility.Visible;
+
+                }
+            }
+            // Get the parent Frame control
+            Frame frame = FindParent<Frame>(this)!;
+
+            // Navigate to the new page
+            ProductPage productPage = new ProductPage();
+            productPage.SetData(viewModel.Id, viewModel.Name);
+            frame.Navigate(productPage);
         }
         private T? FindParent<T>(DependencyObject child) where T : DependencyObject
         {

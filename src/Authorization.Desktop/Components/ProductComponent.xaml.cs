@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Authorization.Desktop.Repositories.Products;
+using Authorization.Desktop.ViewModels.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +22,23 @@ namespace Authorization.Desktop.Components
     /// </summary>
     public partial class ProductComponent : UserControl
     {
+        public Func<Task> Refresh { get; set; }
+
+        private ProductViewModel viewModel;
+        private ProductRepository _repository;
+
         public ProductComponent()
         {
             InitializeComponent();
+            this.viewModel = new ProductViewModel();
+            this._repository = new ProductRepository();
         }
 
+        public void SetData(ProductViewModel productViewModel)
+        {
+            viewModel = productViewModel;
+            lbName.Text = productViewModel.Name;
+        }
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
 

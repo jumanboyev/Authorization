@@ -75,8 +75,8 @@ namespace Authorization.Desktop.Pages.Products
             var subSategories = await _repository.GetAllByIdAsync(SubCategoryId);
             foreach (var subBategory in subSategories)
             {
-                SubCategoryComponents component = new SubCategoryComponents();
-                //component.SetData(subBategory);
+                ProductComponent component = new ProductComponent();
+                component.SetData(subBategory);
                 WpProduct.Children.Add(component);
                 component.Refresh = RefreshAsync;
             }

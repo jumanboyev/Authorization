@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Authorization.Desktop.Components"
              mc:Ignorable="d" >
-    <Grid Height="220" Width="290"
+    <Grid Height="240" Width="310"
           Margin="10 10 0 0">
     
         <Border x:Name="B"
@@ -17,22 +17,9 @@
                 BorderBrush="{DynamicResource PrimaryBorderColor}">
             <StackPanel>
                 <StackPanel Orientation="Horizontal"
-                            Height="30"
-                            HorizontalAlignment="Right"
-                            Margin="0 0 3 0"
-                            >
-                    <Button x:Name="btnUpdate"
-                            Click="btnUpdate_Click"
-                            Style="{DynamicResource ProductUpdateButton}"
-                            Content=""/>
-                    <Button x:Name="btnDelete"
-                            Click="btnDelete_Click"
-                            Style="{DynamicResource ProductDeleteButton}"
-                            Content=""/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Name :"
-                            Margin="10 5 5 5"
+                            Margin="0 15 0 0">
+                    <Label Content="Name     :"
+                            Margin="7 5 5 5"
                             FontSize="16"
                             FontWeight="SemiBold"
                             Foreground="{DynamicResource FifthTextColor}"
@@ -40,7 +27,7 @@
                             HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lbName"
                                Width="205"
-                               Text="Categorysasdasdasdasdasdasdasd"
+                               Text="Categorysiasdasdasdasdasdassdfdasd"
                                Margin="5 5 5 5"
                                FontSize="16"
                                TextWrapping="Wrap"
@@ -66,6 +53,77 @@
                                Foreground="{DynamicResource FifthTextColor}"
                                VerticalAlignment="Center"                
                                HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Quantity  :"
+                            Margin="10 5 5 5"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource FifthTextColor}"
+                            VerticalAlignment="Center"                
+                            HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="lbQuantity"
+                               Text="234234"
+                               Margin="5 5 5 5"
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource FifthTextColor}"
+                               VerticalAlignment="Center"                
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Sold Pice :"
+                            Margin="10 5 5 5"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource FifthTextColor}"
+                            VerticalAlignment="Center"                
+                            HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="lbSold_Price"
+                               Text="2452454325"
+                               Margin="5 5 5 5"
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource FifthTextColor}"
+                               VerticalAlignment="Center"                
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Price        :"
+                                Margin="10 5 5 5"
+                                FontSize="16"
+                                FontWeight="SemiBold"
+                                Foreground="{DynamicResource FifthTextColor}"
+                                VerticalAlignment="Center"                
+                                HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="lbPrice"
+                               Text="234324324"
+                               Margin="5 5 5 5"
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource FifthTextColor}"
+                               VerticalAlignment="Center"                
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0 0 3 0"
+                            >
+                    <Button x:Name="btnUpdate"
+                            Click="btnUpdate_Click"
+                            Style="{DynamicResource ProductUpdaButton}"
+                            Content="Update"
+                            Width="130"/>
+                    <Button x:Name="btnDelete"
+                            Click="btnDelete_Click"
+                            Style="{DynamicResource ProductDelButton}"
+                            Content="Delete"
+                            Width="130"/>
                 </StackPanel>
 
             </StackPanel>

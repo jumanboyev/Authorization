@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Authorization.Desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="1024"
+        Title="MainWindow" Height="750" Width="1050"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent" 
@@ -163,7 +163,7 @@
                         <Border x:Name="bMenu"
                                 Grid.Row="1">
                             <Frame Name="PageNavigator"
-                                   Margin="15 15 0 5"
+                                   Margin="10 15 0 5"
                                    NavigationUIVisibility="Hidden"/>
                             
                         </Border>

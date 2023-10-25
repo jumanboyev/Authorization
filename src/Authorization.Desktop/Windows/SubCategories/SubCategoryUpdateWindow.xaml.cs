@@ -3,6 +3,7 @@ using Authorization.Desktop.Entities.Subcategories;
 using Authorization.Desktop.Helpers;
 using Authorization.Desktop.Repositories.Categories;
 using Authorization.Desktop.Repositories.SubCategories;
+using Authorization.Desktop.ViewModels.SubCategories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,22 +23,26 @@ namespace Authorization.Desktop.Windows.SubCategories
     /// <summary>
     /// Логика взаимодействия для SubCategoryUpdateWindow.xaml
     /// </summary>
-    public partial class SubCategoryUpdateWindow : Window
+    public partial class    SubCategoryUpdateWindow : Window
     {
         private SubCategoryRepository _repository;
+        private SubCategoryViewModel viewModel;
 
         public long Id { get; set; }
+        public long categoryId { get; set; }
 
         public SubCategoryUpdateWindow()
         {
             InitializeComponent();
             this._repository = new SubCategoryRepository();
+            this.viewModel = new SubCategoryViewModel();
 
         }
 
         public void SetaData(SubCategory subCategory)
         {
             this.Id = subCategory.Id;
+            this.categoryId = subCategory.CategoryId;
             txtbName.Text = subCategory.Name;
         }
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -45,7 +50,7 @@ namespace Authorization.Desktop.Windows.SubCategories
             int count = 0;
             SubCategory subCategory = new SubCategory();
 
-            if (txtbName.Text.Length > 3)
+            if (txtbName.Text.Length >= 3)
             {
                 subCategory.Name = txtbName.Text;
                 count++;
@@ -56,7 +61,7 @@ namespace Authorization.Desktop.Windows.SubCategories
                 return;
             }
 
-            var isCategory = await _repository.GetByIdSubCategoryName(subCategory.CategoryId, subCategory.Name);
+            var isCategory = await _repository.GetByIdSubCategoryName(categoryId, subCategory.Name);
             if (isCategory)
             {
                 MessageBox.Show("Bunday Category allaqachon yaratilgan");

@@ -18,7 +18,7 @@ namespace Authorization.Desktop.Repositories
             _connection = new MySqlConnection();
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
             this._connection = new MySqlConnection(
-                "server = localhost; Port = 3306; User = root; database = shop-db; password=nt20030726;"
+                "server = localhost; Port = 3306; User = root; database = mysql"
                 );
         }        
     }

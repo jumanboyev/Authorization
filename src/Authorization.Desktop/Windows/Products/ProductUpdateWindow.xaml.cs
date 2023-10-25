@@ -1,6 +1,7 @@
 ﻿using Authorization.Desktop.Entities.Products;
 using Authorization.Desktop.Helpers;
 using Authorization.Desktop.Repositories.Products;
+using Authorization.Desktop.ViewModels.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,25 +19,42 @@ using System.Windows.Shapes;
 namespace Authorization.Desktop.Windows.Products
 {
     /// <summary>
-    /// Логика взаимодействия для ProductCreateWindow.xaml
+    /// Логика взаимодействия для ProductUpdateWindow.xaml
     /// </summary>
-    public partial class ProductCreateWindow : Window
+    public partial class ProductUpdateWindow : Window
     {
+        public long Id { get; set; }
+        public long SubCategoryId { get; set; }
         private ProductRepository _repository;
 
-        public long subCategoryId { get; set; }
-        public ProductCreateWindow()
+        public ProductUpdateWindow()
         {
             InitializeComponent();
             this._repository = new ProductRepository();
+            
         }
 
-        private async void btnCreate_Click(object sender, RoutedEventArgs e)
+        public void SetData(Product product)
         {
-            int count =0;
+            this.Id = product.Id;
+            this.SubCategoryId = product.SubCategoryId;
+            txtName.Text = product.Name;
+            txtBarCode.Text = product.BarCode.ToString();
+            txtQuantity.Text = product.Quantity.ToString();
+            txtSoldPrice.Text = product.SoldPrice.ToString();
+            txtPrice.Text = product.Price.ToString();
+        }
+        private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private async void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            int count = 0;
             Product product = new Product();
 
-            if (txtName.Text.Length == 0 && txtBarCode.Text.Length == 0 && txtSoldPrice.Text.Length == 0 && txtPrice.Text.Length == 0 )
+            if (txtName.Text.Length == 0 && txtBarCode.Text.Length == 0 && txtSoldPrice.Text.Length == 0 && txtPrice.Text.Length == 0)
             {
                 MessageBox.Show("Maydonlar bo'sh bo'lishi mumkin emas!");
                 return;
@@ -53,37 +71,34 @@ namespace Authorization.Desktop.Windows.Products
                 return;
             }
 
-            if(txtBarCode.Text.Length == 13) count++;
+            if (txtBarCode.Text.Length == 13) count++;
             else
             {
                 MessageBox.Show("Shtrix kod uzunligi 13 ta bo'lishi kerak!");
                 return;
             }
+            var isProductName = await _repository.GetByIdProductNameAsync(SubCategoryId, product.Name);
 
-            var isProductName = await _repository.GetByIdProductNameAsync(subCategoryId, product.Name);
-
-            if (isProductName)
+            if(isProductName)
             {
-                MessageBox.Show("Bunday Product allaqachon yaratilgan");
+                MessageBox.Show("Bunday Product allaqachon bor");
                 return;
             }
             else count++;
             
-
             if (count == 3)
             {
-                product.SubCategoryId = this.subCategoryId;
+                product.SubCategoryId = SubCategoryId;
                 product.BarCode = long.Parse(txtBarCode.Text);
-                product.Quantity  = long.Parse(txtQuantity.Text);
+                product.Quantity = long.Parse(txtQuantity.Text);
                 product.SoldPrice = float.Parse(txtSoldPrice.Text);
                 product.Price = float.Parse(txtPrice.Text);
-                product.Created_at = TimeHelper.GetDateTime();
-                product.Updated_at = TimeHelper.GetDateTime();  
+                product.Updated_at = TimeHelper.GetDateTime();
 
-                var products = await _repository.CreateAsync(product);
+                var products = await _repository.UpdateAsync(Id,product);
                 if (products > 0)
                 {
-                    MessageBox.Show("Muvaffaqiyatli yaratildi");
+                    MessageBox.Show("Muvaffaqiyatli tahrirlandi");
                     this.Close();
                 }
                 else
@@ -91,15 +106,6 @@ namespace Authorization.Desktop.Windows.Products
                     MessageBox.Show("Xatoli");
                 }
             }
-        }
-
-        private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        public void GetSubCategoryId(long id)
-        {
-            this.subCategoryId = id;
         }
 
         private void txtBarCode_PreviewTextInput(object sender, TextCompositionEventArgs e)

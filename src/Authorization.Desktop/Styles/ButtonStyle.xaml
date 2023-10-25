@@ -484,19 +484,18 @@
     </Style>
 
     <Style x:Key="ProductDelButton" TargetType="{x:Type Button}">
-        <Setter Property="Margin" Value="10 0"/>
+        <Setter Property="Margin" Value="5 0"/>
         <Setter Property="Padding" Value="10"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="B" CornerRadius="5" 
-                            Height="26"
                             Background="Red"
                             Margin="0 5"
                             BorderThickness="1"
                             BorderBrush="{DynamicResource FifthTextColor}">
-                        <Label FontSize="12"
+                        <Label FontSize="16"
                                Margin="10 0"
                                FontFamily="Jetbrains Mono"
                                FontWeight="SemiBold"
@@ -529,12 +528,11 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="B" CornerRadius="5" 
-                            Height="26"
                             Background="#FFD417"
                             Margin="0 5"
                             BorderThickness="1"
                             BorderBrush="{DynamicResource FifthTextColor}">
-                        <Label FontSize="12"
+                        <Label FontSize="16"
                                Margin="10 0"
                                FontFamily="Jetbrains Mono"
                                FontWeight="SemiBold"

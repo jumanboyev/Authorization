@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Authorization.Desktop.Components"
              mc:Ignorable="d" >
-    <Grid Height="240" Width="310"
+    <Grid Height="235" Width="305"
           Margin="10 10 0 0">
     
         <Border x:Name="B"
@@ -17,8 +17,9 @@
                 BorderBrush="{DynamicResource PrimaryBorderColor}">
             <StackPanel>
                 <StackPanel Orientation="Horizontal"
-                            Margin="0 15 0 0">
-                    <Label Content="Name     :"
+                            Margin="0 5 0 0"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Name       :"
                             Margin="7 5 5 5"
                             FontSize="16"
                             FontWeight="SemiBold"
@@ -27,8 +28,8 @@
                             HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lbName"
                                Width="205"
-                               Text="Categorysiasdasdasdasdasdassdfdasd"
-                               Margin="5 5 5 5"
+                               Text="Categorysasdascvbsdfdasd"
+                               Margin="0 5 5 5"
                                FontSize="16"
                                TextWrapping="Wrap"
                                FontWeight="SemiBold"
@@ -45,8 +46,8 @@
                             VerticalAlignment="Center"                
                             HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lbBarCode"
-                               Text="Categorysasdasdasd"
-                               Margin="5 5 5 5"
+                               Text="Categoryd"
+                               Margin="0 5 5 5"
                                FontSize="16"
                                TextWrapping="Wrap"
                                FontWeight="SemiBold"
@@ -64,7 +65,7 @@
                             HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lbQuantity"
                                Text="234234"
-                               Margin="5 5 5 5"
+                               Margin="0 5 5 5"
                                FontSize="16"
                                TextWrapping="Wrap"
                                FontWeight="SemiBold"
@@ -83,7 +84,7 @@
                             HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lbSold_Price"
                                Text="2452454325"
-                               Margin="5 5 5 5"
+                               Margin="0 5 5 5"
                                FontSize="16"
                                TextWrapping="Wrap"
                                FontWeight="SemiBold"
@@ -101,7 +102,7 @@
                                 HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lbPrice"
                                Text="234324324"
-                               Margin="5 5 5 5"
+                               Margin="0 5 5 5"
                                FontSize="16"
                                TextWrapping="Wrap"
                                FontWeight="SemiBold"
@@ -111,19 +112,20 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Right"
-                            Margin="0 0 3 0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch"
+                            Margin="0 10 3 0"
                             >
                     <Button x:Name="btnUpdate"
                             Click="btnUpdate_Click"
                             Style="{DynamicResource ProductUpdaButton}"
                             Content="Update"
-                            Width="130"/>
+                            Width="140"/>
                     <Button x:Name="btnDelete"
                             Click="btnDelete_Click"
                             Style="{DynamicResource ProductDelButton}"
                             Content="Delete"
-                            Width="130"/>
+                            Width="140"/>
                 </StackPanel>
 
             </StackPanel>

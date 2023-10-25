@@ -19,9 +19,9 @@ public class ProductRepository : BaseRepository, IProductRepository
         try
         {
             await _connection.OpenAsync();
-            string query = "INSERT INTO products (subcategory_id, name, bar_code,quantity,sold_price,price, created_at, updated_at) " +
-                "VALUES (@SubCategoryId, @Name, @BarCode, @Quantity, @SoldPrice, @Price, @Created_at, @Updated_at);";
-            var result = await _connection.ExecuteAsync(query);
+            string query = "INSERT INTO products ( name,subcategory_id, bar_code,quantity,sold_price,price, created_at, updated_at) " +
+                "VALUES ( @Name,@SubCategoryId, @BarCode, @Quantity, @SoldPrice, @Price, @Created_at, @Updated_at);";
+            var result = await _connection.ExecuteAsync(query,entity);
             return result;
         }
         catch 
@@ -101,8 +101,8 @@ public class ProductRepository : BaseRepository, IProductRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"Select * from products where subcategory_id={subCategoryId} and name = @Name";
-            var result = await _connection.QuerySingleAsync<bool>(query, new { name = productName });
+            string query = $"Select * from products where subcategory_id={subCategoryId} and name = @Name;";
+            var result = await _connection.QueryFirstOrDefaultAsync<bool>(query,new {name = productName });
             return result;
         }
         catch

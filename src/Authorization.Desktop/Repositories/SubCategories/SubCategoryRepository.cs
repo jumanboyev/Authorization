@@ -103,7 +103,7 @@ public class SubCategoryRepository : BaseRepository, ISubCategoryRepository
         {
             await _connection.OpenAsync();
             string query = $"Select * from subCategories where category_id={categoryId} and name = @Name";
-            var result = await _connection.QuerySingleAsync<bool>(query, new { name = subCategoryName });
+            var result = await _connection.QueryFirstOrDefaultAsync<bool>(query, new { name = subCategoryName });
             return result;
         }
         catch

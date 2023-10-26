@@ -1,6 +1,7 @@
 ﻿using Authorization.Desktop.Repositories.Products;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,5 +40,6 @@ namespace Authorization.Desktop.Pages.Products
             var result = await _repository.GetAllProductToStorage();
             grStorage.ItemsSource = result;
         }
+
     }
 }

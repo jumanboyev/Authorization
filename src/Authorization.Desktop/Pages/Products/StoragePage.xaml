@@ -24,9 +24,10 @@
         </Border>
         <ScrollViewer Grid.Row="1">
             <DataGrid x:Name="grStorage"
-                      
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False"
                       FontSize="16"
-                      FontFamily="send-erie"
+                      FontFamily="send-series"
                       HorizontalAlignment="Center"
                       Foreground="{DynamicResource FifthTextColor}"
                       >
@@ -35,7 +36,20 @@
                         <Setter Property="Background" Value="#fb7657"/>
                     </Style>
                 </DataGrid.Resources>
-                
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFBBAC" />
+                            </Trigger>
+                            <Trigger Property="IsMouseCaptured" Value="True">
+                                <Setter Property="Background" Value="#EDAEA0" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="*" Header="Bar Code" Binding="{Binding BarCode}" />
                     <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Category}" />

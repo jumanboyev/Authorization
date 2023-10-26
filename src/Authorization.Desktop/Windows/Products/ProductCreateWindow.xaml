@@ -116,6 +116,7 @@
                             Margin="0 0 0 0">
                         <TextBox x:Name="txtSoldPrice" FontSize="16"
                                  Margin="10 5"
+                                 TextChanged="txtSoldPrice_TextChanged"
                                  PreviewTextInput="txtBarCode_PreviewTextInput"
                                  PreviewKeyDown="txtBarCode_PreviewKeyDown"
                                  Background="{DynamicResource SecondaryBackground}"

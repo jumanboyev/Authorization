@@ -82,8 +82,7 @@ namespace Authorization.Desktop
 
         private void rbSubCategory_Click(object sender, RoutedEventArgs e)
         {
-            SubCategoryPage subCategory = new SubCategoryPage();
-            PageNavigator.Content = subCategory;
+            PageNavigator.Navigate(new Uri("Pages/Subcategories/SubCategoryPage.xaml", UriKind.Relative));
         }
 
         private void rbCategory_Click(object sender, RoutedEventArgs e)

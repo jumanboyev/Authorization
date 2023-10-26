@@ -36,13 +36,31 @@ namespace Authorization.Desktop.Windows.Products
             int count =0;
             Product product = new Product();
 
-            if (txtName.Text.Length == 0 && txtBarCode.Text.Length == 0 && txtSoldPrice.Text.Length == 0 && txtPrice.Text.Length == 0 )
+            if (txtName.Text.Length == 0 )
             {
-                MessageBox.Show("Maydonlar bo'sh bo'lishi mumkin emas!");
+                MessageBox.Show("Name bo'sh bo'lishi mumkin emas!");
+                return;
+            }
+            if (txtQuantity.Text.Length == 0)
+            {
+                MessageBox.Show("Quantity bo'sh bo'lishi mumkin emas!");
                 return;
             }
 
-            if (txtName.Text.Length >= 3)
+            if (txtSoldPrice.Text.Length == 0 )
+            {
+                MessageBox.Show("SoldPrice maydon bo'sh bo'lishi mumkin emas!");
+                return;
+            }
+
+            if ( txtPrice.Text.Length == 0)
+            {
+                MessageBox.Show("Price maydonlar bo'sh bo'lishi mumkin emas!");
+                return;
+            }
+
+
+            if (txtName.Text.Length >= 3 )
             {
                 product.Name = txtName.Text;
                 count++;
@@ -53,10 +71,25 @@ namespace Authorization.Desktop.Windows.Products
                 return;
             }
 
-            if(txtBarCode.Text.Length == 13) count++;
+            if (txtBarCode.Text.Length == 13 || txtBarCode.Text.Length == 0) 
+            { 
+                if(txtBarCode.Text.Length == 0)
+                {
+                    Guid guid = Guid.NewGuid();
+                    long number = BitConverter.ToInt64(guid.ToByteArray(), 0);
+                    number = Math.Abs(number); 
+                    string thirteenDigitNumber = number.ToString().Substring(0, 13);
+                    product.BarCode = long.Parse(thirteenDigitNumber.ToString());
+                }
+                else
+                {
+                    product.BarCode = long.Parse(txtBarCode.Text);
+                }
+                count++;
+            }
             else
             {
-                MessageBox.Show("Shtrix kod uzunligi 13 ta bo'lishi kerak!");
+                MessageBox.Show("Shtrix kod uzunligi 13 ta bo'lishi yoki maydon bo'sh bo'lishi kerak!");
                 return;
             }
 
@@ -73,7 +106,6 @@ namespace Authorization.Desktop.Windows.Products
             if (count == 3)
             {
                 product.SubCategoryId = this.subCategoryId;
-                product.BarCode = long.Parse(txtBarCode.Text);
                 product.Quantity  = long.Parse(txtQuantity.Text);
                 product.SoldPrice = float.Parse(txtSoldPrice.Text);
                 product.Price = float.Parse(txtPrice.Text);
@@ -115,6 +147,28 @@ namespace Authorization.Desktop.Windows.Products
             if (e.Key == Key.Space)
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtSoldPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                textBox.Text = textBox.Text.TrimStart('0');
+
+                textBox.Text = textBox.Text.Replace(".", "");
+
+                if (!string.IsNullOrEmpty(textBox.Text) && double.TryParse(textBox.Text, out double number))
+                {
+                    textBox.TextChanged -= txtSoldPrice_TextChanged; // Remove event handler temporarily
+
+                    textBox.Text = number.ToString("#,##0");// Apply formatting with dots
+
+                    textBox.CaretIndex = textBox.Text.Length; // Set caret position to end
+
+                    textBox.TextChanged += txtSoldPrice_TextChanged; // Reattach event handler
+                }
+
             }
         }
     }

@@ -389,7 +389,7 @@
                                 <ColumnDefinition Width="40"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            
+
                             <Path x:Name="icon"
                                   Grid.Column="1"
                                   Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}"
@@ -415,23 +415,22 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter Property="Background" Value="#209240" TargetName="AllBack"/>
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}" TargetName="AllBack"/>
 
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="AllBack" Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
+                            <Setter TargetName="AllBack" Property="Background" Value="#d0d0d0"/>
                             <Setter TargetName="AllBack" Property="CornerRadius" Value="15"/>
                             <Setter TargetName="AllBack" Property="Cursor" Value="Hand"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="AllBack" Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
+                            <Setter TargetName="AllBack" Property="Background" Value="#c7c7c7"/>
                             <Setter TargetName="AllBack" Property="CornerRadius" Value="15"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
     </Style>
 
     <Style x:Key="BorderProduct" TargetType="{x:Type Border}">

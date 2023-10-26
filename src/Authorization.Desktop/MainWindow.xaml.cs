@@ -58,6 +58,7 @@ namespace Authorization.Desktop
         {
             ShopPage shop = new ShopPage();
             PageNavigator.Content = shop;
+
         }
 
         private void Window_DpiChanged(object sender, DpiChangedEventArgs e)
@@ -73,6 +74,8 @@ namespace Authorization.Desktop
             btnBackto.Visibility = Visibility.Collapsed;    
             rbProduct.Visibility = Visibility.Collapsed;
             rbSubCategory.Visibility = Visibility.Collapsed;
+            rbStorage.Visibility = Visibility.Collapsed;
+            rbKassa.Visibility = Visibility.Collapsed;
             rbShop.Visibility = Visibility.Visible;
         }
 
@@ -93,6 +96,17 @@ namespace Authorization.Desktop
         {
             ProductPage productPage = new ProductPage();
             PageNavigator.Content = productPage;    
+        }
+
+        private void rbStorage_Click(object sender, RoutedEventArgs e)
+        {
+            StoragePage storagePage = new StoragePage();
+            PageNavigator.Content = storagePage;
+        }
+
+        private void rbKassa_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

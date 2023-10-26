@@ -11,4 +11,6 @@ public interface IProductRepository:IRepository<Product,ProductViewModel>
     public Task<bool> GetByIdProductNameAsync(long subCategoryId,string productName);
     public Task<IList<ProductViewModel>> GetAllByIdAsync(long subCategoryId);
 
+    public Task<IList<ProductAllToStorageViewModel>> GetAllProductToStorage();
+
 }

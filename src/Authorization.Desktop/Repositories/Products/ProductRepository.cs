@@ -91,6 +91,27 @@ public class ProductRepository : BaseRepository, IProductRepository
         }
     }
 
+    public async Task<IList<ProductAllToStorageViewModel>> GetAllProductToStorage()
+    {
+        try
+        {
+            await _connection.OpenAsync();
+            string query = "Select products.bar_code,categories.name as 'Category',subcategories.name as 'Subcategory', products.name,products.quantity,products.sold_price,products.price " +
+                            "from products Join subcategories ON products.subcategory_id=subcategories.id " +
+                            "Join categories ON subcategories.category_id=categories.id order by products.id desc;";
+            var result = (await _connection.QueryAsync<ProductAllToStorageViewModel>(query)).ToList();
+            return result;
+        }
+        catch
+        {
+            return new List<ProductAllToStorageViewModel>();
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
+    }
+
     public Task<ProductViewModel> GetByIdAsync(long id)
     {
         throw new System.NotImplementedException();

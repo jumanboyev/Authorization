@@ -74,7 +74,7 @@ namespace Authorization.Desktop.Components
                 if (radioButton != null)
                 {
                     radioButton.Visibility = Visibility.Collapsed;
-                    RadioButton? button = mainWindow.FindName("rbProduct") as RadioButton;
+                    RadioButton? button = mainWindow.FindName("rbCategory") as RadioButton;
                     if (button != null) button.Visibility = Visibility.Collapsed;
                     RadioButton? buttonCategory = mainWindow.FindName("rbSubCategory") as RadioButton;
                     if (button != null) buttonCategory.Visibility = Visibility.Visible;

@@ -36,14 +36,21 @@ namespace Authorization.Desktop.Components
             this._repository = new ProductRepository();
         }
 
+        public string FPrice(string numbers)
+        {
+            long number = long.Parse(numbers);
+            string FNumber = number.ToString("#,##0");
+            return FNumber;
+        }
+
         public void SetData(ProductViewModel productViewModel)
         {
             viewModel = productViewModel;
             lbBarCode.Text = productViewModel.BarCode.ToString();
             lbName.Text = productViewModel.Name;
-            lbQuantity.Text = productViewModel.Quantity.ToString();
-            lbSold_Price.Text = productViewModel.SoldPrice.ToString();
-            lbPrice.Text = productViewModel.Price.ToString();
+            lbQuantity.Text = FPrice(productViewModel.Quantity.ToString());
+            lbSold_Price.Text = FPrice(productViewModel.SoldPrice.ToString());
+            lbPrice.Text = FPrice(productViewModel.Price.ToString());
         }
         
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)

@@ -64,7 +64,13 @@ namespace Authorization.Desktop.Windows.Products
             }
             else
             {
-                product.SoldPrice = float.Parse(txtSoldPrice.Text);
+                string number = "";
+                foreach (var item in txtSoldPrice.Text.Split(","))
+                {
+                    number += item;
+                }
+
+                product.SoldPrice = long.Parse(number);
             }
 
             if ( txtPrice.Text.Length == 0)
@@ -74,7 +80,13 @@ namespace Authorization.Desktop.Windows.Products
             }
             else
             {
-                product.Price = float.Parse(txtPrice.Text);
+                string number = "";
+                foreach (var item in txtPrice.Text.Split(","))
+                {
+                    number += item;
+                }
+
+                product.Price = long.Parse(number);
             }
 
 
@@ -175,13 +187,13 @@ namespace Authorization.Desktop.Windows.Products
 
                 if (!string.IsNullOrEmpty(textBox.Text) && double.TryParse(textBox.Text, out double number))
                 {
-                    textBox.TextChanged -= txtSoldPrice_TextChanged; // Remove event handler temporarily
+                    textBox.TextChanged -= txtSoldPrice_TextChanged; 
 
-                    textBox.Text = number.ToString("#,##0").Replace(","," ");// Apply formatting with dots
+                    textBox.Text = number.ToString("#,##0");
 
-                    textBox.CaretIndex = textBox.Text.Length; // Set caret position to end
+                    textBox.CaretIndex = textBox.Text.Length; 
 
-                    textBox.TextChanged += txtSoldPrice_TextChanged; // Reattach event handler
+                    textBox.TextChanged += txtSoldPrice_TextChanged; 
                 }
 
             }

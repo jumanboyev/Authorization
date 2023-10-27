@@ -36,7 +36,7 @@ namespace Authorization.Desktop.Windows.Products
         public string FPrice(string numbers)
         {
             long number = long.Parse(numbers);
-            string FNumber = number.ToString("#,##0").Replace(",", " ");
+            string FNumber = number.ToString("#,##0");
             return FNumber;
         }
         public void SetData(Product product)
@@ -45,9 +45,11 @@ namespace Authorization.Desktop.Windows.Products
             this.SubCategoryId = product.SubCategoryId;
             txtName.Text = product.Name;
             txtBarCode.Text = product.BarCode.ToString();
-            txtQuantity.Text = product.Quantity.ToString();
-            txtSoldPrice.Text = product.SoldPrice.ToString();
-            txtPrice.Text = product.Price.ToString();
+
+
+            txtQuantity.Text = FPrice(product.Quantity.ToString());
+            txtSoldPrice.Text = FPrice(product.SoldPrice.ToString());
+            txtPrice.Text = FPrice(product.Price.ToString());
         }
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
@@ -59,10 +61,57 @@ namespace Authorization.Desktop.Windows.Products
             int count = 0;
             Product product = new Product();
 
-            if (txtName.Text.Length == 0 && txtBarCode.Text.Length == 0 && txtSoldPrice.Text.Length == 0 && txtPrice.Text.Length == 0)
+            if (txtName.Text.Length == 0)
             {
-                MessageBox.Show("Maydonlar bo'sh bo'lishi mumkin emas!");
+                MessageBox.Show("Name bo'sh bo'lishi mumkin emas!");
                 return;
+            }
+            if (txtQuantity.Text.Length == 0)
+            {
+                MessageBox.Show("Quantity bo'sh bo'lishi mumkin emas!");
+                return;
+            }
+            else
+            {
+                string number = "";
+                foreach (var item in txtQuantity.Text.Split(","))
+                {
+                    number += item;
+                }
+
+                product.Quantity = long.Parse(number);
+            }
+
+            if (txtSoldPrice.Text.Length == 0)
+            {
+                MessageBox.Show("SoldPrice maydon bo'sh bo'lishi mumkin emas!");
+                return;
+            }
+            else
+            {
+                string number = "";
+                foreach (var item in txtSoldPrice.Text.Split(","))
+                {
+                    number += item;
+                }
+
+                product.SoldPrice = long.Parse(number);
+            }
+
+            if (txtPrice.Text.Length == 0)
+            {
+                MessageBox.Show("Price maydonlar bo'sh bo'lishi mumkin emas!");
+                return;
+            }
+            else
+            {
+                string number = "";
+                foreach (var item in txtPrice.Text.Split(","))
+                {
+                    number += item;
+                }
+
+                product.Price = long.Parse(number);
             }
 
             if (txtName.Text.Length >= 3)
@@ -81,23 +130,12 @@ namespace Authorization.Desktop.Windows.Products
             {
                 MessageBox.Show("Shtrix kod uzunligi 13 ta bo'lishi kerak!");
                 return;
-            }
-            var isProductName = await _repository.GetByIdProductNameAsync(SubCategoryId, product.Name);
-
-            if(isProductName)
-            {
-                MessageBox.Show("Bunday Product allaqachon bor");
-                return;
-            }
-            else count++;
+            }            
             
-            if (count == 3)
+            if (count == 2)
             {
                 product.SubCategoryId = SubCategoryId;
                 product.BarCode = long.Parse(txtBarCode.Text);
-                product.Quantity = long.Parse(txtQuantity.Text);
-                product.SoldPrice = float.Parse(txtSoldPrice.Text);
-                product.Price = float.Parse(txtPrice.Text);
                 product.Updated_at = TimeHelper.GetDateTime();
 
                 var products = await _repository.UpdateAsync(Id,product);
@@ -127,6 +165,33 @@ namespace Authorization.Desktop.Windows.Products
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtSoldPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                textBox.Text = textBox.Text.TrimStart('0');
+
+                textBox.Text = textBox.Text.Replace(".", "");
+
+                if (!string.IsNullOrEmpty(textBox.Text) && double.TryParse(textBox.Text, out double number))
+                {
+                    textBox.TextChanged -= txtSoldPrice_TextChanged;
+
+                    textBox.Text = number.ToString("#,##0");
+
+                    textBox.CaretIndex = textBox.Text.Length;
+
+                    textBox.TextChanged += txtSoldPrice_TextChanged;
+                }
+
+            }
+        }
+
+        private void txtName_TextInput(object sender, TextCompositionEventArgs e)
+        {
+
         }
     }
 }

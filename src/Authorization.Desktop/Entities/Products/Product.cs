@@ -6,7 +6,7 @@ public class Product : Auditable
     public string Name { get; set; }=string.Empty;
     public long BarCode { get; set; }
     public long Quantity { get; set; }
-    public float SoldPrice { get; set; }
-    public float Price { get; set; }
+    public long SoldPrice { get; set; }
+    public long Price { get; set; }
 
 }

@@ -50,6 +50,7 @@
                                      BorderThickness="0"
                                      VerticalAlignment="Center"
                                      MaxLength="50"
+                                     IsReadOnly="True"
                                      Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
                     <Label Content="Bar Code"
@@ -74,6 +75,7 @@
                                  BorderThickness="0"
                                  VerticalAlignment="Center"
                                  MaxLength="13"
+                                 IsReadOnly="True"
                                  Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
                     <Label Content="Quantity"
@@ -92,12 +94,13 @@
                             Margin="0 0 0 0">
                         <TextBox x:Name="txtQuantity" FontSize="16"
                                  Margin="10 5"
+                                 TextChanged="txtSoldPrice_TextChanged"                                 
                                  PreviewTextInput="txtBarCode_PreviewTextInput"
                                  PreviewKeyDown="txtBarCode_PreviewKeyDown"
                                  Background="{DynamicResource SecondaryBackground}"
                                  BorderThickness="0"
                                  VerticalAlignment="Center"
-                                 MaxLength="12"
+                                 MaxLength="15"
                                  Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
                     <Label Content="Sold Price"
@@ -116,12 +119,13 @@
                             Margin="0 0 0 0">
                         <TextBox x:Name="txtSoldPrice" FontSize="16"
                                  Margin="10 5"
+                                 TextChanged="txtSoldPrice_TextChanged"
                                  PreviewTextInput="txtBarCode_PreviewTextInput"
                                  PreviewKeyDown="txtBarCode_PreviewKeyDown"
                                  Background="{DynamicResource SecondaryBackground}"
                                  BorderThickness="0"
                                  VerticalAlignment="Center"
-                                 MaxLength="12"
+                                 MaxLength="15"
                                  Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
                     <Label Content="Price"
@@ -140,12 +144,13 @@
                             Margin="0 0 0 0">
                         <TextBox x:Name="txtPrice" FontSize="16"
                                  Margin="10 5"
+                                 TextChanged="txtSoldPrice_TextChanged"                                 
                                  PreviewTextInput="txtBarCode_PreviewTextInput"
                                  PreviewKeyDown="txtBarCode_PreviewKeyDown"
                                  Background="{DynamicResource SecondaryBackground}"
                                  BorderThickness="0"
                                  VerticalAlignment="Center"
-                                 MaxLength="12"
+                                 MaxLength="15"
                                  Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
                     <Button x:Name="btnUpdate"

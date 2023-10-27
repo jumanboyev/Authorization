@@ -27,7 +27,7 @@
                             Grid.Column="0"                             
                             Background="{DynamicResource PrimaryBackground}"
                             CornerRadius="8 0 0 8">
-                        <Grid x:Name="BurgerM" Width="70">
+                        <Grid x:Name="BurgerM" Width="240">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="70"/>
                                 <RowDefinition Height="*"/>
@@ -36,26 +36,26 @@
                         <Grid Grid.Row="0">
                             <ToggleButton Cursor="Hand" x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="15,15,0,15" Height="40" Width="40">
                                 <ToggleButton.Triggers>
-                                    <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                    <EventTrigger RoutedEvent="ToggleButton.Checked">
                                         <BeginStoryboard>
                                             <Storyboard x:Name="HideStackPanel">
                                                     <DoubleAnimation Storyboard.TargetName="BurgerM" 
                                                                      Storyboard.TargetProperty="Width" 
                                                                      BeginTime="0:0:0" 
                                                                      From="240" To="70" 
-                                                                     Duration="0:0:1">
+                                                                     Duration="0:0:0.3">
                                                 </DoubleAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </EventTrigger>
-                                    <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                    <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                                         <BeginStoryboard>
                                             <Storyboard x:Name="ShowStackPanel">
                                                     <DoubleAnimation Storyboard.TargetName="BurgerM" 
                                                                      Storyboard.TargetProperty="Width" 
                                                                      BeginTime="0:0:0" 
-                                                                     From="60" To="240" 
-                                                                     Duration="0:0:1">
+                                                                     From="70" To="240" 
+                                                                     Duration="0:0:0.3">
                                                 </DoubleAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>

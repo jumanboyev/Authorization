@@ -14,14 +14,35 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="11*"/>
         </Grid.RowDefinitions>
-        <Border>
-            <Label Content="Storage "
-                   VerticalAlignment="Center"
-                   FontSize="20"
-                   Margin="10 0 0 0"
-                   Foreground="{DynamicResource FifthTextColor}"
-                   FontFamily="send-series"/>
-        </Border>
+        <StackPanel Orientation="Horizontal">
+            <Border>
+                <Label Content="Storage "
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Margin="10 0 10 0"
+                       Foreground="{DynamicResource FifthTextColor}"
+                       FontFamily="send-series"/>
+            </Border>
+            <Border>
+                <Button x:Name="btnAddQuantity"
+                        Click="btnAddQuantity_Click"
+                        Style="{DynamicResource StorageAddQuantityButton}"
+                        Content="Add Quantity"
+                        Height="40"
+                        Foreground="{DynamicResource FifthTextColor}">
+                    
+                </Button>
+            </Border>
+            <Border>
+                <Button x:Name="btnproductUpdate"
+                        Click="btnproductUpdate_Click"
+                        Style="{DynamicResource StorageAddQuantityButton}"
+                        Content="Product Update"
+                        Height="40"
+                        Foreground="{DynamicResource FifthTextColor}">
+                </Button>
+            </Border>
+        </StackPanel>
         <ScrollViewer Grid.Row="1">
             <DataGrid x:Name="grStorage"
                       IsReadOnly="True"

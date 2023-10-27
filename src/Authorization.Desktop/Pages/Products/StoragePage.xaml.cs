@@ -41,5 +41,14 @@ namespace Authorization.Desktop.Pages.Products
             grStorage.ItemsSource = result;
         }
 
+        private void btnproductUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddQuantity_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -64,7 +64,7 @@ namespace Authorization.Desktop.Pages.Products
             {
                 Name = "btnCreate",
                 Visibility = Visibility.Visible,
-                Height = 235,
+                Height = 215,
                 Width = 305,
                 Style = (Style)FindResource("ProductCreateButton"),
                 Margin = new Thickness(10, 10, 0, 0)

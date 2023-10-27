@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Authorization.Desktop.Components"
              mc:Ignorable="d" >
-    <Grid Height="235" Width="305"
+    <Grid Height="215" Width="305"
           Margin="10 10 0 0">
     
         <Border x:Name="B"

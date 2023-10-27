@@ -33,7 +33,12 @@ namespace Authorization.Desktop.Windows.Products
             this._repository = new ProductRepository();
             
         }
-
+        public string FPrice(string numbers)
+        {
+            long number = long.Parse(numbers);
+            string FNumber = number.ToString("#,##0").Replace(",", " ");
+            return FNumber;
+        }
         public void SetData(Product product)
         {
             this.Id = product.Id;

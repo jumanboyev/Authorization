@@ -41,7 +41,11 @@ namespace Authorization.Desktop.Components
             viewModel = productViewModel;
             lbBarCode.Text = productViewModel.BarCode.ToString();
             lbName.Text = productViewModel.Name;
+            lbQuantity.Text = productViewModel.Quantity.ToString();
+            lbSold_Price.Text = productViewModel.SoldPrice.ToString();
+            lbPrice.Text = productViewModel.Price.ToString();
         }
+        
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             Product product = new Product();
@@ -57,7 +61,6 @@ namespace Authorization.Desktop.Components
             productUpdateWindow.SetData(product);
             productUpdateWindow.ShowDialog();
             await Refresh();
-
         }
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)

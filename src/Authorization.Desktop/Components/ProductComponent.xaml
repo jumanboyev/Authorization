@@ -64,7 +64,7 @@
                             VerticalAlignment="Center"                
                             HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lbQuantity"
-                               Text="234234"
+                               Text="1"
                                Margin="0 5 5 5"
                                FontSize="16"
                                TextWrapping="Wrap"
@@ -83,7 +83,7 @@
                             VerticalAlignment="Center"                
                             HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lbSold_Price"
-                               Text="2452454325"
+                               Text="2"
                                Margin="0 5 5 5"
                                FontSize="16"
                                TextWrapping="Wrap"
@@ -101,7 +101,7 @@
                                 VerticalAlignment="Center"                
                                 HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lbPrice"
-                               Text="234324324"
+                               Text="3"
                                Margin="0 5 5 5"
                                FontSize="16"
                                TextWrapping="Wrap"

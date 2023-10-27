@@ -46,17 +46,35 @@ namespace Authorization.Desktop.Windows.Products
                 MessageBox.Show("Quantity bo'sh bo'lishi mumkin emas!");
                 return;
             }
+            else
+            {
+                string number="";
+                foreach (var item in txtQuantity.Text.Split(","))
+                {
+                    number += item;
+                }
+
+                product.Quantity = long.Parse(number);
+            }
 
             if (txtSoldPrice.Text.Length == 0 )
             {
                 MessageBox.Show("SoldPrice maydon bo'sh bo'lishi mumkin emas!");
                 return;
             }
+            else
+            {
+                product.SoldPrice = float.Parse(txtSoldPrice.Text);
+            }
 
             if ( txtPrice.Text.Length == 0)
             {
                 MessageBox.Show("Price maydonlar bo'sh bo'lishi mumkin emas!");
                 return;
+            }
+            else
+            {
+                product.Price = float.Parse(txtPrice.Text);
             }
 
 
@@ -106,9 +124,6 @@ namespace Authorization.Desktop.Windows.Products
             if (count == 3)
             {
                 product.SubCategoryId = this.subCategoryId;
-                product.Quantity  = long.Parse(txtQuantity.Text);
-                product.SoldPrice = float.Parse(txtSoldPrice.Text);
-                product.Price = float.Parse(txtPrice.Text);
                 product.Created_at = TimeHelper.GetDateTime();
                 product.Updated_at = TimeHelper.GetDateTime();  
 
@@ -162,7 +177,7 @@ namespace Authorization.Desktop.Windows.Products
                 {
                     textBox.TextChanged -= txtSoldPrice_TextChanged; // Remove event handler temporarily
 
-                    textBox.Text = number.ToString("#,##0");// Apply formatting with dots
+                    textBox.Text = number.ToString("#,##0").Replace(","," ");// Apply formatting with dots
 
                     textBox.CaretIndex = textBox.Text.Length; // Set caret position to end
 

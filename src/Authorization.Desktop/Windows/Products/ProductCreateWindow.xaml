@@ -92,12 +92,13 @@
                             Margin="0 0 0 0">
                         <TextBox x:Name="txtQuantity" FontSize="16"
                                  Margin="10 5"
+                                 TextChanged="txtSoldPrice_TextChanged"                                 
                                  PreviewTextInput="txtBarCode_PreviewTextInput"
                                  PreviewKeyDown="txtBarCode_PreviewKeyDown"
                                  Background="{DynamicResource SecondaryBackground}"
                                  BorderThickness="0"
                                  VerticalAlignment="Center"
-                                 MaxLength="12"
+                                 MaxLength="15"
                                  Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
                     <Label Content="Sold Price"
@@ -122,7 +123,7 @@
                                  Background="{DynamicResource SecondaryBackground}"
                                  BorderThickness="0"
                                  VerticalAlignment="Center"
-                                 MaxLength="12"
+                                 MaxLength="15"
                                  Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
                     <Label Content="Price"
@@ -141,12 +142,13 @@
                             Margin="0 0 0 0">
                         <TextBox x:Name="txtPrice" FontSize="16"
                                  Margin="10 5"
+                                 TextChanged="txtSoldPrice_TextChanged"                                 
                                  PreviewTextInput="txtBarCode_PreviewTextInput"
                                  PreviewKeyDown="txtBarCode_PreviewKeyDown"
                                  Background="{DynamicResource SecondaryBackground}"
                                  BorderThickness="0"
                                  VerticalAlignment="Center"
-                                 MaxLength="12"
+                                 MaxLength="15"
                                  Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
                     <Button x:Name="btnCreate"

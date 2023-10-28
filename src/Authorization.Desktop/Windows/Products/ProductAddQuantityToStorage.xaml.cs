@@ -1,6 +1,4 @@
-﻿using Authorization.Desktop.Repositories.Products;
-using Authorization.Desktop.ViewModels.Products;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,25 +15,16 @@ using System.Windows.Shapes;
 namespace Authorization.Desktop.Windows.Products
 {
     /// <summary>
-    /// Interaction logic for StorageUpdateWindow.xaml
+    /// Логика взаимодействия для ProductAddQuantityToStorage.xaml
     /// </summary>
-    public partial class StorageUpdateWindow : Window
+    public partial class ProductAddQuantityToStorage : Window
     {
-        private ProductRepository _repository;
-        private ProductAllToStorageViewModel viewModel;
-
-        public StorageUpdateWindow()
+        public ProductAddQuantityToStorage()
         {
             InitializeComponent();
-            this._repository = new ProductRepository();
-            this.viewModel = new ProductAllToStorageViewModel();
-        }
-        public void SetData()
-        {
-
         }
 
-        private void txtSoldPrice_TextChanged(object sender, TextChangedEventArgs e)
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -45,9 +34,9 @@ namespace Authorization.Desktop.Windows.Products
             this.Close();
         }
 
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        private void txtSoldPrice_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+                
         }
 
         private void txtBarCode_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -55,7 +44,8 @@ namespace Authorization.Desktop.Windows.Products
 
         }
 
-        private void txtBarCode_PreviewKeyDown(object sender, KeyEventArgs e)
+
+        private void txtQuantity_PreviewKeyDown(object sender, KeyEventArgs e)
         {
 
         }

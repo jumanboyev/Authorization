@@ -79,7 +79,7 @@
                                                  Style="{DynamicResource MenuButton}"
                                                  Click="rbShop_Click"
                                      />
-                                    <RadioButton x:Name="rbCategory"
+                                    <!--<RadioButton x:Name="rbCategory"
                                                      Tag="{DynamicResource category }"
                                                      Content="Categories"
                                                      HorizontalAlignment="Left"
@@ -94,15 +94,15 @@
                                                      Margin="5 0 0 0"
                                                      Style="{DynamicResource MenuButton}"
                                                      Click="rbSubCategory_Click"
-                                                     Visibility="Collapsed"/>
+                                                     Visibility="Collapsed"/>-->
                                     <RadioButton x:Name="rbProduct"
                                                  Tag="{DynamicResource product}"
                                                  Content="Products"
                                                  HorizontalAlignment="Left"
                                                  Margin="5 0 0 0"
-                                                 Style="{DynamicResource MenuButton}"
-                                                 Click="rbProduct_Click"
-                                                 Visibility="Collapsed"/>
+                                                 Style="{DynamicResource productMenuButton}"
+                                                 Visibility="Collapsed"
+                                                 />
                                     <RadioButton x:Name="rbStorage"
                                                  Tag="{DynamicResource storage}"
                                                  Content="Storages"

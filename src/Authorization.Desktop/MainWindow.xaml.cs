@@ -70,10 +70,8 @@ namespace Authorization.Desktop
         {
             ShopPage shop = new ShopPage();
             PageNavigator.Content = shop;
-            rbCategory.Visibility = Visibility.Collapsed;
             btnBackto.Visibility = Visibility.Collapsed;    
             rbProduct.Visibility = Visibility.Collapsed;
-            rbSubCategory.Visibility = Visibility.Collapsed;
             rbStorage.Visibility = Visibility.Collapsed;
             rbKassa.Visibility = Visibility.Collapsed;
             rbShop.Visibility = Visibility.Visible;

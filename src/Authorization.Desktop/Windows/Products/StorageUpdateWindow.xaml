@@ -5,8 +5,200 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Authorization.Desktop.Windows.Products"
         mc:Ignorable="d"
-        Title="StorageUpdateWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="StorageUpdateWindow" Height="540" Width="450"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0"
+                CornerRadius="10 10 0 0"
+                Background="{DynamicResource SixthBackground}">
+            <Button x:Name="btnCreateWindowClose"
+                    Click="btnCreateWindowClose_Click"
+                    Style="{DynamicResource CloseButtun}"                    
+                    HorizontalAlignment="Right"/>
+        </Border>
+        <Border Grid.Row="4"
+                CornerRadius="0 0 10 10"
+                Background="{DynamicResource SixthBackground}">
+            <StackPanel>
+                <StackPanel Margin="10 0 10 0">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="120 0 0 0">
+                        <TextBlock Text="Category :"
+                            Margin="10 5 5 5"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource FifthTextColor}"
+                            VerticalAlignment="Center"                
+                            HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="lbCategory"
+                               Text="Category"
+                               Margin="0 5 5 5"
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource FifthTextColor}"
+                               VerticalAlignment="Center"                
+                               HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="120 0 0 0">
+                        <TextBlock Text="Subcategory:"
+                            Margin="10 5 5 5"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource FifthTextColor}"
+                            VerticalAlignment="Center"                
+                            HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="lbSubcategory"
+                               Text="subCategory"
+                               Margin="0 5 5 5"
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource FifthTextColor}"
+                               VerticalAlignment="Center"                
+                               HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="120 0 0 20">
+                        <TextBlock Text="Bar Code :"
+                            Margin="10 5 5 5"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource FifthTextColor}"
+                            VerticalAlignment="Center"                
+                            HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="lbBarCode"
+                               Text="123123123123"
+                               Margin="0 5 5 5"
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource FifthTextColor}"
+                               VerticalAlignment="Center"                
+                               HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Label Content="Name"
+                           FontSize="16"
+                           Margin="35 5 0 0"
+                           Foreground="{DynamicResource FifthTextColor}"
+                           />
+                    <Border Height="40"
+                                    Width="350"
+                                    HorizontalAlignment="Center"
+                                    Background="{DynamicResource SecondaryBackground}"
+                                    CornerRadius="10"
+                                    BorderThickness="1"
+                                    BorderBrush="{DynamicResource SecondaryBackground}"
+                                    VerticalAlignment="Center"
+                                    Margin="0 0 0 0">
+                        <TextBox x:Name="txtName" FontSize="16"
+                                     Margin="10 5"
+                                     Background="{DynamicResource SecondaryBackground}"
+                                     BorderThickness="0"
+                                     VerticalAlignment="Center"
+                                     MaxLength="50"
+                                     IsReadOnly="True"
+                                     Foreground="{DynamicResource FifthTextColor}"/>
+                    </Border>
+                    
+                    <Label Content="Quantity"
+                           FontSize="16"
+                           Margin="35 5 0 0"
+                           Foreground="{DynamicResource FifthTextColor}"
+                           />
+                    <Border Height="40"
+                            Width="350"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource SecondaryBackground}"
+                            CornerRadius="10"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource SecondaryBackground}"
+                            VerticalAlignment="Center"
+                            Margin="0 0 0 0">
+                        <TextBox x:Name="txtQuantity" FontSize="16"
+                                 Margin="10 5"
+                                 TextChanged="txtSoldPrice_TextChanged"                                 
+                                 PreviewTextInput="txtBarCode_PreviewTextInput"
+                                 PreviewKeyDown="txtBarCode_PreviewKeyDown"
+                                 Background="{DynamicResource SecondaryBackground}"
+                                 BorderThickness="0"
+                                 VerticalAlignment="Center"
+                                 MaxLength="15"
+                                 Foreground="{DynamicResource FifthTextColor}"/>
+                    </Border>
+                    <Label Content="Sold Price"
+                           FontSize="16"
+                           Margin="35 5 0 0"
+                           Foreground="{DynamicResource FifthTextColor}"
+                           />
+                    <Border Height="40"
+                            Width="350"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource SecondaryBackground}"
+                            CornerRadius="10"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource SecondaryBackground}"
+                            VerticalAlignment="Center"
+                            Margin="0 0 0 0">
+                        <TextBox x:Name="txtSoldPrice" FontSize="16"
+                                 Margin="10 5"
+                                 TextChanged="txtSoldPrice_TextChanged"
+                                 PreviewTextInput="txtBarCode_PreviewTextInput"
+                                 PreviewKeyDown="txtBarCode_PreviewKeyDown"
+                                 Background="{DynamicResource SecondaryBackground}"
+                                 BorderThickness="0"
+                                 VerticalAlignment="Center"
+                                 MaxLength="15"
+                                 Foreground="{DynamicResource FifthTextColor}"/>
+                    </Border>
+                    <Label Content="Price"
+                           FontSize="16"
+                           Margin="35 5 0 0"
+                           Foreground="{DynamicResource FifthTextColor}"
+                           />
+                    <Border Height="40"
+                            Width="350"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource SecondaryBackground}"
+                            CornerRadius="10"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource SecondaryBackground}"
+                            VerticalAlignment="Center"
+                            Margin="0 0 0 0">
+                        <TextBox x:Name="txtPrice" FontSize="16"
+                                 Margin="10 5"
+                                 TextChanged="txtSoldPrice_TextChanged"                                 
+                                 PreviewTextInput="txtBarCode_PreviewTextInput"
+                                 PreviewKeyDown="txtBarCode_PreviewKeyDown"
+                                 Background="{DynamicResource SecondaryBackground}"
+                                 BorderThickness="0"
+                                 VerticalAlignment="Center"
+                                 MaxLength="15"
+                                 Foreground="{DynamicResource FifthTextColor}"/>
+                    </Border>
+                    <Button x:Name="btnUpdate"
+                            Click="btnUpdate_Click"
+                            Style="{DynamicResource CreateButton }"
+                            Content="Save"
+                            Width="350"
+                            Height="40"
+                            Margin="0 20 0 10">
+                    </Button>
+
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
     </Grid>
+
 </Window>

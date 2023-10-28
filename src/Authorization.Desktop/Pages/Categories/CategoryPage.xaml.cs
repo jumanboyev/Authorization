@@ -1,5 +1,6 @@
 ﻿using Authorization.Desktop.Components;
 using Authorization.Desktop.Interfaces;
+using Authorization.Desktop.Pages.SubCategories;
 using Authorization.Desktop.Repositories.Categories;
 using Authorization.Desktop.Windows.Categories;
 using Authorization.Desktop.Windows.Shops;
@@ -27,7 +28,6 @@ namespace Authorization.Desktop.Pages.Categories
     public partial class CategoryPage : Page
     {
         public long shopId { get; set; }
-
         private string shopName { get; set; } = string.Empty;
 
         private CategoryRepository _repository;
@@ -42,7 +42,7 @@ namespace Authorization.Desktop.Pages.Categories
         {
             this.shopId = shopId;
             this.shopName = ShopName;
-            lbCategory.Content = ShopName;
+            lbShop.Content = ShopName;
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -80,5 +80,40 @@ namespace Authorization.Desktop.Pages.Categories
             }   
         }
 
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (Window.GetWindow(this) is MainWindow mainWindow)
+            {
+                RadioButton? radioButton = mainWindow.FindName("rbShop") as RadioButton;
+                if (radioButton != null)
+                {
+                    radioButton.Visibility = Visibility.Collapsed;
+                    RadioButton? button = mainWindow.FindName("rbProduct") as RadioButton;
+                    if (button != null) button.Visibility = Visibility.Visible;
+                    
+                    RadioButton? buttonBack = mainWindow.FindName("btnBackto") as RadioButton;
+                    if (buttonBack != null)
+                        buttonBack.Visibility = Visibility.Visible;
+
+                }
+            }
+            // Get the parent Frame control
+            Frame frame = FindParent<Frame>(this);
+
+            // Navigate to the new page
+            ShopPage shopPage = new ShopPage();
+            frame.Navigate(shopPage);
+        }
+        private T? FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+            if (parent == null)
+                return null;
+
+            T? typedParent = parent as T;
+            return typedParent ?? FindParent<T>(parent);
+        }
     }
 }

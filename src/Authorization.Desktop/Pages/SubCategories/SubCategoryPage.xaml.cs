@@ -2,6 +2,7 @@
 using Authorization.Desktop.Entities.Categories;
 using Authorization.Desktop.Entities.Shops;
 using Authorization.Desktop.Interfaces;
+using Authorization.Desktop.Pages.Categories;
 using Authorization.Desktop.Repositories.SubCategories;
 using Authorization.Desktop.Windows.Categories;
 using Authorization.Desktop.Windows.SubCategories;
@@ -77,6 +78,41 @@ namespace Authorization.Desktop.Pages.SubCategories
                 WpSubCategory.Children.Add(component);
                component.Refresh = RefreshAsync;
             }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (Window.GetWindow(this) is MainWindow mainWindow)
+            {
+                RadioButton? radioButton = mainWindow.FindName("rbShop") as RadioButton;
+                if (radioButton != null)
+                {
+                    radioButton.Visibility = Visibility.Collapsed;
+                    RadioButton? button = mainWindow.FindName("rbProduct") as RadioButton;
+                    if (button != null) button.Visibility = Visibility.Visible;
+                    RadioButton? buttonBack = mainWindow.FindName("btnBackto") as RadioButton;
+
+                    if (buttonBack != null)
+                        buttonBack.Visibility = Visibility.Visible;
+
+                }
+            }
+            // Get the parent Frame control
+            Frame frame = FindParent<Frame>(this);
+
+            // Navigate to the new page
+            CategoryPage categoryPage = new CategoryPage();
+            frame.Navigate(categoryPage);
+        }
+        private T? FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+            if (parent == null)
+                return null;
+
+            T? typedParent = parent as T;
+            return typedParent ?? FindParent<T>(parent);
         }
     }
 }

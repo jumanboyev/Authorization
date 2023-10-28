@@ -12,30 +12,79 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="13*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <Label Content="SubCategory"
-                   FontSize="20"
-                   Foreground="{DynamicResource FifthTextColor}"
-                   HorizontalAlignment="Center"
-                   Margin="0 5 0 0"
-                   FontFamily="send-series"/>
-            <StackPanel Grid.Row="0"
-                        Orientation="Horizontal"
-                       HorizontalAlignment="Center">
-                <Label Content="Category :"
-                       FontSize="20"
+        <StackPanel Grid.Row="0" Orientation="Horizontal"
+                    VerticalAlignment="Center">
+            <Border>
+                <Button x:Name="btnBack"
+                        Click="btnBack_Click"
+                        Style="{DynamicResource BackButton}"
+                        Tag="{DynamicResource backPage}"
+                        Content="Categories"
+                        Height="30"
+                        Width="180"
+                        Margin="5 0 0 0"
+                        Foreground="{DynamicResource FifthTextColor}">
+                </Button>
+            </Border>
+
+            <Border Background="#F69079" CornerRadius="15"
+                    Height="30" Margin="5 0 0 0">
+                <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                    <Label Content="Shop:"
+                       FontSize="18"
                        Foreground="{DynamicResource FifthTextColor}"
                        FontFamily="send-series"/>
-                <Label x:Name="lbCategory"
-                        Content="name"
-                       FontSize="20"
-                       Foreground="{DynamicResource FifthTextColor}"                       
-                       FontFamily="send-series"/>
-            </StackPanel>
+                    <Label x:Name="lbShop"
+                           Content="Name"
+                           Margin="-5 0 0 0"
+                           FontSize="18"
+                           Foreground="{DynamicResource FifthTextColor}"                       
+                           FontFamily="send-series"/>
+                </StackPanel>
+            </Border>
+            <Border Background="#F69079" CornerRadius="15"
+                    Height="30" Margin="5 0 0 0">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <Label Content="Category:"
+                           FontSize="18"
+                           Foreground="{DynamicResource FifthTextColor}"
+                           FontFamily="send-series"/>
+                    <Label x:Name="lbCategory"
+                           Content="Name"
+                           Margin="-5 0 0 0"
+                           FontSize="18"
+                           Foreground="{DynamicResource FifthTextColor}"                       
+                           FontFamily="send-series"/>
+                </StackPanel>
+            </Border>
+
         </StackPanel>
-        <Border  Grid.Row="1">
+        <Border Grid.Row="1" 
+                Background="{DynamicResource PrimaryBorderColor}" 
+                CornerRadius="15"
+                Height="30" 
+                Width="200"
+                Margin="5 -10 0 0"
+                HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Label Content="Subategories"
+                   FontSize="18"
+                   Foreground="#fff"
+                   FontFamily="send-series"/>
+
+            </StackPanel>
+        </Border>
+
+        <Border  Grid.Row="2">
             <ScrollViewer>
                 <WrapPanel x:Name="WpSubCategory">
 

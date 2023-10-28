@@ -1,4 +1,5 @@
 ﻿using Authorization.Desktop.Repositories.Products;
+using Authorization.Desktop.Windows.Products;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -43,12 +44,15 @@ namespace Authorization.Desktop.Pages.Products
 
         private void btnproductUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            StorageUpdateWindow storageUpdateWindow = new StorageUpdateWindow();
+            storageUpdateWindow.ShowDialog();
         }
 
         private void btnAddQuantity_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductAddQuantityToStorage productAddQuantityToStorage = new ProductAddQuantityToStorage();
+            productAddQuantityToStorage.ShowDialog();
         }
+
     }
 }

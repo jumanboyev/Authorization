@@ -52,7 +52,7 @@
                                      MaxLength="50"
                                      Foreground="{DynamicResource FifthTextColor}"/>
                         </Border>
-                    <Label Content="Bar Code"
+                    <Label Content="Barcode"
                            FontSize="16"
                            Margin="35 5 0 0"
                            Foreground="{DynamicResource FifthTextColor}"

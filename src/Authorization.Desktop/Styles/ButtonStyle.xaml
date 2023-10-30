@@ -431,7 +431,69 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style x:Key="CashboxProductButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Margin" Value="0 0"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="sgnBr" CornerRadius="8"
+                            Width="120"
+                            BorderThickness="2" 
+                            BorderBrush="#219241"
+                            HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" 
+                                    HorizontalAlignment="Center">
+                            <Label FontSize="24"
+                                   Margin="0 0 0 0"
+                                   x:Name="sgn_label"
+                                   FontFamily="send-series"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Content="{TemplateBinding Content}"
+                               />
+                        </StackPanel>
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#219241"/>
+                                <GradientStop Color="#209240"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="white"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="green"/>
+                            <!--<Setter TargetName="loader" Property="Foreground" Value="#24A649"/>-->
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#209240"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="white"/>
+                            <!--<Setter TargetName="loader" Property="Foreground" Value="white"/>-->
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#209240"/>
+                            <!--<Setter TargetName="sgnBr"  Property="Visibility" Value="Collapsed"/>-->
+                            <Setter TargetName="sgn_label" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="sgnBr" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="LightGreen"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="productMenuButton"
            TargetType="{x:Type RadioButton}">
         <Setter Property="Height" Value="45"/>

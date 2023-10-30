@@ -3,6 +3,7 @@ using Authorization.Desktop.Entities.Shops;
 using Authorization.Desktop.Repositories.Cashboxes;
 using Authorization.Desktop.ViewModels.Cashboxes;
 using Authorization.Desktop.Windows.Cashboxes;
+using Authorization.Desktop.Windows.CashboxProducts;
 using Authorization.Desktop.Windows.Shops;
 using System;
 using System.Collections.Generic;
@@ -56,8 +57,8 @@ namespace Authorization.Desktop.Components
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Rostdan ham bu do'konni o'chirmoqchimisiz ?", "O'chirish"
-                , MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            if (MessageBox.Show("Rostdan ham bu Cashboxni o'chirmoqchimisiz ?", "O'chirish"
+                ,MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
             {
                 var shopDelete = await _repository.DeleteAsync(viewModel.Id);
                 await Refresh();
@@ -67,7 +68,8 @@ namespace Authorization.Desktop.Components
 
         private void B_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            CashboxProductWindow productWindow = new CashboxProductWindow();
+            productWindow.ShowDialog();
         }
     }
 }

@@ -3,6 +3,7 @@
 public class ProductAllToStorageViewModel
 {
     public long Id { get; set; }
+    public long SubCategoryId { get; set; }
     public string Category { get; set; }= string.Empty;
     public string Subcategory { get; set; }= string.Empty;
     public string Name { get; set; } = string.Empty;

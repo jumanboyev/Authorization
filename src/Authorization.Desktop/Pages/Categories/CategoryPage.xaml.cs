@@ -74,7 +74,7 @@ namespace Authorization.Desktop.Pages.Categories
             foreach (var category in categories)
             {
                 CategoryComponent component = new CategoryComponent();
-                component.SetData(category);
+                component.SetData(category,shopName);
                 WpCategory.Children.Add(component);
                 component.Refresh = RefreshAsync;
             }   
@@ -83,37 +83,11 @@ namespace Authorization.Desktop.Pages.Categories
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (Window.GetWindow(this) is MainWindow mainWindow)
+            if (NavigationService.CanGoBack)
             {
-                RadioButton? radioButton = mainWindow.FindName("rbShop") as RadioButton;
-                if (radioButton != null)
-                {
-                    radioButton.Visibility = Visibility.Collapsed;
-                    RadioButton? button = mainWindow.FindName("rbProduct") as RadioButton;
-                    if (button != null) button.Visibility = Visibility.Visible;
-                    
-                    RadioButton? buttonBack = mainWindow.FindName("btnBackto") as RadioButton;
-                    if (buttonBack != null)
-                        buttonBack.Visibility = Visibility.Visible;
-
-                }
+                NavigationService.GoBack();
             }
-            // Get the parent Frame control
-            Frame frame = FindParent<Frame>(this);
-
-            // Navigate to the new page
-            ShopPage shopPage = new ShopPage();
-            frame.Navigate(shopPage);
         }
-        private T? FindParent<T>(DependencyObject child) where T : DependencyObject
-        {
-            DependencyObject parent = VisualTreeHelper.GetParent(child);
-
-            if (parent == null)
-                return null;
-
-            T? typedParent = parent as T;
-            return typedParent ?? FindParent<T>(parent);
-        }
+        
     }
 }

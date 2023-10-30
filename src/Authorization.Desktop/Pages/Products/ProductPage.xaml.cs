@@ -41,11 +41,13 @@ namespace Authorization.Desktop.Pages.Products
             this._repository = new ProductRepository();
             this.viewModel = new ProductViewModel();
         }
-        public void SetData(long subCategoryId,string subCategoryName)
+        public void SetData(long subCategoryId,string subCategoryName,string categoryName,string shopName)
         {
             this.SubCategoryId = subCategoryId;
             this.SubCategoryName = subCategoryName;
             lbSubcategory.Content = subCategoryName;
+            lbCategory.Content = categoryName;
+            lbShop.Content = shopName;
         }
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
@@ -86,35 +88,11 @@ namespace Authorization.Desktop.Pages.Products
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (Window.GetWindow(this) is MainWindow mainWindow)
+            if (NavigationService.CanGoBack)
             {
-                RadioButton? radioButton = mainWindow.FindName("rbShop") as RadioButton;
-                if (radioButton != null)
-                {
-                    radioButton.Visibility = Visibility.Collapsed;
-                    RadioButton? buttonBack = mainWindow.FindName("btnBackto") as RadioButton;
-
-                    if (buttonBack != null)
-                        buttonBack.Visibility = Visibility.Visible;
-
-                }
+                NavigationService.GoBack();
             }
-            // Get the parent Frame control
-            Frame frame = FindParent<Frame>(this);
-
-            // Navigate to the new page
-            SubCategoryPage subCategoryPage = new SubCategoryPage();
-            frame.Navigate(subCategoryPage);
         }
-        private T? FindParent<T>(DependencyObject child) where T : DependencyObject
-        {
-            DependencyObject parent = VisualTreeHelper.GetParent(child);
-
-            if (parent == null)
-                return null;
-
-            T? typedParent = parent as T;
-            return typedParent ?? FindParent<T>(parent);
-        }
+      
     }
 }

@@ -102,9 +102,5 @@ namespace Authorization.Desktop.Windows.Shops
             }            
         }
 
-        private void btnCreate_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

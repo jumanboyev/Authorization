@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Authorization.Desktop.Windows.Products"
         mc:Ignorable="d"
-        Title="ProductAddQuantityToStorage" Height="350" Width="350"
+        Title="ProductAddQuantityToStorage" Height="390" Width="350"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
@@ -18,11 +18,14 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="0"
                 CornerRadius="10 10 0 0"
-                Background="#DEDEDE">
+                Background="#DEDEDE"
+                Cursor="ScrollAll"
+                MouseDown="Border_MouseDown">
             <Button x:Name="btnCreateWindowClose"
                     Click="btnCreateWindowClose_Click"
                     Style="{DynamicResource CloseButtun}"                    
-                    HorizontalAlignment="Right"/>
+                    HorizontalAlignment="Right"
+                    Cursor="Hand"/>
         </Border>
         <Border Grid.Row="4"
                 CornerRadius="0 0 10 10"
@@ -67,7 +70,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 Margin="40 0 0 0">
-                        <TextBlock Text="Barcode        :"
+                        <TextBlock Text="Barcode         :"
                             Margin="10 5 5 5"
                             FontSize="18"
                             FontWeight="SemiBold"
@@ -101,8 +104,26 @@
                                    VerticalAlignment="Center"                
                                    HorizontalAlignment="Center"/>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="40 0 0 0">
+                        <TextBlock Text="Quantity        :"
+                                     Margin="10 5 5 5"
+                                     FontSize="18"
+                                     FontWeight="SemiBold"
+                                     Foreground="{DynamicResource FifthTextColor}"
+                                     VerticalAlignment="Center"                
+                                     HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="lbOldQuantity"
+                                    Text="1234"
+                                    Margin="0 5 5 5"
+                                    FontSize="18"
+                                    TextWrapping="Wrap"
+                                    Foreground="{DynamicResource FifthTextColor}"
+                                    VerticalAlignment="Center"                
+                                    HorizontalAlignment="Center"/>
+                    </StackPanel>
 
-                    <Label Content="Quantity"
+                    <Label Content="Add Quantity"
                            FontSize="16"
                            Margin="45 15 0 0"
                            FontWeight="SemiBold"                           
@@ -119,7 +140,7 @@
                             Margin="10 0 0 0">
                         <TextBox x:Name="txtQuantity" FontSize="16"
                                  Margin="10 5"
-                                 TextChanged="txtSoldPrice_TextChanged"                                 
+                                 TextChanged="txtQuantity_TextChanged"                                 
                                  PreviewTextInput="txtBarCode_PreviewTextInput"
                                  PreviewKeyDown="txtQuantity_PreviewKeyDown"
                                  Background="{DynamicResource SecondaryBackground}"

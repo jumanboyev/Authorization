@@ -12,5 +12,6 @@ public interface IProductRepository:IRepository<Product,ProductViewModel>
     public Task<IList<ProductViewModel>> GetAllByIdAsync(long subCategoryId);
 
     public Task<IList<ProductAllToStorageViewModel>> GetAllProductToStorage();
+    public Task<int> AddQuantity(long productId,long newQuantity);
 
 }

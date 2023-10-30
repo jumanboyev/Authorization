@@ -1,5 +1,6 @@
 ﻿using Authorization.Desktop.Entities.Shops;
 using Authorization.Desktop.Pages;
+using Authorization.Desktop.Pages.Cashboxes;
 using Authorization.Desktop.Pages.Categories;
 using Authorization.Desktop.Pages.Products;
 using Authorization.Desktop.Pages.SubCategories;
@@ -103,7 +104,13 @@ namespace Authorization.Desktop
 
         private void rbKassa_Click(object sender, RoutedEventArgs e)
         {
+            CashboxPage kassa = new CashboxPage();
+            PageNavigator.Content = kassa;
+        }
 
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

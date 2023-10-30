@@ -12,7 +12,6 @@
         Background="Transparent" 
         AllowsTransparency="True"
         ResizeMode="NoResize" 
-        FontFamily="Poppins"
         >
     <Grid>
         <Grid>
@@ -79,22 +78,6 @@
                                                  Style="{DynamicResource MenuButton}"
                                                  Click="rbShop_Click"
                                      />
-                                    <!--<RadioButton x:Name="rbCategory"
-                                                     Tag="{DynamicResource category }"
-                                                     Content="Categories"
-                                                     HorizontalAlignment="Left"
-                                                     Margin="5 0 0 0"
-                                                     Style="{DynamicResource MenuButton}"
-                                                     Click="rbCategory_Click"
-                                                     Visibility="Collapsed"/>
-                                    <RadioButton x:Name="rbSubCategory"
-                                                     Tag="{DynamicResource subCategories}"
-                                                     Content="SubCategories"
-                                                     HorizontalAlignment="Left"
-                                                     Margin="5 0 0 0"
-                                                     Style="{DynamicResource MenuButton}"
-                                                     Click="rbSubCategory_Click"
-                                                     Visibility="Collapsed"/>-->
                                     <RadioButton x:Name="rbProduct"
                                                  Tag="{DynamicResource product}"
                                                  Content="Products"

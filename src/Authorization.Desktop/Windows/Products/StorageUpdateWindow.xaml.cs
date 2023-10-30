@@ -26,10 +26,6 @@ namespace Authorization.Desktop.Windows.Products
     {
         public long Id { get; set; }
         public long SubCategoryId { get; set; }
-        public Func<Task> refresh { get; set; }
-
-        public delegate void RefreshStorage();
-        public RefreshStorage? Refresh { get; set; }
 
         private ProductRepository _repository;
         private ProductAllToStorageViewModel viewModel;
@@ -162,7 +158,6 @@ namespace Authorization.Desktop.Windows.Products
                 {
                     MessageBox.Show("Muvaffaqiyatli tahrirlandi");
                     this.Close();
-                    Refresh?.Invoke();
                 }
                 else
                 {
@@ -185,6 +180,11 @@ namespace Authorization.Desktop.Windows.Products
             {
                 e.Handled = true;
             }
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

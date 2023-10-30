@@ -22,9 +22,8 @@
                 Click="btnBack_Click"
                 Style="{DynamicResource BackButton}"
                 Tag="{DynamicResource backPage}"
-                Content="Categories"
+                Content="Subcategories"
                 Height="30"
-                Width="180"
                 Margin="5 0 0 0"
                 Foreground="{DynamicResource FifthTextColor}">
                 </Button>

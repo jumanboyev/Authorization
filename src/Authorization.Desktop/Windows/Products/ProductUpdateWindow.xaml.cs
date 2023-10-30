@@ -193,5 +193,10 @@ namespace Authorization.Desktop.Windows.Products
         {
 
         }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

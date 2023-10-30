@@ -24,7 +24,6 @@ namespace Authorization.Desktop.Pages.Products
     /// </summary>
     public partial class StoragePage : Page
     {
-        public Func<Task> Refresh;
 
         private ProductRepository _repository;
 
@@ -39,7 +38,7 @@ namespace Authorization.Desktop.Pages.Products
             RefreshAsync();
         }
 
-        public async void RefreshAsync()
+        public async Task RefreshAsync()
         {
             var result = await _repository.GetAllProductToStorage();
             grStorage.ItemsSource = result;
@@ -55,19 +54,32 @@ namespace Authorization.Desktop.Pages.Products
                     StorageUpdateWindow storageUpdateWindow = new StorageUpdateWindow();
                     storageUpdateWindow.SetData(selectedItem!);
                     storageUpdateWindow.ShowDialog();
-                    storageUpdateWindow.Refresh = RefreshAsync;
+                    await RefreshAsync();
                 }
             }
             else
             {
-                MessageBox.Show("Yangilash uchun faqat bitta mahsulotni tanlang");
+                MessageBox.Show("Yangilash uchun 1 ta mahsulotni tanlang");
             }
         }
 
-        private void btnAddQuantity_Click(object sender, RoutedEventArgs e)
+        private async void btnAddQuantity_Click(object sender, RoutedEventArgs e)
         {
-            ProductAddQuantityToStorage productAddQuantityToStorage = new ProductAddQuantityToStorage();
-            productAddQuantityToStorage.ShowDialog();
+            if (grStorage.SelectedItems.Count == 1)
+            {
+                if (grStorage.SelectedItem != null)
+                {
+                    var selectedItem = grStorage.SelectedItem as ProductAllToStorageViewModel;
+                    ProductAddQuantityToStorage window = new ProductAddQuantityToStorage();
+                    window.SetData(selectedItem!);
+                    window.ShowDialog();
+                    await RefreshAsync();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Qo'shish uchun 1 ta mahsulotni tanlang");
+            }
         }
 
     }

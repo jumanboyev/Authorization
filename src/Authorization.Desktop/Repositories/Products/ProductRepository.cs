@@ -9,11 +9,31 @@ using Dapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Dapper.SqlMapper;
 
 namespace Authorization.Desktop.Repositories.Products;
 
 public class ProductRepository : BaseRepository, IProductRepository
 {
+    public async Task<int> AddQuantity(long productId, long newQuantity)
+    {
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"Update products set quantity = @Quantity  where id = {productId};";
+            var result = await _connection.ExecuteAsync(query,new { quantity =newQuantity});
+            return result;
+        }
+        catch
+        {
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
+    }
+
     public async Task<int> CreateAsync(Product entity)
     {
         try

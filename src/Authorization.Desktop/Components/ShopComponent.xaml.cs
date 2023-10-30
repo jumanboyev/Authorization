@@ -34,6 +34,7 @@ namespace Authorization.Desktop.Components
         {
             InitializeComponent();
             this._repository = new ShopRepository();
+            this.viewodel = new ShopViewModel();
         }
 
         public void SetData(ShopViewModel viewModel)
@@ -82,8 +83,6 @@ namespace Authorization.Desktop.Components
 
                     if (buttonBack != null)                    
                         buttonBack.Visibility = Visibility.Visible;
-
-
 
                 }
             }

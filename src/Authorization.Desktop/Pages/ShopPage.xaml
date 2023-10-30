@@ -12,16 +12,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="11*"/>
+            <RowDefinition Height="13*"/>
         </Grid.RowDefinitions>
-        <Border>
-            <Label Content="Shops "
-                   VerticalAlignment="Center"
-                   FontSize="20"
-                   Margin="10 0 0 0"
-                   Foreground="{DynamicResource FifthTextColor}"
-                   FontFamily="send-series"/>
+        <Border Grid.Row="0" 
+                Background="{DynamicResource PrimaryBorderColor}" 
+                CornerRadius="15"
+                Height="30" 
+                Width="200"
+                Margin="5 -10 0 0"
+                HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Label Content="Shops"
+                       FontSize="18"
+                       Foreground="#fff"
+                       FontFamily="send-series"/>
+
+            </StackPanel>
         </Border>
+
         <ScrollViewer Grid.Row="1">
             <WrapPanel x:Name="MainWP">
 

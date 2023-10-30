@@ -27,6 +27,8 @@ namespace Authorization.Desktop.Components
     /// </summary>
     public partial class SubCategoryComponents : UserControl
     {
+        private string CategoryName { get; set; } = string.Empty;
+        private string ShopName { get; set; } = string.Empty;
         public Func<Task> Refresh { get; set; }
 
         private SubCategoryRepository _repository;
@@ -39,10 +41,13 @@ namespace Authorization.Desktop.Components
             this.viewModel = new SubCategoryViewModel();
         }
 
-        public void SetData(SubCategoryViewModel subCategoryViewModel)
+        public void SetData(SubCategoryViewModel subCategoryViewModel,string categoryName,string shopName)
         {
             viewModel = subCategoryViewModel;
             lbName.Text = subCategoryViewModel.Name;
+            this.CategoryName = categoryName;
+            this.ShopName = shopName;
+
         }
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -96,7 +101,7 @@ namespace Authorization.Desktop.Components
 
             // Navigate to the new page
             ProductPage productPage = new ProductPage();
-            productPage.SetData(viewModel.Id, viewModel.Name);
+            productPage.SetData(viewModel.Id, viewModel.Name,CategoryName,ShopName);
             frame.Navigate(productPage);
         }
         private T? FindParent<T>(DependencyObject child) where T : DependencyObject

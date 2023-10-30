@@ -1,4 +1,5 @@
 ﻿using Authorization.Desktop.Repositories.Products;
+using Authorization.Desktop.ViewModels.Products;
 using Authorization.Desktop.Windows.Products;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace Authorization.Desktop.Pages.Products
     /// </summary>
     public partial class StoragePage : Page
     {
+        public Func<Task> Refresh;
+
         private ProductRepository _repository;
 
         public StoragePage()
@@ -42,10 +45,23 @@ namespace Authorization.Desktop.Pages.Products
             grStorage.ItemsSource = result;
         }
 
-        private void btnproductUpdate_Click(object sender, RoutedEventArgs e)
+        private async void btnproductUpdate_Click(object sender, RoutedEventArgs e)
         {
-            StorageUpdateWindow storageUpdateWindow = new StorageUpdateWindow();
-            storageUpdateWindow.ShowDialog();
+            if(grStorage.SelectedItems.Count == 1)
+            {
+                if(grStorage.SelectedItem != null)
+                {
+                    var selectedItem = grStorage.SelectedItem as ProductAllToStorageViewModel;
+                    StorageUpdateWindow storageUpdateWindow = new StorageUpdateWindow();
+                    storageUpdateWindow.SetData(selectedItem!);
+                    storageUpdateWindow.ShowDialog();
+                    storageUpdateWindow.Refresh = RefreshAsync;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Yangilash uchun faqat bitta mahsulotni tanlang");
+            }
         }
 
         private void btnAddQuantity_Click(object sender, RoutedEventArgs e)

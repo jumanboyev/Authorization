@@ -39,8 +39,9 @@ namespace Authorization.Desktop.Components
             this.viewmodel = new CategoryViewModel();
             this._repository = new CategoryRepository();
         }
-        public void SetData(CategoryViewModel categoryViewModel)
+        public void SetData(CategoryViewModel categoryViewModel,string ShopName)
         {
+            this.shopName = ShopName;
             viewmodel = categoryViewModel;
             lbName.Text = categoryViewModel.Name;
         }
@@ -90,7 +91,7 @@ namespace Authorization.Desktop.Components
 
             // Navigate to the new page
             SubCategoryPage subCategoriesPage = new SubCategoryPage();
-            subCategoriesPage.SetData(viewmodel.Id, viewmodel.Name);
+            subCategoriesPage.SetData(viewmodel.Id, viewmodel.Name,shopName);
             frame.Navigate(subCategoriesPage);
         }
         private T? FindParent<T>(DependencyObject child) where T : DependencyObject

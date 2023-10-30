@@ -30,6 +30,7 @@ namespace Authorization.Desktop.Pages.SubCategories
     {
         public long CategoryId { get; set; }
         private string CategoryName { get; set; } = string.Empty;
+        private string ShopName { get; set; } = string.Empty;
 
         private SubCategoryRepository _repository;
 
@@ -38,11 +39,13 @@ namespace Authorization.Desktop.Pages.SubCategories
             InitializeComponent();
             this._repository = new SubCategoryRepository();
         }
-        public void SetData(long categoryId, string CategoryName)
+        public void SetData(long categoryId, string categoryName,string shopName)
         {
             this.CategoryId = categoryId;
-            this.CategoryName = CategoryName;
+            this.CategoryName = categoryName;
+            this.ShopName = shopName;
             lbCategory.Content = CategoryName;
+            lbShop.Content = ShopName;
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -74,7 +77,7 @@ namespace Authorization.Desktop.Pages.SubCategories
             foreach (var subBategory in subSategories)
             {
                 SubCategoryComponents component = new SubCategoryComponents();
-                component.SetData(subBategory);
+                component.SetData(subBategory,CategoryName,ShopName);
                 WpSubCategory.Children.Add(component);
                component.Refresh = RefreshAsync;
             }
@@ -82,37 +85,11 @@ namespace Authorization.Desktop.Pages.SubCategories
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (Window.GetWindow(this) is MainWindow mainWindow)
+            if (NavigationService.CanGoBack)
             {
-                RadioButton? radioButton = mainWindow.FindName("rbShop") as RadioButton;
-                if (radioButton != null)
-                {
-                    radioButton.Visibility = Visibility.Collapsed;
-                    RadioButton? button = mainWindow.FindName("rbProduct") as RadioButton;
-                    if (button != null) button.Visibility = Visibility.Visible;
-                    RadioButton? buttonBack = mainWindow.FindName("btnBackto") as RadioButton;
-
-                    if (buttonBack != null)
-                        buttonBack.Visibility = Visibility.Visible;
-
-                }
+                NavigationService.GoBack();
             }
-            // Get the parent Frame control
-            Frame frame = FindParent<Frame>(this);
-
-            // Navigate to the new page
-            CategoryPage categoryPage = new CategoryPage();
-            frame.Navigate(categoryPage);
         }
-        private T? FindParent<T>(DependencyObject child) where T : DependencyObject
-        {
-            DependencyObject parent = VisualTreeHelper.GetParent(child);
-
-            if (parent == null)
-                return null;
-
-            T? typedParent = parent as T;
-            return typedParent ?? FindParent<T>(parent);
-        }
+       
     }
 }

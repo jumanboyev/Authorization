@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Authorization.Desktop.Components.TabComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Authorization.Desktop.Components"
+             mc:Ignorable="d" >
+    <Grid Margin="10 15 0 0"
+          >
+        <Border x:Name="B"
+                MouseDown="B_MouseDown"
+                Style="{DynamicResource BorderTabProduct}"
+                Cursor="Hand"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                CornerRadius="5"
+                Height="40"
+                BorderBrush="#FB9C89">
+            <TextBlock x:Name="lbName"
+                       Text="Name"
+                       Margin="10 5 10 5"
+                       FontSize="16"
+                       TextWrapping="Wrap"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource FifthTextColor}"
+                       VerticalAlignment="Center"                
+                       HorizontalAlignment="Center"/>
+
+        </Border>
+    </Grid>
+
+</UserControl>

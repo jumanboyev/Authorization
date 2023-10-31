@@ -69,6 +69,7 @@ namespace Authorization.Desktop.Components
         private void B_MouseDown(object sender, MouseButtonEventArgs e)
         {
             CashboxProductWindow productWindow = new CashboxProductWindow();
+            productWindow.SetData(viewModel);
             productWindow.ShowDialog();
         }
     }

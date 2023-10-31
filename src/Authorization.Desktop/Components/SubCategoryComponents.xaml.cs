@@ -51,7 +51,7 @@ namespace Authorization.Desktop.Components
         }
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Rostdan ham bu categoriyani o'chirmoqchimisiz ?", "O'chirish"
+                if (MessageBox.Show("Rostdan ham bu categoriyani o'chirmoqchimisiz ?", "O'chirish"
                 , MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
             {
                 var shopDelete = await _repository.DeleteAsync(viewModel.Id);

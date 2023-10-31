@@ -330,6 +330,43 @@
         </Setter>
     </Style>
 
+    <Style x:Key="TabCreateButton" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="10 0"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="B" CornerRadius="5" 
+                            Background="#fff"
+                            Padding="10"
+                            BorderThickness="2"
+                            BorderBrush="{DynamicResource PrimaryBorderColor}"
+                            >
+                        <Path x:Name="Image"
+                              Height="20" Width="20"
+                              Data="{DynamicResource pilus}"
+                              Fill="{DynamicResource PrimaryBorderColor}"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Stretch="Uniform"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#DEDEDE"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="B" Property="Background" Value="#fff"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#C5C5C5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="iToggleButtonStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
@@ -552,7 +589,6 @@
         </Setter>
     </Style>
 
-
     <Style x:Key="BackButton"
            TargetType="{x:Type Button}">
 
@@ -617,7 +653,6 @@
         </Setter>
     </Style>
 
-
     <Style x:Key="BorderProduct" TargetType="{x:Type Border}">
         <Setter Property="Background" Value="Transparent"/>
         <Style.Triggers>
@@ -627,9 +662,23 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
-    <Style
-        x:Key="ProductUpdateButton" TargetType="{x:Type Button}">
+    
+    <Style x:Key="BorderTabProduct" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="#fff"/>
+        <Setter Property="BorderBrush" Value="#FB9C89"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="Background" Value="#FB7A60"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="Background" Value="#FB9C89"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ProductUpdateButton" TargetType="{x:Type Button}">
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Height" Value="30"/>
@@ -646,7 +695,7 @@
                         <Path x:Name="Image"
                               Data="{DynamicResource update}"
                               Fill="#fff"
-                              Margin="3"
+                              Margin="5"
                               VerticalAlignment="Center"
                               HorizontalAlignment="Center"
                               Stretch="UniformToFill"/>
@@ -666,7 +715,44 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style x:Key="ProductDeleteButton" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="B" CornerRadius="5" 
+                            Background="Red"
+                            Margin="3"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource SecondaryBorderColor}">
+                        <Path x:Name="Image"
+                              Data="{DynamicResource delete}"
+                              Fill="#fff"
+                              Margin="5"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Stretch="UniformToFill"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#E10000"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="B" Property="Background" Value="red"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#D30000"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style x:Key="ProductDelButton" TargetType="{x:Type Button}">
         <Setter Property="Margin" Value="5 0"/>
         <Setter Property="Padding" Value="10"/>
@@ -741,6 +827,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="StorageAddQuantityButton" TargetType="{x:Type Button}">
         <Setter Property="Margin" Value="5 0"/>
         <Setter Property="Padding" Value="10"/>
@@ -779,44 +866,5 @@
         </Setter>
     </Style>
 
-
-
-    <Style x:Key="ProductDeleteButton" TargetType="{x:Type Button}">
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Width" Value="30"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="B" CornerRadius="5" 
-                            Background="Red"
-                            Margin="3"
-                            BorderThickness="1"
-                            BorderBrush="{DynamicResource SecondaryBorderColor}">
-                        <Path x:Name="Image"
-                              Data="{DynamicResource delete}"
-                              Fill="#fff"
-                              Margin="3"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              Stretch="UniformToFill"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#E10000"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="B" Property="Background" Value="red"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#D30000"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
 </ResourceDictionary>

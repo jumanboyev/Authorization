@@ -40,7 +40,7 @@ namespace Authorization.Desktop.Components
             lbName.Text = tabViewModel.Name;            
         }
 
-        private void UserControl_Click(object sender, RoutedEventArgs e)
+        private  void UserControl_Click(object sender, RoutedEventArgs e)
         {
 
         }   

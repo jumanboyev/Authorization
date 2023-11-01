@@ -124,9 +124,49 @@
                         </StackPanel>
                     </Border>
                 </Grid>
+                
                 <Border Grid.Column="1" Background="#F2F9F1"
                         CornerRadius="0 0 8 0">
-                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Margin="10 10 0 0">
+                            <ScrollViewer>
+                                <WrapPanel x:Name="wpPayment">
+                                       
+                                </WrapPanel>
+                            </ScrollViewer>
+                        </Border>
+                        <Border Grid.Row="1"
+                                Margin="10 5 10 10">
+                            <Border Margin="0 0 20 10"
+                                    Background="#Fb7154"
+                                    CornerRadius="10">
+                                <Label Content="1 230 000"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="24"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource FifthTextColor}"/>
+                            </Border>
+                        </Border>
+                        <Border Grid.Row="2"
+                                Margin="10 0 10 10">
+                            <Border Margin="0 0 20 10"
+                                    Background="{DynamicResource PrimaryBackground}"
+                                    CornerRadius="10">
+                                <Label Content="Tasdiqlash"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="24"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource FifthTextColor}"/>
+                            </Border>
+                        </Border>
+                    </Grid>
                 </Border>
             </Grid>
         </Grid>

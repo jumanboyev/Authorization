@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Authorization.Desktop.Components.PaymentComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Authorization.Desktop.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="65" d:DesignWidth="220">
+    <Border Background="#FB9C89"
+            CornerRadius="10"
+            >
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0">
+                <Label Content="Coca-cola"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource FifthTextColor}"/>
+            </Border>
+            <StackPanel Grid.Row="1" Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                    <Label Content="123 000"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           Margin="0 0 0 0"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource FifthTextColor}"/>
+                    <Label Content="*"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           Margin="-5 0 -5 0"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource FifthTextColor}"/>
+                    <Label Content="10"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource FifthTextColor}"/>
+                    <Label Content="="
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="-5 0 -5 0"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource FifthTextColor}"/>
+                    <Label Content="1 230 00"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource FifthTextColor}"/>
+
+            </StackPanel>
+        </Grid>
+    </Border>
+
+
+</UserControl>

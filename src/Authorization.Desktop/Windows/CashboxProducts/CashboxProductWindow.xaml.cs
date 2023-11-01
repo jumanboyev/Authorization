@@ -2,6 +2,7 @@
 using Authorization.Desktop.Entities.Categories;
 using Authorization.Desktop.Entities.Shops;
 using Authorization.Desktop.Entities.Tabs;
+using Authorization.Desktop.Repositories.SaleProducts;
 using Authorization.Desktop.Repositories.Tabs;
 using Authorization.Desktop.ViewModels.Cashboxes;
 using Authorization.Desktop.Windows.Categories;
@@ -32,6 +33,7 @@ namespace Authorization.Desktop.Windows.CashboxProducts
         public long tabId {  get; set; }
 
         private TabRepository _repository;
+        private SaleProductRepository _saleProductRepository;
         private CashboxViewModel viewModel;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -43,6 +45,7 @@ namespace Authorization.Desktop.Windows.CashboxProducts
         {
             InitializeComponent();
             this._repository = new TabRepository();
+            this._saleProductRepository = new SaleProductRepository();
             this.viewModel = new CashboxViewModel();
         }
 
@@ -87,20 +90,20 @@ namespace Authorization.Desktop.Windows.CashboxProducts
         }
         private async void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-            CreateCategoryWindow window = new CreateCategoryWindow();
-            // window.getShopId(shopId);
+            SaleProductWindow window = new SaleProductWindow();
+            window.getTabId(tabId);
             window.ShowDialog();
-            await RefreshAsync();
+            await AddProductRefreshAsync();
         }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await RefreshAsync();
-            await RefreshAsyncAddProduct();
         }
 
-        private void YourUserControl_UserControlClicked(long id)
+        private async void YourUserControl_UserControlClicked(long id)
         {
             this.tabId = id;
+            await AddProductRefreshAsync();
 
         }
         public async Task RefreshAsync()
@@ -131,7 +134,7 @@ namespace Authorization.Desktop.Windows.CashboxProducts
             }
         }
         
-        public async Task RefreshAsyncAddProduct()
+        public async Task AddProductRefreshAsync()
         {
             wpkassa.Children.Clear();
 
@@ -147,6 +150,21 @@ namespace Authorization.Desktop.Windows.CashboxProducts
 
             wpkassa.Children.Add(btn);
             btn.Click += btnAddProduct_Click;
+
+            var saleProducts = await _saleProductRepository.GetAllSaleProductsAsync(tabId);
+            foreach ( var saleProduct in saleProducts)
+            {
+                SaleProductComponent saleProductComponent = new SaleProductComponent();
+                saleProductComponent.SetData(saleProduct);
+                wpkassa.Children.Add(saleProductComponent);
+
+            }
+        }
+
+        public void PaymentRefreshAsync()
+        {
+            PaymentComponent paymentComponent = new PaymentComponent();
+
         }
         public void ClearUserControlBorder()
         {

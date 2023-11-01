@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Authorization.Desktop.Components.SaleProductComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Authorization.Desktop.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Height="120" Width="200"
+          Margin="10 10 0 0">
+
+        <Border x:Name="B"
+                MouseDown="B_MouseDown"
+                Style="{DynamicResource BorderProduct}"
+                Cursor="Hand"
+                CornerRadius="10"
+                BorderThickness="2"
+                BorderBrush="{DynamicResource PrimaryBorderColor}">
+                <TextBlock x:Name="lbName"
+                       Text="Name"
+                       FontSize="16"
+                       TextWrapping="Wrap"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource FifthTextColor}"
+                       VerticalAlignment="Center"                
+                       HorizontalAlignment="Center"/>
+        </Border>
+    </Grid>
+
+</UserControl>

@@ -9,4 +9,6 @@ public interface ISaleProductRepository
 {
     public Task<IList<SaleProductViewModel>> GetAllSaleProductsAsync(long tabId);
     public Task<int> CreateSaleProductAsync(SaleProduct saleProduct);
+    public Task<bool> GetByIdSaleProductNameAsync(long tabId, string productName);
+
 }

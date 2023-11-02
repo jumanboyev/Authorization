@@ -1,9 +1,11 @@
 ﻿using Authorization.Desktop.Components;
 using Authorization.Desktop.Entities.Categories;
+using Authorization.Desktop.Entities.Products;
 using Authorization.Desktop.Entities.Shops;
 using Authorization.Desktop.Entities.Tabs;
 using Authorization.Desktop.Repositories.SaleProducts;
 using Authorization.Desktop.Repositories.Tabs;
+using Authorization.Desktop.Security;
 using Authorization.Desktop.ViewModels.Cashboxes;
 using Authorization.Desktop.Windows.Categories;
 using Authorization.Desktop.Windows.Products;
@@ -155,7 +157,8 @@ namespace Authorization.Desktop.Windows.CashboxProducts
             foreach ( var saleProduct in saleProducts)
             {
                 SaleProductComponent saleProductComponent = new SaleProductComponent();
-                saleProductComponent.SetData(saleProduct);
+                saleProductComponent.SetData(saleProduct,viewModel.Id);
+                saleProductComponent.RefreshThirdWrapPanel = PaymentRefreshAsync;
                 wpkassa.Children.Add(saleProductComponent);
 
             }
@@ -163,8 +166,30 @@ namespace Authorization.Desktop.Windows.CashboxProducts
 
         public void PaymentRefreshAsync()
         {
-            PaymentComponent paymentComponent = new PaymentComponent();
+            wpPayment.Children.Clear();
+            var identity = IdentitySingleton.GetInstance();
+            var ProductList = identity.AddToCartList;
+            float AllTotalSum = 0;
 
+            foreach (var product in ProductList)
+            {
+                //product.
+                if (product.ShopId == this.cashboxId)
+                {
+                    PaymentComponent paymentComponent = new PaymentComponent();
+                    paymentComponent.SetData(product);
+                    wpPayment.Children.Add(paymentComponent);
+                    AllTotalSum += product.SoldPrice * product.Quantity;
+                }
+            }
+            string FormattedAllTotalPrice = FPrice((AllTotalSum).ToString());
+            lbTotalPrice.Content = FormattedAllTotalPrice;
+        }
+        public string FPrice(string Price)
+        {
+            float number = float.Parse(Price);
+            string formattedNumber = number.ToString("#,##0").Replace(",", " ");
+            return formattedNumber;
         }
         public void ClearUserControlBorder()
         {

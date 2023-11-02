@@ -1,4 +1,5 @@
-﻿using Authorization.Desktop.ViewModels.SaleProducts;
+﻿using Authorization.Desktop.Security;
+using Authorization.Desktop.ViewModels.SaleProducts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,10 @@ namespace Authorization.Desktop.Components
     /// </summary>
     public partial class SaleProductComponent : UserControl
     {
+        public delegate void RefreshPaymendWindowThirdWrapPanel();
+        public RefreshPaymendWindowThirdWrapPanel? RefreshThirdWrapPanel { get; set; }
+        public SaleProductViewModel? saleProductViewModel;
+        public long CashboxId { get; set; }
         private SaleProductViewModel viewModel;
 
         public SaleProductComponent()
@@ -29,14 +34,56 @@ namespace Authorization.Desktop.Components
             this.viewModel = new SaleProductViewModel();
         }
 
-        public void SetData(SaleProductViewModel saleProductViewModel)
+        public void SetData(SaleProductViewModel saleProductViewModel, long cashboxId)
         {
-            this.viewModel = saleProductViewModel;
+            this.CashboxId = cashboxId;
+            saleProductViewModel.ShopId = cashboxId;
+            this.saleProductViewModel = saleProductViewModel;
             lbName.Text = saleProductViewModel.Name;
         }
         private void B_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            var identity = IdentitySingleton.GetInstance();
+            var sellProductList = identity.AddToCartList;
+            int checkName = 0;
+            int countIteration = 0;
+            bool isOldProduct = false;
 
+            for (int i = 0; i < sellProductList.Count; i++)
+            {
+                countIteration++;
+                if (sellProductList[i].Name == saleProductViewModel?.Name && sellProductList[i].ShopId == CashboxId)
+                {
+                    checkName = i;
+                    isOldProduct = true;
+                    break;
+                }
+            }
+            if (isOldProduct == true && saleProductViewModel?.SoldPrice != null)
+            {
+                if (sellProductList[checkName].productquantity > 0) /*> sellProductList[checkName].quantity)*/
+                {
+                    sellProductList[checkName].Quantity++;
+                    sellProductList[checkName].productquantity--;
+                    RefreshThirdWrapPanel?.Invoke();
+                }
+                else MessageBox.Show("Maxsulot qolmadi !");
+            }
+            else
+            {
+                if (isOldProduct == false && saleProductViewModel != null)
+                {
+                    if (saleProductViewModel.Quantity > 0)
+                    {
+                        sellProductList.Add(saleProductViewModel);
+                        sellProductList[countIteration].Quantity++;
+                        sellProductList[countIteration].productquantity--;
+                        RefreshThirdWrapPanel?.Invoke();
+                    }
+                    else MessageBox.Show("Maxsulot qolmadi !");
+
+                }
+            }
         }
     }
 }

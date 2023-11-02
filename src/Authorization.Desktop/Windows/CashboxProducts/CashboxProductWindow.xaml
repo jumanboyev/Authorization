@@ -145,7 +145,7 @@
                             <Border Margin="0 0 20 10"
                                     Background="#Fb7154"
                                     CornerRadius="10">
-                                <Label Content="1 230 000"
+                                <Label x:Name="lbTotalPrice" Content="1 230 000"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontSize="24"

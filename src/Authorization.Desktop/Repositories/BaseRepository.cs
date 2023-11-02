@@ -16,11 +16,10 @@ namespace Authorization.Desktop.Repositories
         protected readonly MySqlConnection _connection;
         public BaseRepository()
         {
-            IdentitySingleton identity = IdentitySingleton.GetInstance();
-
+            this._connection = new MySqlConnection();
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
             this._connection = new MySqlConnection(
-                identity.connectionString
+                "server=localhost;user=root;database=mysql;"
                 );
         }        
     }

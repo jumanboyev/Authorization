@@ -26,12 +26,10 @@ namespace Authorization.Desktop.Components
         public RefreshPaymendWindowThirdWrapPanel? RefreshThirdWrapPanel { get; set; }
         public SaleProductViewModel? saleProductViewModel;
         public long CashboxId { get; set; }
-        private SaleProductViewModel viewModel;
 
         public SaleProductComponent()
         {
             InitializeComponent();
-            this.viewModel = new SaleProductViewModel();
         }
 
         public void SetData(SaleProductViewModel saleProductViewModel, long cashboxId)

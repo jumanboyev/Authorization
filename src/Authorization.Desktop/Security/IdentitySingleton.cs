@@ -7,7 +7,6 @@ namespace Authorization.Desktop.Security;
 public class IdentitySingleton
 {
     public static IdentitySingleton _identitySingleton;
-    public string connectionString = "server=localhost;database=shop-db;user=root;password = nt20030726";
     public IList<SaleProductViewModel> AddToCartList { get; set; } = new List<SaleProductViewModel>();
     private IdentitySingleton()
     {

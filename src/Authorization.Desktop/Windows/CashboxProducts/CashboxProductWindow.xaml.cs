@@ -160,7 +160,6 @@ namespace Authorization.Desktop.Windows.CashboxProducts
                 saleProductComponent.SetData(saleProduct,viewModel.Id);
                 saleProductComponent.RefreshThirdWrapPanel = PaymentRefreshAsync;
                 wpkassa.Children.Add(saleProductComponent);
-
             }
         }
 
@@ -174,12 +173,12 @@ namespace Authorization.Desktop.Windows.CashboxProducts
             foreach (var product in ProductList)
             {
                 //product.
-                if (product.ShopId == this.cashboxId)
+                if (product.ShopId == viewModel.Id)
                 {
                     PaymentComponent paymentComponent = new PaymentComponent();
                     paymentComponent.SetData(product);
                     wpPayment.Children.Add(paymentComponent);
-                    AllTotalSum += product.SoldPrice * product.Quantity;
+                    AllTotalSum += product.SoldPrice * product.productquantity;
                 }
             }
             string FormattedAllTotalPrice = FPrice((AllTotalSum).ToString());
@@ -195,7 +194,7 @@ namespace Authorization.Desktop.Windows.CashboxProducts
         {
 
             foreach (var item in wpTab.Children)
-            {
+            {   
                 if (item is TabComponent)
                 {
                     (item as TabComponent).B.BorderBrush = null;

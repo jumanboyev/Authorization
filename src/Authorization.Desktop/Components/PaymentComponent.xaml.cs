@@ -37,9 +37,9 @@ namespace Authorization.Desktop.Components
             lbProductName.Content = saleProductViewModel.Name;
             string FormattedSoldPrice = FPrice(saleProductViewModel.SoldPrice.ToString());
             lbProductPrice.Content = FormattedSoldPrice;
-            string FormattedQuantity = FPrice((saleProductViewModel.Quantity).ToString());
+            string FormattedQuantity = FPrice((saleProductViewModel.productquantity).ToString());
             lbQuantity.Content = FormattedQuantity;
-            float TotalSum = saleProductViewModel.SoldPrice * saleProductViewModel.Quantity;
+            float TotalSum = saleProductViewModel.SoldPrice * saleProductViewModel.productquantity;
             string FormattedTotalPrice = FPrice((TotalSum).ToString());
             lbTotalPrice.Content = FormattedTotalPrice;
         }

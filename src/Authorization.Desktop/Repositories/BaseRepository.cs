@@ -1,5 +1,6 @@
 ﻿using Authorization.Desktop.Entities.Shops;
 using Authorization.Desktop.Entities.Users;
+using Authorization.Desktop.Security;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,11 @@ namespace Authorization.Desktop.Repositories
         protected readonly MySqlConnection _connection;
         public BaseRepository()
         {
-            _connection = new MySqlConnection();
+            IdentitySingleton identity = IdentitySingleton.GetInstance();
+
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
             this._connection = new MySqlConnection(
-                "server = localhost; Port = 3306; User = root; database = mysql;"
+                identity.connectionString
                 );
         }        
     }

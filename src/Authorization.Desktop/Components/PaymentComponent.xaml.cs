@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Authorization.Desktop.ViewModels.SaleProducts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,24 @@ namespace Authorization.Desktop.Components
         public PaymentComponent()
         {
             InitializeComponent();
+        }
+
+        public string FPrice(string Price)
+        {
+            float number = float.Parse(Price);
+            string formattedNumber = number.ToString("#,##0").Replace(",", " ");
+            return formattedNumber;
+        }
+        public void SetData(SaleProductViewModel saleProductViewModel)
+        {
+            lbProductName.Content = saleProductViewModel.Name;
+            string FormattedSoldPrice = FPrice(saleProductViewModel.SoldPrice.ToString());
+            lbProductPrice.Content = FormattedSoldPrice;
+            string FormattedQuantity = FPrice((saleProductViewModel.Quantity).ToString());
+            lbQuantity.Content = FormattedQuantity;
+            float TotalSum = saleProductViewModel.SoldPrice * saleProductViewModel.Quantity;
+            string FormattedTotalPrice = FPrice((TotalSum).ToString());
+            lbTotalPrice.Content = FormattedTotalPrice;
         }
     }
 }

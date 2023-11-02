@@ -4,6 +4,8 @@ public class SaleProductViewModel
 {
     public long Id { get; set; }
     public long TabId { get; set; }
+    public long ShopId { get; set; }
+    public int productquantity { get; set; }
     public string Name { get; set; } = string.Empty;
     public long BarCode { get; set; }
     public long Quantity { get; set; }

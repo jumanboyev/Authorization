@@ -61,10 +61,10 @@ namespace Authorization.Desktop.Components
             }
             if (isOldProduct == true && saleProductViewModel?.SoldPrice != null)
             {
-                if (sellProductList[checkName].productquantity > 0) /*> sellProductList[checkName].quantity)*/
+                if (sellProductList[checkName].Quantity > 0) /*> sellProductList[checkName].quantity)*/
                 {
-                    sellProductList[checkName].Quantity++;
-                    sellProductList[checkName].productquantity--;
+                    sellProductList[checkName].productquantity++;
+                    sellProductList[checkName].Quantity--;
                     RefreshThirdWrapPanel?.Invoke();
                 }
                 else MessageBox.Show("Maxsulot qolmadi !");
@@ -76,8 +76,8 @@ namespace Authorization.Desktop.Components
                     if (saleProductViewModel.Quantity > 0)
                     {
                         sellProductList.Add(saleProductViewModel);
-                        sellProductList[countIteration].Quantity++;
-                        sellProductList[countIteration].productquantity--;
+                        sellProductList[countIteration].productquantity++;
+                        sellProductList[countIteration].Quantity--;
                         RefreshThirdWrapPanel?.Invoke();
                     }
                     else MessageBox.Show("Maxsulot qolmadi !");
